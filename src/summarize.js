@@ -2,6 +2,7 @@
  * Claude Haiku로 검색 결과 요약
  */
 const Anthropic = require('@anthropic-ai/sdk');
+const { claudeLimiter } = require('./rate-limiter');
 
 const client = new Anthropic({ apiKey: process.env.CLAUDE_API_KEY });
 
@@ -38,6 +39,7 @@ ${sfSection}
 ${slackSection}
 `;
 
+  await claudeLimiter.acquire();
   const response = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 2048,

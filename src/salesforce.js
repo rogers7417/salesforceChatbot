@@ -2,6 +2,7 @@
  * Salesforce 인증 + SOQL 쿼리 유틸리티
  */
 const axios = require('axios');
+const { salesforceLimiter } = require('./rate-limiter');
 
 // 토큰 캐시 (1시간 유효)
 let tokenCache = {
@@ -43,6 +44,7 @@ function invalidateToken() {
 }
 
 async function soqlQuery(instanceUrl, accessToken, query) {
+  await salesforceLimiter.acquire();
   const url = `${instanceUrl}/services/data/v59.0/query`;
   try {
     const res = await axios.get(url, {
