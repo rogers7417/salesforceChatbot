@@ -88,6 +88,15 @@ ${schema}
   - 후속: "그중에 전환이 얼마나됐어?" → SELECT COUNT() FROM Lead WHERE CreatedDate = TODAY AND IsConverted = true
 - 이전 SOQL의 WHERE 조건을 유지하면서 추가 조건만 AND로 붙임
 - 후속 질문만 보고 이해가 안 되면 이전 SOQL을 참고해서 맥락 파악
+
+사유/이력 조회:
+- "왜 전환이 안됐어?" → Lead의 LossReason__c, LossReasonDetail__c, HoldReason__c 조회
+- "왜 Closed Lost야?" → Opportunity의 Loss_Reason__c, Loss_Reason_Detail__c 조회
+- "어떻게 되고 있어?" → Status + 최근 Task 활동 이력 조회
+- "이력/활동 내역" → Task에서 WhoId 또는 AccountId로 조회
+- 예시:
+  - "전환 안 된 리드 사유" → SELECT Name, Company, Status, LossReason__c, LossReasonDetail__c, HoldReason__c FROM Lead WHERE IsConverted = false AND CreatedDate = TODAY
+  - "노꼬치킨 활동 이력" → SELECT Subject, Status, Type, ActivityDate, Owner.Name FROM Task WHERE Account.Name LIKE '%노꼬치킨%' ORDER BY ActivityDate DESC LIMIT 20
 ${examplesSection}`;
 }
 
@@ -249,6 +258,14 @@ async function summarizeResults(question, queryResults) {
 여러 쿼리 결과가 있으면:
 - 쿼리1의 결과와 쿼리2의 결과를 비교/조합해서 답변
 - 예: 쿼리1=전체 파트너사, 쿼리2=Lead 소개한 파트너사 → 쿼리1에 있지만 쿼리2에 없는 파트너사 = Lead 안 준 파트너사
+
+사유/이력 요약 시:
+- LossReason__c, HoldReason__c 등 사유 필드는 그룹별로 집계해서 보여줌
+  예: "취소 사유: 장기부재 5건, 오인입 3건, 고객거절 2건"
+- Task 활동 이력은 최근순으로 정리
+  예: "최근 활동: 3/28 전화상담(부재), 3/25 미팅예정 확인, 3/20 첫 컨택"
+- Status별 분포도 집계
+  예: "상태별: 고민중 8건, 부재중 5건, 장기부재 3건"
 
 응답 규칙:
 - 마크다운 기호 사용하지 마 (**, ##, 백틱 등)
