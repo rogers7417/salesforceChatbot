@@ -97,6 +97,18 @@ ${schema}
 - 예시:
   - "전환 안 된 리드 사유" → SELECT Name, Company, Status, LossReason__c, LossReasonDetail__c, HoldReason__c FROM Lead WHERE IsConverted = false AND CreatedDate = TODAY
   - "노꼬치킨 활동 이력" → SELECT Subject, Status, Type, ActivityDate, Owner.Name FROM Task WHERE Account.Name LIKE '%노꼬치킨%' ORDER BY ActivityDate DESC LIMIT 20
+
+분석/제안 질문 (어떻게, 왜, 개선, 올리려면, 방법 등):
+- 단순 COUNT가 아니라 사유/상태 분포를 알 수 있게 조회
+- 여러 쿼리를 조합해서 분석에 필요한 데이터 수집
+- 예시:
+  - "CW 전환율 올리려면?" → 3개 쿼리 필요:
+    1. SELECT COUNT() FROM Opportunity WHERE CreatedDate = THIS_MONTH (전체)
+    2. SELECT COUNT() FROM Opportunity WHERE StageName = 'Closed Won' AND CreatedDate = THIS_MONTH (CW)
+    3. SELECT Name, StageName, Loss_Reason__c FROM Opportunity WHERE StageName = 'Closed Lost' AND CreatedDate = THIS_MONTH LIMIT 30 (실패 사유)
+  - "리드 전환율 높이려면?" → 2개 쿼리:
+    1. SELECT Status, LossReason__c, HoldReason__c FROM Lead WHERE CreatedDate = THIS_MONTH AND IsConverted = false LIMIT 50
+    2. SELECT COUNT() FROM Lead WHERE CreatedDate = THIS_MONTH AND IsConverted = true
 ${examplesSection}`;
 }
 
@@ -246,6 +258,28 @@ async function summarizeResults(question, queryResults) {
     return `${queryLabel}\n총 ${r.totalSize}건\n` + JSON.stringify(r.records.slice(0, 30), null, 2);
   }).join('\n---\n');
 
+  // 분석/제안 질문인지 판단
+  const isAnalysisQuestion = /어떻게|왜|원인|개선|올리|높이|줄이|방법|전략|제안|분석/.test(question);
+
+  const analysisPrompt = isAnalysisQuestion ? `
+분석/제안 질문이므로:
+1. 먼저 데이터 현황을 간단히 요약
+2. 패턴/문제점 분석 (어떤 사유가 많은지, 어디서 이탈이 많은지)
+3. 구체적인 개선 제안 (데이터 기반으로)
+
+예시 ("CW 전환율 올리려면?"):
+  현황: 이번달 영업기회 100건 중 CW 15건 (15%)
+
+  주요 이탈 원인:
+  - Closed Lost 사유: 가격(12건), 경쟁사(8건), 타이밍(5건)
+  - 방문 후 이탈: 설치진행 단계에서 30% 이탈
+
+  개선 제안:
+  1. 가격 이슈 → 초기 상담 시 예산 확인 강화
+  2. 설치진행 이탈 → 방문~설치 간 팔로업 주기 단축
+  3. 경쟁사 이탈 → 차별점 강조 자료 준비
+` : '';
+
   const response = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 2048,
@@ -266,7 +300,7 @@ async function summarizeResults(question, queryResults) {
   예: "최근 활동: 3/28 전화상담(부재), 3/25 미팅예정 확인, 3/20 첫 컨택"
 - Status별 분포도 집계
   예: "상태별: 고민중 8건, 부재중 5건, 장기부재 3건"
-
+${analysisPrompt}
 응답 규칙:
 - 마크다운 기호 사용하지 마 (**, ##, 백틱 등)
 - 일반 텍스트로만 작성
