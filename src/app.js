@@ -29,7 +29,7 @@ const app = new App({
 // 사용자별 세션 (선택 대기 + 대화 히스토리)
 const sessions = {};
 
-const MAX_HISTORY = 6;        // 최대 대화 히스토리 (질문+답변 3쌍)
+const MAX_HISTORY = 10;       // 최대 대화 히스토리 (질문+답변 5쌍)
 const SESSION_TTL = 30 * 60 * 1000; // 30분 후 세션 만료
 
 function getSession(userId) {
@@ -42,7 +42,7 @@ function getSession(userId) {
 
 function addHistory(userId, role, content) {
   const session = getSession(userId);
-  session.history.push({ role, content: content.slice(0, 500) }); // 500자 제한
+  session.history.push({ role, content: content.slice(0, 1500) }); // 1500자 제한 (SOQL 포함)
   if (session.history.length > MAX_HISTORY) {
     session.history = session.history.slice(-MAX_HISTORY);
   }
@@ -193,13 +193,14 @@ async function handleQuery(question, userId, say) {
     // 히스토리에 질문 추가
     addHistory(userId, 'user', question);
 
-    // 실행한 쿼리 + 결과 요약을 히스토리에 기록 (후속 질문 참조용)
+    // 실행한 SOQL + 결과를 히스토리에 기록 (후속 질문 참조용)
     const queryInfo = queryResults.results.map((r, i) => {
       if (!r.success) return `쿼리${i + 1}: 실패`;
-      // 결과 데이터의 핵심 값 (Name, Id 등)을 기록
-      const names = r.records.slice(0, 50).map(rec => rec.Name || rec.PartnerName__r?.Name || rec.Company || '').filter(n => n);
-      return `쿼리${i + 1} 결과 ${r.totalSize}건: ${names.join(', ')}`;
-    }).join('\n');
+      // SOQL + 결과 건수 + 주요 데이터
+      const soql = queryResults.queries[i] || '';
+      const names = r.records.slice(0, 20).map(rec => rec.Name || rec.PartnerName__r?.Name || rec.Company || '').filter(n => n);
+      return `[SOQL] ${soql}\n[결과] ${r.totalSize}건${names.length > 0 ? ': ' + names.join(', ') : ''}`;
+    }).join('\n\n');
     addHistory(userId, 'assistant', queryInfo);
 
     // 에러 체크

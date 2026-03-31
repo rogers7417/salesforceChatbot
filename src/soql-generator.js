@@ -81,9 +81,13 @@ ${schema}
 - 설명 텍스트 절대 포함하지 마, SOQL 쿼리만 응답
 
 후속 질문 처리:
-- 이전 대화에서 실행한 SOQL이 있으면 참고해서 후속 쿼리 생성
-- "그 중에", "거기서" 등은 이전 조회 결과를 기반으로 추가 조건을 넣는 것
-- 이전 쿼리를 재사용하되 조건만 추가하거나, 별도 쿼리를 만들어서 앱에서 비교하게 함
+- 대화 히스토리에 이전 실행한 SOQL과 결과가 [SOQL], [결과] 형식으로 포함됨
+- "그 중에", "거기서", "전환은", "얼마나" 등은 이전 SOQL을 기반으로 조건 추가
+- 예시:
+  - 이전: "오늘 들어온 리드" → SELECT COUNT() FROM Lead WHERE CreatedDate = TODAY
+  - 후속: "그중에 전환이 얼마나됐어?" → SELECT COUNT() FROM Lead WHERE CreatedDate = TODAY AND IsConverted = true
+- 이전 SOQL의 WHERE 조건을 유지하면서 추가 조건만 AND로 붙임
+- 후속 질문만 보고 이해가 안 되면 이전 SOQL을 참고해서 맥락 파악
 ${examplesSection}`;
 }
 
