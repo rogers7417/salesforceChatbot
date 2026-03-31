@@ -8,6 +8,25 @@
  */
 require('dotenv').config();
 
+// 필수 환경 변수 검증
+const REQUIRED_ENV = [
+  'SLACK_BOT_TOKEN',
+  'SLACK_APP_TOKEN',
+  'SF_LOGIN_URL',
+  'SF_CLIENT_ID',
+  'SF_CLIENT_SECRET',
+  'SF_USERNAME',
+  'SF_PASSWORD',
+  'CLAUDE_API_KEY',
+];
+
+const missing = REQUIRED_ENV.filter(key => !process.env[key]);
+if (missing.length > 0) {
+  console.error(`❌ 필수 환경 변수 누락: ${missing.join(', ')}`);
+  console.error('   .env 파일을 확인하세요.');
+  process.exit(1);
+}
+
 const { App } = require('@slack/bolt');
 const { classifyIntent } = require('./intent');
 const { searchAccounts, searchByKeyword, getMyTodos, findUserBySlackId } = require('./search-salesforce');
