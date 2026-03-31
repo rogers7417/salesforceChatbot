@@ -14,6 +14,7 @@ const { searchAccounts, searchByKeyword, getMyTodos, findUserBySlackId } = requi
 const { searchSlackMessages } = require('./search-slack');
 const { getBrandSummary } = require('./search-brand');
 const { getMeetings } = require('./search-meeting');
+const { getActivitySummary, formatActivitySummary } = require('./search-activity');
 const { generateAndExecute, summarizeResults } = require('./soql-generator');
 const { summarize } = require('./summarize');
 const { logQuery } = require('./query-logger');
@@ -133,6 +134,9 @@ app.message(async ({ message, say }) => {
         const names = intent.names || [intent.name || 'me'];
         await handleMeetings(names, intent.date || 'today', userId, say);
         logQuery({ ...logBase, success: true });
+      } else if (intent.intent === 'activity') {
+        await handleActivity(intent.name || 'me', intent.date || 'today', userId, say);
+        logQuery({ ...logBase, success: true });
       } else if (intent.intent === 'query') {
         await handleQuery(text, userId, say);
         logQuery({ ...logBase, success: true });
@@ -222,6 +226,25 @@ async function handleQuery(question, userId, say) {
     await say(`💡 *조회 결과*\n\`\`\`\n${summary}\n\`\`\``);
   } catch (err) {
     console.error('[query 에러]', err.message);
+    await say(`❌ 오류가 발생했습니다: ${err.message}`);
+  }
+}
+
+async function handleActivity(name, dateStr, slackUserId, say) {
+  await say(`📊 *${name === 'me' ? '내' : name}* 활동 현황 조회 중...`);
+
+  try {
+    const data = await getActivitySummary(name, dateStr, slackUserId);
+
+    if (data.error) {
+      await say(`❌ ${data.error}`);
+      return;
+    }
+
+    const msg = formatActivitySummary(data);
+    await say(msg);
+  } catch (err) {
+    console.error('[activity 에러]', err.message);
     await say(`❌ 오류가 발생했습니다: ${err.message}`);
   }
 }
