@@ -3,8 +3,19 @@
  */
 const { getSalesforceToken, soqlQuery } = require('./salesforce');
 
+// SOQL 문자열 이스케이프 (Injection 방지)
+function escapeSoqlString(str) {
+  if (!str) return '';
+  return str
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 async function getBrandSummary(brandName) {
   const { accessToken, instanceUrl } = await getSalesforceToken();
+  const escapedBrand = escapeSoqlString(brandName);
 
   // Account에서 태블릿 운영 정보 + Opportunity로 유형 파악
   const accountQuery = `
@@ -13,7 +24,7 @@ async function getBrandSummary(brandName) {
       ContractMasterTabletQuantity__c, ActivableTabletNumber__c,
       OperationStatus__c
     FROM Account
-    WHERE Name LIKE '%${brandName}%'
+    WHERE Name LIKE '%${escapedBrand}%'
       AND ActivableTabletNumber__c > 0
     ORDER BY ContractTabletQuantity__c DESC
   `.replace(/\s+/g, ' ').trim();
@@ -22,7 +33,7 @@ async function getBrandSummary(brandName) {
   const contractQuery = `
     SELECT Name, ContractType__c, ContractDateStart__c, ContractDateEnd__c
     FROM Contract__c
-    WHERE Account__r.Name LIKE '%${brandName}%'
+    WHERE Account__r.Name LIKE '%${escapedBrand}%'
       AND ContractStatus__c = '계약서명완료'
     ORDER BY ContractDateStart__c DESC
   `.replace(/\s+/g, ' ').trim();
@@ -31,7 +42,7 @@ async function getBrandSummary(brandName) {
   const oppQuery = `
     SELECT Name, StageName, Account.Name, AccountId
     FROM Opportunity
-    WHERE Account.Name LIKE '%${brandName}%'
+    WHERE Account.Name LIKE '%${escapedBrand}%'
       AND StageName = 'Closed Won'
     ORDER BY CloseDate DESC
   `.replace(/\s+/g, ' ').trim();

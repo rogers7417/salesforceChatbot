@@ -3,9 +3,21 @@
  */
 const { getSalesforceToken, soqlQuery } = require('./salesforce');
 
-// 괄호 제거 → 핵심 키워드만 추출
-function cleanKeyword(keyword) {
-  return keyword.replace(/[()（）\[\]]/g, ' ').replace(/\s+/g, ' ').trim();
+// SOQL 문자열 이스케이프 (Injection 방지)
+function escapeSoqlString(str) {
+  if (!str) return '';
+  return str
+    .replace(/\\/g, '\\\\')     // 백슬래시 이스케이프
+    .replace(/'/g, "\\'")        // 싱글쿼트 이스케이프
+    .replace(/[()（）\[\]]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Salesforce ID 유효성 검증 (15자 또는 18자 알파뉴메릭)
+function isValidSalesforceId(id) {
+  if (!id) return false;
+  return /^[a-zA-Z0-9]{15}([a-zA-Z0-9]{3})?$/.test(id);
 }
 
 /**
@@ -15,11 +27,14 @@ function cleanKeyword(keyword) {
 async function searchAccounts(keyword, sfUserId) {
   const { accessToken, instanceUrl } = await getSalesforceToken();
 
-  const ownerFilter = sfUserId ? ` AND OwnerId = '${sfUserId}'` : '';
+  // ID 유효성 검증
+  const ownerFilter = (sfUserId && isValidSalesforceId(sfUserId))
+    ? ` AND OwnerId = '${sfUserId}'`
+    : '';
   const query = `
     SELECT Id, Name, Owner.Name, Phone, CreatedDate
     FROM Account
-    WHERE Name LIKE '%${cleanKeyword(keyword)}%'${ownerFilter}
+    WHERE Name LIKE '%${escapeSoqlString(keyword)}%'${ownerFilter}
     ORDER BY CreatedDate DESC
     LIMIT 10
   `.replace(/\s+/g, ' ').trim();
@@ -34,12 +49,16 @@ async function searchAccounts(keyword, sfUserId) {
 async function getAccountDetail(accountName, sfUserId) {
   const { accessToken, instanceUrl } = await getSalesforceToken();
 
-  const ownerFilter = sfUserId ? ` AND OwnerId = '${sfUserId}'` : '';
+  // ID 유효성 검증
+  const ownerFilter = (sfUserId && isValidSalesforceId(sfUserId))
+    ? ` AND OwnerId = '${sfUserId}'`
+    : '';
+  const escapedName = escapeSoqlString(accountName);
 
   const leadQuery = `
     SELECT Id, Name, Company, Status, Owner.Name, CreatedDate, Phone, Email
     FROM Lead
-    WHERE (Company LIKE '%${cleanKeyword(accountName)}%' OR Name LIKE '%${cleanKeyword(accountName)}%')${ownerFilter}
+    WHERE (Company LIKE '%${escapedName}%' OR Name LIKE '%${escapedName}%')${ownerFilter}
     ORDER BY CreatedDate DESC
     LIMIT 10
   `.replace(/\s+/g, ' ').trim();
@@ -47,7 +66,7 @@ async function getAccountDetail(accountName, sfUserId) {
   const oppQuery = `
     SELECT Id, Name, StageName, Amount, CloseDate, Owner.Name, Account.Name, CreatedDate
     FROM Opportunity
-    WHERE (Name LIKE '%${cleanKeyword(accountName)}%' OR Account.Name LIKE '%${cleanKeyword(accountName)}%')${ownerFilter}
+    WHERE (Name LIKE '%${escapedName}%' OR Account.Name LIKE '%${escapedName}%')${ownerFilter}
     ORDER BY CreatedDate DESC
     LIMIT 10
   `.replace(/\s+/g, ' ').trim();
@@ -55,7 +74,7 @@ async function getAccountDetail(accountName, sfUserId) {
   const accQuery = `
     SELECT Id, Name, Owner.Name, Phone, CreatedDate
     FROM Account
-    WHERE Name LIKE '%${cleanKeyword(accountName)}%'${ownerFilter}
+    WHERE Name LIKE '%${escapedName}%'${ownerFilter}
     LIMIT 5
   `.replace(/\s+/g, ' ').trim();
 
@@ -83,6 +102,11 @@ async function searchByKeyword(keyword, sfUserId) {
  * 내 계류 Lead + 진행 중 영업기회 조회
  */
 async function getMyTodos(sfUserId) {
+  // ID 유효성 검증 필수
+  if (!isValidSalesforceId(sfUserId)) {
+    return { leads: [], opportunities: [] };
+  }
+
   const { accessToken, instanceUrl } = await getSalesforceToken();
 
   const leadQuery = `
@@ -119,6 +143,11 @@ async function getMyTodos(sfUserId) {
  * Slack ID → SF User ID 조회
  */
 async function findUserBySlackId(slackId) {
+  // Slack ID 형식 검증 (U로 시작하는 알파뉴메릭)
+  if (!slackId || !/^[UW][A-Z0-9]{8,}$/.test(slackId)) {
+    return null;
+  }
+
   const { accessToken, instanceUrl } = await getSalesforceToken();
   const query = `
     SELECT Id, Name, SlackMemberID__c

@@ -3,6 +3,27 @@
  */
 const { getSalesforceToken, soqlQuery } = require('./salesforce');
 
+// SOQL 문자열 이스케이프 (Injection 방지)
+function escapeSoqlString(str) {
+  if (!str) return '';
+  return str
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Slack ID 형식 검증
+function isValidSlackId(id) {
+  return id && /^[UW][A-Z0-9]{8,}$/.test(id);
+}
+
+// Salesforce ID 유효성 검증
+function isValidSalesforceId(id) {
+  if (!id) return false;
+  return /^[a-zA-Z0-9]{15}([a-zA-Z0-9]{3})?$/.test(id);
+}
+
 /**
  * 날짜 조건 변환 (SOQL용)
  */
@@ -100,9 +121,10 @@ function getDateRange(dateStr) {
  */
 async function findUserByName(name) {
   const { accessToken, instanceUrl } = await getSalesforceToken();
+  const escapedName = escapeSoqlString(name);
   const query = `
     SELECT Id, Name, Email FROM User
-    WHERE Name LIKE '%${name}%' AND IsActive = true
+    WHERE Name LIKE '%${escapedName}%' AND IsActive = true
     LIMIT 1
   `.replace(/\s+/g, ' ').trim();
 
@@ -121,6 +143,10 @@ async function getMeetings(userName, dateStr, slackUserId) {
   let email;
 
   if (userName === 'me') {
+    // Slack ID 검증
+    if (!isValidSlackId(slackUserId)) {
+      return { error: 'Slack ID가 유효하지 않습니다.' };
+    }
     const userQuery = `
       SELECT Id, Name, Email FROM User WHERE SlackMemberID__c = '${slackUserId}' AND IsActive = true LIMIT 1
     `.replace(/\s+/g, ' ').trim();
@@ -136,6 +162,11 @@ async function getMeetings(userName, dateStr, slackUserId) {
     ownerId = user.Id;
     displayName = user.Name;
     email = user.Email;
+  }
+
+  // Owner ID 검증
+  if (!isValidSalesforceId(ownerId)) {
+    return { error: 'SF User ID가 유효하지 않습니다.' };
   }
 
   const dateFilter = getDateFilter(dateStr);
