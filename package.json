@@ -1,0 +1,16 @@
+{
+  "name": "sales-chatbot",
+  "version": "1.0.0",
+  "description": "Salesforce + Slack 검색 챗봇",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node src/app.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
+    "@slack/bolt": "^4.1.0",
+    "axios": "^1.13.6",
+    "dotenv": "^16.4.0"
+  }
+}

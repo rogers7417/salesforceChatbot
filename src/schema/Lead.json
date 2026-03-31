@@ -1,0 +1,1732 @@
+{
+  "name": "Lead",
+  "label": "잠재고객",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "잠재고객 ID",
+      "type": "id"
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "MasterRecordId",
+      "label": "마스터 레코드 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Lead"
+      ]
+    },
+    {
+      "name": "LastName",
+      "label": "성명",
+      "type": "string"
+    },
+    {
+      "name": "FirstName",
+      "label": "(미입력)",
+      "type": "string"
+    },
+    {
+      "name": "Salutation",
+      "label": "(미입력)",
+      "type": "picklist",
+      "picklistValues": [
+        "Mr.",
+        "Ms.",
+        "Mrs.",
+        "Dr.",
+        "Prof.",
+        "Mx."
+      ]
+    },
+    {
+      "name": "Name",
+      "label": "전체 이름",
+      "type": "string"
+    },
+    {
+      "name": "RecordTypeId",
+      "label": "잠재고객 레코드 유형",
+      "type": "reference",
+      "referenceTo": [
+        "RecordType"
+      ]
+    },
+    {
+      "name": "Title",
+      "label": "직급",
+      "type": "string"
+    },
+    {
+      "name": "Company",
+      "label": "상호",
+      "type": "string"
+    },
+    {
+      "name": "Street",
+      "label": "상세 주소",
+      "type": "textarea"
+    },
+    {
+      "name": "City",
+      "label": "시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "State",
+      "label": "시/도",
+      "type": "string"
+    },
+    {
+      "name": "PostalCode",
+      "label": "우편 번호",
+      "type": "string"
+    },
+    {
+      "name": "Country",
+      "label": "국가",
+      "type": "string"
+    },
+    {
+      "name": "Latitude",
+      "label": "위도",
+      "type": "double"
+    },
+    {
+      "name": "Longitude",
+      "label": "경도",
+      "type": "double"
+    },
+    {
+      "name": "GeocodeAccuracy",
+      "label": "지역 코드 정확도",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "Address",
+      "label": "주소",
+      "type": "address"
+    },
+    {
+      "name": "Phone",
+      "label": "연락처",
+      "type": "phone"
+    },
+    {
+      "name": "MobilePhone",
+      "label": "휴대폰",
+      "type": "phone"
+    },
+    {
+      "name": "Fax",
+      "label": "팩스",
+      "type": "phone"
+    },
+    {
+      "name": "Email",
+      "label": "이메일",
+      "type": "email"
+    },
+    {
+      "name": "Website",
+      "label": "웹사이트",
+      "type": "url"
+    },
+    {
+      "name": "PhotoUrl",
+      "label": "사진 URL",
+      "type": "url"
+    },
+    {
+      "name": "Description",
+      "label": "요청사항",
+      "type": "textarea"
+    },
+    {
+      "name": "LeadSource",
+      "label": "유입경로",
+      "type": "picklist",
+      "picklistValues": [
+        "홈페이지",
+        "전화",
+        "인바운드",
+        "아웃바운드",
+        "프랜차이즈소개",
+        "파트너사 소개",
+        "매장소개",
+        "카카오채널",
+        "스마트스토어",
+        "지원사업",
+        "임직원 소개건",
+        "사장님 앱",
+        "제휴업체소개"
+      ]
+    },
+    {
+      "name": "Status",
+      "label": "잠재고객 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "배정대기",
+        "담당자 배정",
+        "부재중",
+        "리터치예정",
+        "고민중",
+        "장기부재",
+        "Lead",
+        "연락 완료",
+        "영업 보류",
+        "종료",
+        "Qualified"
+      ]
+    },
+    {
+      "name": "Industry",
+      "label": "업종",
+      "type": "picklist",
+      "picklistValues": [
+        "Agriculture",
+        "Apparel",
+        "Banking",
+        "Biotechnology",
+        "Chemicals",
+        "Communications",
+        "Construction",
+        "Consulting",
+        "Education",
+        "Electronics",
+        "Energy",
+        "Engineering",
+        "Entertainment",
+        "Environmental",
+        "Finance",
+        "Food & Beverage",
+        "Government",
+        "Healthcare",
+        "Hospitality",
+        "Insurance",
+        "Machinery",
+        "Manufacturing",
+        "Media",
+        "Not For Profit",
+        "Other",
+        "Recreation",
+        "Retail",
+        "Shipping",
+        "Technology",
+        "Telecommunications",
+        "Transportation",
+        "Utilities"
+      ]
+    },
+    {
+      "name": "Rating",
+      "label": "등급",
+      "type": "picklist",
+      "picklistValues": [
+        "Hot",
+        "Warm",
+        "Cold"
+      ]
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "잠재고객 통화",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "AnnualRevenue",
+      "label": "연매출액",
+      "type": "currency"
+    },
+    {
+      "name": "NumberOfEmployees",
+      "label": "직원",
+      "type": "int"
+    },
+    {
+      "name": "OwnerId",
+      "label": "영업 담당자",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "HasOptedOutOfEmail",
+      "label": "이메일 수신거부",
+      "type": "boolean"
+    },
+    {
+      "name": "IsConverted",
+      "label": "변환됨",
+      "type": "boolean"
+    },
+    {
+      "name": "ConvertedDate",
+      "label": "변환된 날짜",
+      "type": "date"
+    },
+    {
+      "name": "ConvertedAccountId",
+      "label": "변환된 거래처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "ConvertedContactId",
+      "label": "변환된 연락처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "ConvertedOpportunityId",
+      "label": "변환된 영업기회 id",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "IsUnreadByOwner",
+      "label": "소유자가 읽지 않음",
+      "type": "boolean"
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastActivityDate",
+      "label": "마지막 활동",
+      "type": "date"
+    },
+    {
+      "name": "DoNotCall",
+      "label": "전화사절",
+      "type": "boolean"
+    },
+    {
+      "name": "HasOptedOutOfFax",
+      "label": "팩스 수신거부",
+      "type": "boolean"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastTransferDate",
+      "label": "마지막 전송 일자",
+      "type": "date"
+    },
+    {
+      "name": "PartnerAccountId",
+      "label": "파트너 계정 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "Jigsaw",
+      "label": "Data.com 키",
+      "type": "string"
+    },
+    {
+      "name": "JigsawContactId",
+      "label": "Jigsaw Contact ID",
+      "type": "string"
+    },
+    {
+      "name": "EmailBouncedReason",
+      "label": "이메일 바운스 원인",
+      "type": "string"
+    },
+    {
+      "name": "EmailBouncedDate",
+      "label": "이메일 바운스 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "Pronouns",
+      "label": "대명사",
+      "type": "picklist",
+      "picklistValues": [
+        "He/Him",
+        "She/Her",
+        "They/Them",
+        "He/They",
+        "She/They",
+        "Not Listed"
+      ]
+    },
+    {
+      "name": "GenderIdentity",
+      "label": "성정체성",
+      "type": "picklist",
+      "picklistValues": [
+        "Male",
+        "Female",
+        "Nonbinary",
+        "Not Listed"
+      ]
+    },
+    {
+      "name": "AddressLatitude__c",
+      "label": "주소지 위도",
+      "type": "double"
+    },
+    {
+      "name": "AddressLongtitude__c",
+      "label": "주소지 경도",
+      "type": "double"
+    },
+    {
+      "name": "Address__c",
+      "label": "매장 주소",
+      "type": "string"
+    },
+    {
+      "name": "AutoNumber__c",
+      "label": "Auto Number",
+      "type": "string"
+    },
+    {
+      "name": "BranchName__c",
+      "label": "지점명",
+      "type": "string"
+    },
+    {
+      "name": "BrandNameText__c",
+      "label": "브랜드(입력폼)",
+      "type": "string"
+    },
+    {
+      "name": "BrandName__c",
+      "label": "브랜드",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "BuildingName__c",
+      "label": "Building Name",
+      "type": "string"
+    },
+    {
+      "name": "BuildingNumber__c",
+      "label": "Building Number",
+      "type": "string"
+    },
+    {
+      "name": "BulkUpload__c",
+      "label": "Bulk업로드",
+      "type": "boolean"
+    },
+    {
+      "name": "CompanyRegistrationNumber__c",
+      "label": "사업자등록번호",
+      "type": "string"
+    },
+    {
+      "name": "CompanyStatus__c",
+      "label": "매장상태",
+      "type": "picklist",
+      "picklistValues": [
+        "오픈전",
+        "오픈전(2달 이상)",
+        "영업중"
+      ]
+    },
+    {
+      "name": "ContactType__c",
+      "label": "타입",
+      "type": "picklist",
+      "picklistValues": [
+        "대표자",
+        "운영자",
+        "정산담당자",
+        "[B2B] 대표자",
+        "[B2B] 실무자",
+        "[B2B] 정산담당자",
+        "캠페인담당자",
+        "매체담당자"
+      ]
+    },
+    {
+      "name": "CountryRegion__c",
+      "label": "국가 / 지역",
+      "type": "string"
+    },
+    {
+      "name": "Dongmyun__c",
+      "label": "Dongmyun",
+      "type": "string"
+    },
+    {
+      "name": "EnglishAddress__c",
+      "label": "English Address",
+      "type": "string"
+    },
+    {
+      "name": "ExpectationRobotQuantity__c",
+      "label": "예상 로봇 수량",
+      "type": "double"
+    },
+    {
+      "name": "ExpectationStoreQuantity__c",
+      "label": "예상 가맹점 수",
+      "type": "double"
+    },
+    {
+      "name": "GCLID__c",
+      "label": "GCLID",
+      "type": "string"
+    },
+    {
+      "name": "Industry__c",
+      "label": "업종",
+      "type": "string"
+    },
+    {
+      "name": "InflowUrl__c",
+      "label": "유입 url",
+      "type": "textarea"
+    },
+    {
+      "name": "IsCEONumber__c",
+      "label": "소통 연락처",
+      "type": "boolean"
+    },
+    {
+      "name": "IsSpecificFloor__c",
+      "label": "층구분",
+      "type": "boolean"
+    },
+    {
+      "name": "JibunAddress__c",
+      "label": "지번 주소",
+      "type": "string"
+    },
+    {
+      "name": "LandNumber__c",
+      "label": "Land Number",
+      "type": "string"
+    },
+    {
+      "name": "LeadAddress__c",
+      "label": "신청자주소",
+      "type": "string"
+    },
+    {
+      "name": "LeadIP__c",
+      "label": "신청자IP",
+      "type": "string"
+    },
+    {
+      "name": "LeadPromotionInfo__c",
+      "label": "잠재고객 프로모션 안내사항",
+      "type": "textarea"
+    },
+    {
+      "name": "LeadSourceAutoNumber__c",
+      "label": "유입경로에 따른 잠재고객 순번_v1",
+      "type": "string"
+    },
+    {
+      "name": "LossReasonDetail__c",
+      "label": "취소사유 상세",
+      "type": "string"
+    },
+    {
+      "name": "LossReason__c",
+      "label": "취소사유",
+      "type": "picklist",
+      "picklistValues": [
+        "LossReasonContract",
+        "LossReasonProcess",
+        "장기부재",
+        "오인입",
+        "중복유입",
+        "추가설치",
+        "부서이관",
+        "기고객상담",
+        "오생성",
+        "양도양수",
+        "기존 사용 유지",
+        "단호한 거절(파악 불가)",
+        "예산 부족 / 비용부담",
+        "시기 미정",
+        "타겟 부적합",
+        "요구사항 불일치",
+        "기술 요건 미충족",
+        "결정 권한 없음",
+        "중복 접수",
+        "문의하지 않음",
+        "단순 정보 수집",
+        "성과 불만족",
+        "서비스 불만족"
+      ]
+    },
+    {
+      "name": "MKTBenefits__c",
+      "label": "MKT_프로모션 혜택",
+      "type": "picklist",
+      "picklistValues": [
+        "혜택01",
+        "혜택02",
+        "혜택03",
+        "혜택04",
+        "혜택05"
+      ]
+    },
+    {
+      "name": "MKTPromotions__c",
+      "label": "MKT_프로모션",
+      "type": "picklist",
+      "picklistValues": [
+        "MKT-24-0425-0531-패밀리프로모션",
+        "MKT-24-0122-0229-새해프로모션",
+        "MKT-24-0304-0331-제로프로모션"
+      ]
+    },
+    {
+      "name": "Metadata_Lead_Number__c",
+      "label": "Metadata Lead Number",
+      "type": "double"
+    },
+    {
+      "name": "OpenDueDate__c",
+      "label": "오픈예정일",
+      "type": "date"
+    },
+    {
+      "name": "POSType__c",
+      "label": "포스",
+      "type": "picklist",
+      "picklistValues": [
+        "기타연동",
+        "재세팅",
+        "확인필요",
+        "포스변경",
+        "포스마스터(티페이)",
+        "본아이에프포스(본포스)",
+        "오케이포스",
+        "오케이포스/PRO",
+        "오케이포스/KIS",
+        "오케이포스/NICE",
+        "오케이포스/Plus",
+        "메타포스(M포스, 매직포스)",
+        "스마트로포스(스마일포스)",
+        "에어포스",
+        "이지포스",
+        "유니온포스",
+        "U+포스",
+        "오아시스(대진포스)",
+        "KCP포스(NET포스)",
+        "파이서브포스(퍼스트포스)",
+        "성진포스",
+        "nnp포스",
+        "GMC포스(안씨)",
+        "포스뱅크(팝스)",
+        "노포스(자체포스)",
+        "메이트포스",
+        "매장천사",
+        "PNC(삼천리)",
+        "아스템즈(엣포스)",
+        "푸드마스터포스",
+        "스파로스포스(신세계아이앤씨1.0)",
+        "스파로스포스(신세계아이앤씨2.0)",
+        "Tevalis포스",
+        "Eats365포스",
+        "솔비포스",
+        "KS포스",
+        "푸드테크",
+        "EatsPos",
+        "VERONA",
+        "BLUU",
+        "NEED_TO_CHECK",
+        "OTHERS",
+        "EZPOS",
+        "CLOVER",
+        "TOAST",
+        "NAVYZ",
+        "SQUARE",
+        "JKPOS",
+        "ALOHA",
+        "한화포스",
+        "t'order Donas",
+        "Level",
+        "Lightspeed",
+        "VD포스(브이디포스)",
+        "토스포스",
+        "Peblla"
+      ]
+    },
+    {
+      "name": "PartnerName__c",
+      "label": "소개 파트너사",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "PartnersNameText__c",
+      "label": "파트너스(입력폼)",
+      "type": "string"
+    },
+    {
+      "name": "PaymentType__c",
+      "label": "결제방식",
+      "type": "picklist",
+      "picklistValues": [
+        "선결제",
+        "후결제"
+      ]
+    },
+    {
+      "name": "PostalCode__c",
+      "label": "POSTAL CODE",
+      "type": "string"
+    },
+    {
+      "name": "PreimburseInfo__c",
+      "label": "선결제 정보",
+      "type": "string"
+    },
+    {
+      "name": "PrivacyInfoDate__c",
+      "label": "개인정보 수집 동의(필수) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "PrivacyInfoYN__c",
+      "label": "개인정보 수집 동의(필수)",
+      "type": "boolean"
+    },
+    {
+      "name": "RecommendCode__c",
+      "label": "추천인코드",
+      "type": "string"
+    },
+    {
+      "name": "RecommendEmp__c",
+      "label": "소개처(임직원/제휴처)",
+      "type": "textarea"
+    },
+    {
+      "name": "RecommendStorePhone__c",
+      "label": "소개 매장 연락처",
+      "type": "phone"
+    },
+    {
+      "name": "RecommendStore__c",
+      "label": "소개 매장 상호지점명",
+      "type": "string"
+    },
+    {
+      "name": "RecommendationStore__c",
+      "label": "추천한 매장",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "RequestDescription__c",
+      "label": "상담내역",
+      "type": "textarea"
+    },
+    {
+      "name": "Ri__c",
+      "label": "Ri",
+      "type": "string"
+    },
+    {
+      "name": "RoadAddress__c",
+      "label": "도로명 주소",
+      "type": "string"
+    },
+    {
+      "name": "RoadName__c",
+      "label": "Road Name",
+      "type": "string"
+    },
+    {
+      "name": "SALPromotions__c",
+      "label": "SAL_프로모션",
+      "type": "picklist",
+      "picklistValues": [
+        "5+1 스텔스 프로모션",
+        "전기공사 5만원 페이백"
+      ]
+    },
+    {
+      "name": "SalesInviteDate__c",
+      "label": "방문희망일자",
+      "type": "date"
+    },
+    {
+      "name": "ServiceType__c",
+      "label": "서비스유형",
+      "type": "picklist",
+      "picklistValues": [
+        "테이블오더",
+        "서빙로봇",
+        "티오더 웨이팅",
+        "CCTV",
+        "광고문의"
+      ]
+    },
+    {
+      "name": "Sido__c",
+      "label": "Sido",
+      "type": "string"
+    },
+    {
+      "name": "Sigugun__c",
+      "label": "SIGUGUN",
+      "type": "string"
+    },
+    {
+      "name": "SpecialCase__c",
+      "label": "특수관리",
+      "type": "multipicklist",
+      "picklistValues": [
+        "더본",
+        "UP전환",
+        "LG상용솔루션",
+        "LGU+인터넷 무상지원",
+        "U+화이트라벨링",
+        "스마트상점",
+        "티오더스테이",
+        "뉴오더전환"
+      ]
+    },
+    {
+      "name": "StoreType__c",
+      "label": "매장유형",
+      "type": "picklist",
+      "picklistValues": [
+        "개인매장",
+        "프랜차이즈제휴",
+        "프랜차이즈비제휴"
+      ]
+    },
+    {
+      "name": "SubmitInquiryPage__c",
+      "label": "문의 제출 페이지",
+      "type": "textarea"
+    },
+    {
+      "name": "TableQty__c",
+      "label": "테이블 수",
+      "type": "double"
+    },
+    {
+      "name": "UtmCampaign__c",
+      "label": "utm_campaign",
+      "type": "string"
+    },
+    {
+      "name": "UtmContent__c",
+      "label": "utm_content",
+      "type": "string"
+    },
+    {
+      "name": "UtmMedium__c",
+      "label": "utm_medium",
+      "type": "string"
+    },
+    {
+      "name": "UtmSource__c",
+      "label": "utm_source",
+      "type": "string"
+    },
+    {
+      "name": "UtmTerm__c",
+      "label": "utm_term",
+      "type": "string"
+    },
+    {
+      "name": "VAN__c",
+      "label": "VAN",
+      "type": "picklist",
+      "picklistValues": [
+        "KIS",
+        "KOCES",
+        "SMARTRO",
+        "KSNET",
+        "KCP",
+        "KICC",
+        "FDIK",
+        "JTNET",
+        "DAOUDATA",
+        "확인필요(변경예정)",
+        "KSP",
+        "KOVAN",
+        "SPC",
+        "FMS",
+        "OTHERS",
+        "NEED_TO_CHECK",
+        "ADVANCE_SOLUTIONS",
+        "BANKCARD_SERVICES",
+        "TSMS",
+        "NICE"
+      ]
+    },
+    {
+      "name": "advertisinginfoDate__c",
+      "label": "광고성 정보 수신 동의(선택) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "advertisinginfoYN__c",
+      "label": "광고성 정보 수신 동의(선택)",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_Department__c",
+      "label": "부서(미사용)",
+      "type": "string"
+    },
+    {
+      "name": "fm_LeadID__c",
+      "label": "잠재고객ID",
+      "type": "string"
+    },
+    {
+      "name": "isFromLead__c",
+      "label": "IsFromLead",
+      "type": "boolean"
+    },
+    {
+      "name": "isconverted__c",
+      "label": "isconverted",
+      "type": "boolean"
+    },
+    {
+      "name": "referer__c",
+      "label": "referer url",
+      "type": "textarea"
+    },
+    {
+      "name": "thirdpartyDate__c",
+      "label": "개인정보 제3자 제공 동의(로봇전용-필수) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "thirdpartyYN__c",
+      "label": "개인정보 제3자 제공 동의(로봇전용-필수)",
+      "type": "boolean"
+    },
+    {
+      "name": "utm__c",
+      "label": "utm",
+      "type": "textarea"
+    },
+    {
+      "name": "Brand_Branch__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "LeadScore__c",
+      "label": "리드 스코어",
+      "type": "double"
+    },
+    {
+      "name": "Lead_Approval_Status__c",
+      "label": "승인 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "요청됨",
+        "승인됨",
+        "거절됨"
+      ]
+    },
+    {
+      "name": "LossReason_Contract__c",
+      "label": "취소사유(세부항목)",
+      "type": "picklist",
+      "picklistValues": [
+        "가격 문제",
+        "기능 문제",
+        "포스/연동불가",
+        "본사 지정 오더",
+        "당사 정책 이슈",
+        "UI/UX (사용 경험)",
+        "단순 변심",
+        "창업 보류",
+        "업종 부적합",
+        "폐업",
+        "장기부재",
+        "문의하지 않음",
+        "없는 번호",
+        "스팸/장난/비속어",
+        "포스 문의",
+        "키오스크 문의",
+        "기타 미제공 서비스",
+        "상담 이력 없음",
+        "CS 문의",
+        "광고 제휴 문의",
+        "B2B 파트너 제휴",
+        "해외 매장 문의",
+        "B2B 호텔 제휴",
+        "B2B 지원사업 제휴",
+        "B2B 프랜차이즈 제휴",
+        "추가설치",
+        "양도양수",
+        "계약문의",
+        "고객 응대 불만족",
+        "본사 계약 해지",
+        "제품 유지보수 서비스 불만",
+        "QR오더 선택",
+        "미취급 상품",
+        "소송 및 내용증명(법무)",
+        "자사 신규 계약 전환",
+        "비사업자",
+        "학생",
+        "개인"
+      ]
+    },
+    {
+      "name": "Sourcedetail__c",
+      "label": "세부유입경로(선택)",
+      "type": "picklist",
+      "picklistValues": [
+        "스마트상점",
+        "매장소개(지인)",
+        "임직원소개",
+        "업세일링",
+        "필드(아웃바운드)",
+        "삼성카드(아웃바운드)",
+        "프랜차이즈(아웃바운드)",
+        "Austin소개",
+        "순수발굴형(A등급)",
+        "재활용형(B등급)",
+        "관계기반형(C등급)",
+        "CL DB 리터치",
+        "광고 집행 문의",
+        "상품소개서 전달",
+        "기타 제휴 문의"
+      ]
+    },
+    {
+      "name": "fm_AutoNumber__c",
+      "label": "fm_AutoNumber",
+      "type": "double"
+    },
+    {
+      "name": "fm_LeadScoreStars__c",
+      "label": "잠재고객 등급",
+      "type": "string"
+    },
+    {
+      "name": "fm_LongandLat__c",
+      "label": "위도와경도",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_MetaRoundRobin__c",
+      "label": "Meta Round Robin",
+      "type": "double"
+    },
+    {
+      "name": "fm_NaverMap__c",
+      "label": "네이버 지도",
+      "type": "string"
+    },
+    {
+      "name": "fm_NaverPlace__c",
+      "label": "네이버 플레이스",
+      "type": "string"
+    },
+    {
+      "name": "OldCreatedDate__c",
+      "label": "(과거)생성일자",
+      "type": "datetime"
+    },
+    {
+      "name": "AssignmentDate__c",
+      "label": "배정일자",
+      "type": "date"
+    },
+    {
+      "name": "OldRequest__c",
+      "label": "(과거)요청사항",
+      "type": "textarea"
+    },
+    {
+      "name": "OldKeyValue__c",
+      "label": "(과거)KEY값",
+      "type": "string"
+    },
+    {
+      "name": "user_isactive__c",
+      "label": "user_isactive",
+      "type": "boolean"
+    },
+    {
+      "name": "Google_Maps_URL__c",
+      "label": "Google Maps URL",
+      "type": "url"
+    },
+    {
+      "name": "ISKOREAN__c",
+      "label": "IS KOREAN",
+      "type": "boolean"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "Restaurant_Type__c",
+      "label": "Restaurant Type",
+      "type": "textarea"
+    },
+    {
+      "name": "Cloud_POS__c",
+      "label": "Cloud POS",
+      "type": "boolean"
+    },
+    {
+      "name": "Offer_Online_Delivery__c",
+      "label": "Offer Online Delivery",
+      "type": "boolean"
+    },
+    {
+      "name": "Online_Reservation_Availability__c",
+      "label": "Online Reservation Availability",
+      "type": "boolean"
+    },
+    {
+      "name": "Waiting_List__c",
+      "label": "Waiting List",
+      "type": "boolean"
+    },
+    {
+      "name": "Serving_Robot_User__c",
+      "label": "Serving Robot User",
+      "type": "boolean"
+    },
+    {
+      "name": "Restaurant_Facebook_Info__c",
+      "label": "Restaurant Facebook Info",
+      "type": "url"
+    },
+    {
+      "name": "Restaurant_Instagram_Info__c",
+      "label": "Restaurant Instagram Info",
+      "type": "url"
+    },
+    {
+      "name": "Restaurant_Yelp_Info__c",
+      "label": "Restaurant Yelp Info",
+      "type": "url"
+    },
+    {
+      "name": "FBCLID__c",
+      "label": "FBCLID",
+      "type": "string"
+    },
+    {
+      "name": "et4ae5__Mobile_Country_Code__c",
+      "label": "Mobile Country Code",
+      "type": "picklist",
+      "picklistValues": [
+        "US",
+        "AC",
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AI",
+        "AL",
+        "AM",
+        "AO",
+        "AQ",
+        "AR",
+        "AS",
+        "AT",
+        "AU",
+        "AW",
+        "AX",
+        "AZ",
+        "BA",
+        "BB",
+        "BD",
+        "BE",
+        "BF",
+        "BG",
+        "BH",
+        "BI",
+        "BJ",
+        "BL",
+        "BM",
+        "BN",
+        "BO",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BV",
+        "BW",
+        "BY",
+        "BZ",
+        "CA",
+        "CC",
+        "CD",
+        "CF",
+        "CG",
+        "CH",
+        "CI",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO",
+        "CR",
+        "CU",
+        "CV",
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DE",
+        "DJ",
+        "DK",
+        "DM",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "EG",
+        "ER",
+        "ES",
+        "ET",
+        "FI",
+        "FJ",
+        "FK",
+        "FM",
+        "FO",
+        "FR",
+        "GA",
+        "GB",
+        "GD",
+        "GE",
+        "GF",
+        "GG",
+        "GH",
+        "GI",
+        "GL",
+        "GM",
+        "GN",
+        "GP",
+        "GQ",
+        "GR",
+        "GS",
+        "GT",
+        "GU",
+        "GW",
+        "GY",
+        "HK",
+        "HM",
+        "HN",
+        "HR",
+        "HT",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IM",
+        "IN",
+        "IO",
+        "IQ",
+        "IR",
+        "IS",
+        "IT",
+        "JE",
+        "JM",
+        "JO",
+        "JP",
+        "KE",
+        "KG",
+        "KH",
+        "KI",
+        "KM",
+        "KN",
+        "KP",
+        "KR",
+        "KW",
+        "KY",
+        "KZ",
+        "LA",
+        "LB",
+        "LC",
+        "LI",
+        "LK",
+        "LR",
+        "LS",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MF",
+        "MG",
+        "MH",
+        "MK",
+        "ML",
+        "MM",
+        "MN",
+        "MO",
+        "MP",
+        "MQ",
+        "MR",
+        "MS",
+        "MT",
+        "MU",
+        "MV",
+        "MW",
+        "MX",
+        "MY",
+        "MZ",
+        "NA",
+        "NC",
+        "NE",
+        "NF",
+        "NG",
+        "NI",
+        "NL",
+        "NO",
+        "NP",
+        "NR",
+        "NU",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PF",
+        "PG",
+        "PH",
+        "PK",
+        "PL",
+        "PM",
+        "PN",
+        "PR",
+        "PS",
+        "PT",
+        "PW",
+        "PY",
+        "QA",
+        "RE",
+        "RO",
+        "RS",
+        "RU",
+        "RW",
+        "SA",
+        "SB",
+        "SC",
+        "SD",
+        "SE",
+        "SG",
+        "SH",
+        "SI",
+        "SJ",
+        "SK",
+        "SL",
+        "SM",
+        "SN",
+        "SO",
+        "SR",
+        "SS",
+        "ST",
+        "SV",
+        "SX",
+        "SY",
+        "SZ",
+        "TA",
+        "TC",
+        "TD",
+        "TG",
+        "TH",
+        "TJ",
+        "TK",
+        "TL",
+        "TM",
+        "TN",
+        "TO",
+        "TR",
+        "TT",
+        "TV",
+        "TW",
+        "TZ",
+        "UA",
+        "UG",
+        "UY",
+        "UZ",
+        "VA",
+        "VC",
+        "VE",
+        "VG",
+        "VI",
+        "VN",
+        "VU",
+        "WF",
+        "WS",
+        "YE",
+        "YT",
+        "ZA",
+        "ZM",
+        "ZW"
+      ]
+    },
+    {
+      "name": "et4ae5__HasOptedOutOfMobile__c",
+      "label": "Mobile Opt Out",
+      "type": "boolean"
+    },
+    {
+      "name": "Place_ID__c",
+      "label": "플레이스ID",
+      "type": "string"
+    },
+    {
+      "name": "Visit_Status__c",
+      "label": "Visit Status",
+      "type": "picklist",
+      "picklistValues": [
+        "Demo with DM",
+        "Left Out",
+        "N/A"
+      ]
+    },
+    {
+      "name": "Level_of_Interest__c",
+      "label": "Level of Interest",
+      "type": "picklist",
+      "picklistValues": [
+        "Low",
+        "Medium",
+        "High"
+      ]
+    },
+    {
+      "name": "TBQ_Category__c",
+      "label": "TBQ Category",
+      "type": "picklist",
+      "picklistValues": [
+        "POS",
+        "ENGLISH",
+        "FEATURE",
+        "ALL",
+        "OTHERS"
+      ]
+    },
+    {
+      "name": "Owner_Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "FieldInviteDate__c",
+      "label": "필드방문일자",
+      "type": "date"
+    },
+    {
+      "name": "Store_Contact__c",
+      "label": "매장 연락처",
+      "type": "string"
+    },
+    {
+      "name": "LeadVoiceRecording__c",
+      "label": "녹취 url",
+      "type": "textarea"
+    },
+    {
+      "name": "Marketing_Scoring__c",
+      "label": "마케팅스코어링",
+      "type": "double"
+    },
+    {
+      "name": "Matrix_Call_Category__c",
+      "label": "Matrix_Call_Category",
+      "type": "textarea"
+    },
+    {
+      "name": "Matrix_Call_Emotion__c",
+      "label": "Matrix_Call_Emotion",
+      "type": "textarea"
+    },
+    {
+      "name": "Matrix_Call_ID__c",
+      "label": "콜 ID",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Call_Summary__c",
+      "label": "Matrix_Call_Summary",
+      "type": "textarea"
+    },
+    {
+      "name": "Matrix_Call_Tag__c",
+      "label": "콜 태그",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Call_Type__c",
+      "label": "콜 유형",
+      "type": "string"
+    },
+    {
+      "name": "Qoute_URL__c",
+      "label": "Qoute_URL",
+      "type": "url"
+    },
+    {
+      "name": "PLIndustry__c",
+      "label": "PL업종",
+      "type": "picklist",
+      "picklistValues": [
+        "보드카페",
+        "방탈출카페",
+        "스크린골프장",
+        "스크린야구장",
+        "골프연습장",
+        "노래방",
+        "골프장",
+        "키즈카페,실내놀이터",
+        "오락시설-일반",
+        "볼링장",
+        "만화방",
+        "네일아트,네일샵",
+        "메이크업",
+        "피부,체형관리",
+        "두피,탈모관리",
+        "미용실",
+        "속눈썹증모,연장",
+        "필라테스",
+        "치과",
+        "피부과"
+      ]
+    },
+    {
+      "name": "BusinessSensitivity__c",
+      "label": "영업 감도",
+      "type": "picklist",
+      "picklistValues": [
+        "상",
+        "중",
+        "하"
+      ]
+    },
+    {
+      "name": "fm_BrandName_Owner__c",
+      "label": "브랜드 거래처 소유자",
+      "type": "string"
+    },
+    {
+      "name": "fm_PartnerName_Owner__c",
+      "label": "파트너사 거래처 소유자",
+      "type": "string"
+    },
+    {
+      "name": "Campaign__c",
+      "label": "캠페인명",
+      "type": "reference",
+      "referenceTo": [
+        "Campaign"
+      ]
+    },
+    {
+      "name": "fm_CampaignId__c",
+      "label": "캠페인ID",
+      "type": "string"
+    },
+    {
+      "name": "BudgetSize__c",
+      "label": "예산 규모",
+      "type": "picklist",
+      "picklistValues": [
+        "500만원 미만",
+        "500만원 - 1,000만원",
+        "1,000만원 이상"
+      ]
+    },
+    {
+      "name": "MKTPromotion__c",
+      "label": "마케팅 프로모션",
+      "type": "reference",
+      "referenceTo": [
+        "Promotion__c"
+      ]
+    },
+    {
+      "name": "EmailSendDate__c",
+      "label": "최근 이메일 보낸 날짜",
+      "type": "date"
+    },
+    {
+      "name": "EmailReceiveDate__c",
+      "label": "최근 이메일 받은 날짜",
+      "type": "date"
+    },
+    {
+      "name": "EmailOpenDate__c",
+      "label": "최근 이메일 오픈일",
+      "type": "date"
+    },
+    {
+      "name": "EmailContactDate__c",
+      "label": "최근 이메일 연락일",
+      "type": "date"
+    },
+    {
+      "name": "MarketingActivityDate__c",
+      "label": "최근 마케팅 활동일",
+      "type": "date"
+    },
+    {
+      "name": "CustomerActivityDate__c",
+      "label": "최근 고객 활동",
+      "type": "date"
+    },
+    {
+      "name": "EmailOptOutReason__c",
+      "label": "이메일 수신거부 사유",
+      "type": "string"
+    },
+    {
+      "name": "WebformSubmitDate__c",
+      "label": "최근 웹 폼 제출 날짜",
+      "type": "date"
+    },
+    {
+      "name": "HoldReason__c",
+      "label": "보류 사유",
+      "type": "picklist",
+      "picklistValues": [
+        "시기 미정",
+        "예산 부족",
+        "내부 논의 중",
+        "연락 불가",
+        "추후 관리 대상"
+      ]
+    },
+    {
+      "name": "RevenueExpected__c",
+      "label": "예상 매출",
+      "type": "currency"
+    },
+    {
+      "name": "fm_AdBizDB__c",
+      "label": "광고사업 DB",
+      "type": "boolean"
+    },
+    {
+      "name": "ContactDepartment__c",
+      "label": "연락처 부서",
+      "type": "string"
+    },
+    {
+      "name": "mkt_PrivacyInfoYN__c",
+      "label": "마케팅 목적의 개인정보 수집 및 이용 동의(선택)",
+      "type": "boolean"
+    },
+    {
+      "name": "mkt_PrivacyInfoDate__c",
+      "label": "마케팅 목적의 개인정보 수집 및 이용 동의(선택) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "UtmSummary__c",
+      "label": "마케팅 인입 정보",
+      "type": "string"
+    },
+    {
+      "name": "CreatedTimeHour__c",
+      "label": "생성 시간(시)",
+      "type": "double"
+    },
+    {
+      "name": "CreatedTime__c",
+      "label": "생성 일시",
+      "type": "string"
+    }
+  ]
+}

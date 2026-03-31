@@ -1,0 +1,858 @@
+{
+  "name": "Installation__c",
+  "label": "설치",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "레코드 ID",
+      "type": "id"
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "Name",
+      "label": "설치번호",
+      "type": "string"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "RecordTypeId",
+      "label": "레코드 유형 ID",
+      "type": "reference",
+      "referenceTo": [
+        "RecordType"
+      ]
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastActivityDate",
+      "label": "마지막 활동 일자",
+      "type": "date"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "Account__c",
+      "label": "상호",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "CompletedDate__c",
+      "label": "설치완료일",
+      "type": "date"
+    },
+    {
+      "name": "Description_IT__c",
+      "label": "특이사항(IT서비스팀)",
+      "type": "textarea"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "ITServiceOwner__c",
+      "label": "연동담당자(미사용)",
+      "type": "picklist",
+      "picklistValues": [
+        "정현서",
+        "진웅비",
+        "박혜지",
+        "오인옥",
+        "김도겸",
+        "이지현",
+        "이아름",
+        "나현승",
+        "임윤성",
+        "채은진",
+        "함근호",
+        "김건호",
+        "torder_Canada",
+        "torder_HQ",
+        "torder_USA"
+      ]
+    },
+    {
+      "name": "ITTaskType__c",
+      "label": "IT서비스 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "메뉴연동",
+        "포스변경"
+      ]
+    },
+    {
+      "name": "InstallationDate__c",
+      "label": "설치 요청일자",
+      "type": "date"
+    },
+    {
+      "name": "InstallationDecision__c",
+      "label": "설치 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "신규 출고",
+        "계약서 업데이트용",
+        "A/S",
+        "소모품 추가구매",
+        "양도양수"
+      ]
+    },
+    {
+      "name": "InstallationPartners__c",
+      "label": "설치 업체(미사용)",
+      "type": "picklist",
+      "picklistValues": [
+        "A1-01",
+        "B1-01",
+        "B1-02",
+        "B2-01",
+        "B9-01",
+        "B7-01",
+        "B11-1",
+        "B8-00",
+        "B3-01",
+        "B6-01",
+        "B5-01",
+        "B10-1",
+        "B4-01",
+        "B12-1",
+        "B13-00",
+        "E1-01",
+        "E1-03",
+        "E1-02",
+        "E1-04",
+        "E1-05",
+        "E1-08",
+        "E1-07",
+        "-",
+        "테스터",
+        "우리ENC",
+        "torder_USA",
+        "FMS",
+        "ADVANCE_SOLUTIONS",
+        "BANKCARD_SERVICES",
+        "torder_Canada",
+        "UNINET",
+        "1T4MERCHANT",
+        "TIO_SOLUTION",
+        "Credit Solution(SUK)",
+        "Self_Installation",
+        "Others",
+        "PI팀_테스트"
+      ]
+    },
+    {
+      "name": "InstallationStage__c",
+      "label": "진행 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "설치예정",
+        "견적변동",
+        "설치완료"
+      ]
+    },
+    {
+      "name": "InstallationStatus__c",
+      "label": "방문 진행상태",
+      "type": "picklist",
+      "picklistValues": [
+        "방문거절",
+        "방문예정",
+        "보류",
+        "방문완료"
+      ]
+    },
+    {
+      "name": "InstallationType__c",
+      "label": "설치 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "최초 설치",
+        "A/S & 유지 보수",
+        "설치 전 사전 방문(양도양수 포함)",
+        "재방문(티오더)",
+        "재방문(매장)",
+        "방문 요청(영지)",
+        "재방문(업체)",
+        "정기",
+        "비정기",
+        "poc(캠페인)"
+      ]
+    },
+    {
+      "name": "IntergrationStatus_ITService__c",
+      "label": "연동처리여부",
+      "type": "picklist",
+      "picklistValues": [
+        "처리중",
+        "보류",
+        "처리완료"
+      ]
+    },
+    {
+      "name": "IsAttachment__c",
+      "label": "첨부파일",
+      "type": "boolean"
+    },
+    {
+      "name": "Note_ITService__c",
+      "label": "특이사항(IT서비스팀)_미사용",
+      "type": "textarea"
+    },
+    {
+      "name": "NumbeofTablets__c",
+      "label": "태블릿 수",
+      "type": "double"
+    },
+    {
+      "name": "NumberofMasterT__c",
+      "label": "마스터 태블릿 수",
+      "type": "double"
+    },
+    {
+      "name": "NumberofMasterW__c",
+      "label": "마스터 웨이팅 태블릿 수",
+      "type": "double"
+    },
+    {
+      "name": "NumberofRouter__c",
+      "label": "공유기 대수",
+      "type": "double"
+    },
+    {
+      "name": "NumberofWaitingT__c",
+      "label": "웨이팅 태블릿 수",
+      "type": "double"
+    },
+    {
+      "name": "Opportunity__c",
+      "label": "관련항목",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "Order__c",
+      "label": "출고 정보",
+      "type": "reference",
+      "referenceTo": [
+        "Order"
+      ]
+    },
+    {
+      "name": "POSEndTime__c",
+      "label": "연동종료(Time)",
+      "type": "datetime"
+    },
+    {
+      "name": "POSStartTime__c",
+      "label": "연동시작(Time)",
+      "type": "datetime"
+    },
+    {
+      "name": "POSTYPE__c",
+      "label": "포스",
+      "type": "picklist",
+      "picklistValues": [
+        "기타연동",
+        "EZPOS",
+        "VERONA",
+        "NAVYZ",
+        "TOAST",
+        "CLOVER",
+        "ALOHA",
+        "SQUARE",
+        "JKPOS",
+        "OTHERS",
+        "NEED_TO_CHECK",
+        "BLUU",
+        "재세팅",
+        "확인필요",
+        "포스변경",
+        "포스마스터(티페이)",
+        "본아이에프포스(본포스)",
+        "오케이포스",
+        "오케이포스/PRO",
+        "오케이포스/KIS",
+        "오케이포스/NICE",
+        "오케이포스/Plus",
+        "메타포스(M포스, 매직포스)",
+        "스마트로포스(스마일포스)",
+        "에어포스",
+        "이지포스",
+        "유니온포스",
+        "U+포스",
+        "오아시스(대진포스)",
+        "KCP포스(NET포스)",
+        "파이서브포스(퍼스트포스)",
+        "성진포스",
+        "nnp포스",
+        "GMC포스(안씨)",
+        "포스뱅크(팝스)",
+        "노포스(자체포스)",
+        "메이트포스",
+        "매장천사",
+        "PNC(삼천리)",
+        "아스템즈(엣포스)",
+        "EzPos(캐나다)",
+        "푸드마스터포스",
+        "스파로스포스(신세계아이앤씨1.0)",
+        "스파로스포스(신세계아이앤씨2.0)",
+        "Tevalis포스",
+        "Eats365포스",
+        "솔비포스",
+        "KS포스",
+        "푸드테크",
+        "EatsPos",
+        "한화포스",
+        "t'order Donas",
+        "Level",
+        "Lightspeed",
+        "VD포스(브이디포스)",
+        "토스포스",
+        "Peblla"
+      ]
+    },
+    {
+      "name": "PosQty__c",
+      "label": "메인포스 대수",
+      "type": "double"
+    },
+    {
+      "name": "PreimburseInfo__c",
+      "label": "선결제 정보",
+      "type": "string"
+    },
+    {
+      "name": "PrintQty__c",
+      "label": "프린터 대수",
+      "type": "double"
+    },
+    {
+      "name": "Request__c",
+      "label": "기타사항",
+      "type": "textarea"
+    },
+    {
+      "name": "RouterPortNumber__c",
+      "label": "공유기 포트번호",
+      "type": "string"
+    },
+    {
+      "name": "SpecialCompanyType__c",
+      "label": "특별매장여부(미사용)",
+      "type": "multipicklist",
+      "picklistValues": [
+        "선결제",
+        "전기+설치",
+        "서빙로봇",
+        "재계약",
+        "A/S",
+        "웨이팅태블릿",
+        "선결제리더기만",
+        "전기만",
+        "양도양수",
+        "택배",
+        "사전방문",
+        "철거",
+        "재방문",
+        "선결제로 전환",
+        "후결제로 전환",
+        "스마트상점",
+        "LG유플러스",
+        "하드웨어 재계약",
+        "소프트웨어 재계약",
+        "계약서 작성만",
+        "외국어",
+        "특수작업",
+        "26.03.05-마케팅-멀티오더-POC"
+      ]
+    },
+    {
+      "name": "TOrderApp__c",
+      "label": "티오더 앱",
+      "type": "string"
+    },
+    {
+      "name": "VANType__c",
+      "label": "VAN",
+      "type": "picklist",
+      "picklistValues": [
+        "FMS",
+        "TSMS",
+        "BANKCARD_SERVICES",
+        "ADVANCE_SOLUTIONS",
+        "OTHERS",
+        "NEED_TO_CHECK",
+        "NICE",
+        "KIS",
+        "KOCES",
+        "SMARTRO",
+        "KSNET",
+        "KCP",
+        "KICC",
+        "FDIK",
+        "JTNET",
+        "DAOUDATA",
+        "확인필요(변경예정)",
+        "KSP",
+        "KOVAN",
+        "SPC"
+      ]
+    },
+    {
+      "name": "VisitDate__c",
+      "label": "방문일자",
+      "type": "date"
+    },
+    {
+      "name": "WifiName__c",
+      "label": "와이파이 이름",
+      "type": "string"
+    },
+    {
+      "name": "fm_Department__c",
+      "label": "부서(미사용)",
+      "type": "string"
+    },
+    {
+      "name": "is_InstallCompleted__c",
+      "label": "설치확정여부",
+      "type": "boolean"
+    },
+    {
+      "name": "ru_Contact__c",
+      "label": "연락처",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "Order_Mobile__c",
+      "label": "출고 연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_BannerAds__c",
+      "label": "롤링광고",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_BranchName__c",
+      "label": "지점명",
+      "type": "string"
+    },
+    {
+      "name": "fm_BranchNumber__c",
+      "label": "지점 연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_CommuicationPhone__c",
+      "label": "소통_연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_CompanyBranchName__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "fm_CompanyName__c",
+      "label": "상호",
+      "type": "string"
+    },
+    {
+      "name": "fm_CompanyStatus__c",
+      "label": "매장상태",
+      "type": "string"
+    },
+    {
+      "name": "fm_ContractStatus__c",
+      "label": "계약상태",
+      "type": "string"
+    },
+    {
+      "name": "fm_DrinkAds__c",
+      "label": "상품광고",
+      "type": "boolean"
+    },
+    {
+      "name": "Intergration_Unable__c",
+      "label": "선 연동불가",
+      "type": "boolean"
+    },
+    {
+      "name": "SettlementAmount__c",
+      "label": "정산금액(태블릿설치)",
+      "type": "currency"
+    },
+    {
+      "name": "fm_OpportunityOwnerName__c",
+      "label": "영업 담당자",
+      "type": "string"
+    },
+    {
+      "name": "fm_OrderRequest__c",
+      "label": "물류신청서 특이사항(인쇄용)",
+      "type": "string"
+    },
+    {
+      "name": "fm_Order_Owner__c",
+      "label": "출고 소유자",
+      "type": "string"
+    },
+    {
+      "name": "fm_PaymentType__c",
+      "label": "결제방식",
+      "type": "string"
+    },
+    {
+      "name": "fm_PosInterfaceUsageTime__c",
+      "label": "실제연동시간",
+      "type": "string"
+    },
+    {
+      "name": "fm_PresidentPhone__c",
+      "label": "대표자 연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_RecordTypeDeveloperName__c",
+      "label": "fm_RecordTypeDeveloperName",
+      "type": "string"
+    },
+    {
+      "name": "fm_ShippingAddress__c",
+      "label": "매장 주소",
+      "type": "string"
+    },
+    {
+      "name": "AccountReport_Outsource__c",
+      "label": "매장 특이사항(외주전달용)",
+      "type": "textarea"
+    },
+    {
+      "name": "First_Intergration_Date__c",
+      "label": "선 연동일시",
+      "type": "date"
+    },
+    {
+      "name": "OldKeyValue__c",
+      "label": "(과거)KEY값",
+      "type": "string"
+    },
+    {
+      "name": "OldCreatedDate__c",
+      "label": "(과거)생성일자",
+      "type": "datetime"
+    },
+    {
+      "name": "fm_final_Intergration_Date__c",
+      "label": "최종 연동일자",
+      "type": "date"
+    },
+    {
+      "name": "fm_BOUser__c",
+      "label": "BO담당자",
+      "type": "string"
+    },
+    {
+      "name": "fm_DepartmentBO__c",
+      "label": "부서(BO)",
+      "type": "string"
+    },
+    {
+      "name": "OfficialMW__c",
+      "label": "OFFICIAL 미들웨어",
+      "type": "boolean"
+    },
+    {
+      "name": "extra_amount__c",
+      "label": "추가비용(대기, 재방문)",
+      "type": "currency"
+    },
+    {
+      "name": "costOfWork__c",
+      "label": "작업비용",
+      "type": "currency"
+    },
+    {
+      "name": "Additional_cost__c",
+      "label": "부가비용",
+      "type": "currency"
+    },
+    {
+      "name": "ElectricBattery__c",
+      "label": "전기공사 / 보조배터리 설치",
+      "type": "picklist",
+      "picklistValues": [
+        "전기공사",
+        "보조배터리 설치"
+      ]
+    },
+    {
+      "name": "fm_install_total__c",
+      "label": "(설치)총 태블릿 합계",
+      "type": "double"
+    },
+    {
+      "name": "fm_OpptyTotalTablet__c",
+      "label": "기회_최종 총 태블릿대수",
+      "type": "double"
+    },
+    {
+      "name": "fm_PreimburseInfo__c",
+      "label": "선결제 정보",
+      "type": "string"
+    },
+    {
+      "name": "Outsource_check__c",
+      "label": "외부협력팀 확인용",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_VANType__c",
+      "label": "VAN",
+      "type": "string"
+    },
+    {
+      "name": "fm_POSTYPE__c",
+      "label": "포스(미사용)",
+      "type": "string"
+    },
+    {
+      "name": "fm_PrintQty__c",
+      "label": "프린터 대수",
+      "type": "string"
+    },
+    {
+      "name": "fm_SpecialStore_del__c",
+      "label": "특별매장여부",
+      "type": "string"
+    },
+    {
+      "name": "BusinessRegistrationNumber__c",
+      "label": "사업자등록번호",
+      "type": "string"
+    },
+    {
+      "name": "BatteryInstallDate__c",
+      "label": "보조배터리 설치일",
+      "type": "date"
+    },
+    {
+      "name": "NumberOfBattery__c",
+      "label": "보조배터리 설치 댓수",
+      "type": "double"
+    },
+    {
+      "name": "Owner_Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "PaymentField1__c",
+      "label": "정산 특이사항_외주관련",
+      "type": "textarea"
+    },
+    {
+      "name": "fm_PosInfo__c",
+      "label": "포스 정보",
+      "type": "string"
+    },
+    {
+      "name": "NumberOfOrderPos__c",
+      "label": "오더포스 대수",
+      "type": "double"
+    },
+    {
+      "name": "CocaColaPromotion__c",
+      "label": "코카콜라 프로모션",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_AccountReport_Outsource__c",
+      "label": "매장 특이사항 (외주전달용) *영업기회 기재 내용",
+      "type": "string"
+    },
+    {
+      "name": "ITOwnerPhone__c",
+      "label": "연동담당자 연락처",
+      "type": "string"
+    },
+    {
+      "name": "ITOwner__c",
+      "label": "연동담당자",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "ServiceTerritory__c",
+      "label": "설치 업체",
+      "type": "reference",
+      "referenceTo": [
+        "ServiceTerritory"
+      ]
+    },
+    {
+      "name": "RegisterConfirmName__c",
+      "label": "자산등록_이름",
+      "type": "string"
+    },
+    {
+      "name": "RegisterConfirmRelationship__c",
+      "label": "자산등록_관계",
+      "type": "string"
+    },
+    {
+      "name": "WorkOrder__c",
+      "label": "작업 주문",
+      "type": "reference",
+      "referenceTo": [
+        "WorkOrder"
+      ]
+    },
+    {
+      "name": "isCancelled__c",
+      "label": "취소됨",
+      "type": "boolean"
+    },
+    {
+      "name": "RegisterConfirmDescription__c",
+      "label": "자산등록_특이사항",
+      "type": "string"
+    },
+    {
+      "name": "White_Labeling_Info__c",
+      "label": "화이트라벨링 정보",
+      "type": "picklist",
+      "picklistValues": [
+        "SK쉴더스",
+        "U+화이트라벨링"
+      ]
+    },
+    {
+      "name": "fm_ITOwnerName__c",
+      "label": "연동 담당자명",
+      "type": "string"
+    },
+    {
+      "name": "fm_ServiceTerritoryName__c",
+      "label": "설치업체명",
+      "type": "string"
+    },
+    {
+      "name": "IsOrderCreated__c",
+      "label": "출고 신청서 작성여부",
+      "type": "boolean"
+    },
+    {
+      "name": "OrderStatus__c",
+      "label": "출고신청서 상태",
+      "type": "string"
+    },
+    {
+      "name": "Fm_CocacolaProductCode__c",
+      "label": "코카콜라 상품코드",
+      "type": "string"
+    },
+    {
+      "name": "Case__c",
+      "label": "문의사항",
+      "type": "reference",
+      "referenceTo": [
+        "Case"
+      ]
+    },
+    {
+      "name": "IsChangeInstallationDate__c",
+      "label": "IsChangeInstallationDate",
+      "type": "boolean"
+    },
+    {
+      "name": "CustomTheme_NA__c",
+      "label": "커스텀 테마 미적용",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_Account_FRHQ__c",
+      "label": "상호의 FR본사",
+      "type": "string"
+    }
+  ]
+}

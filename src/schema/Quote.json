@@ -1,0 +1,829 @@
+{
+  "name": "Quote",
+  "label": "견적",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "견적서 ID",
+      "type": "id"
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "Name",
+      "label": "견적서 이름",
+      "type": "string"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "RecordTypeId",
+      "label": "레코드 유형 ID",
+      "type": "reference",
+      "referenceTo": [
+        "RecordType"
+      ]
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "OpportunityId",
+      "label": "영업기회 이름",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "Pricebook2Id",
+      "label": "가격 목록 id",
+      "type": "reference",
+      "referenceTo": [
+        "Pricebook2"
+      ]
+    },
+    {
+      "name": "ContactId",
+      "label": "연락처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "QuoteNumber",
+      "label": "견적서 번호",
+      "type": "string"
+    },
+    {
+      "name": "IsSyncing",
+      "label": "동기화 중",
+      "type": "boolean"
+    },
+    {
+      "name": "ShippingHandling",
+      "label": "발송 및 관리",
+      "type": "currency"
+    },
+    {
+      "name": "Tax",
+      "label": "세금",
+      "type": "currency"
+    },
+    {
+      "name": "Status",
+      "label": "상태",
+      "type": "picklist",
+      "picklistValues": [
+        "Draft",
+        "Needs Review",
+        "In Review",
+        "Approved",
+        "Rejected",
+        "Presented",
+        "Accepted",
+        "Denied"
+      ]
+    },
+    {
+      "name": "ExpirationDate",
+      "label": "만료 일자",
+      "type": "date"
+    },
+    {
+      "name": "Description",
+      "label": "설명",
+      "type": "textarea"
+    },
+    {
+      "name": "Subtotal",
+      "label": "소계",
+      "type": "currency"
+    },
+    {
+      "name": "TotalPrice",
+      "label": "총가격",
+      "type": "currency"
+    },
+    {
+      "name": "LineItemCount",
+      "label": "행 아이템",
+      "type": "int"
+    },
+    {
+      "name": "BillingStreet",
+      "label": "청구지 상세주소",
+      "type": "textarea"
+    },
+    {
+      "name": "BillingCity",
+      "label": "청구지 시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "BillingState",
+      "label": "청구지 시/도",
+      "type": "string"
+    },
+    {
+      "name": "BillingPostalCode",
+      "label": "청구지 우편번호",
+      "type": "string"
+    },
+    {
+      "name": "BillingCountry",
+      "label": "청구지 국가",
+      "type": "string"
+    },
+    {
+      "name": "BillingLatitude",
+      "label": "요금 청구지 위도",
+      "type": "double"
+    },
+    {
+      "name": "BillingLongitude",
+      "label": "요금 청구지 경도",
+      "type": "double"
+    },
+    {
+      "name": "BillingGeocodeAccuracy",
+      "label": "청구지 지역 코드 정확도",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "BillingAddress",
+      "label": "청구지",
+      "type": "address"
+    },
+    {
+      "name": "ShippingStreet",
+      "label": "배송지 상세주소",
+      "type": "textarea"
+    },
+    {
+      "name": "ShippingCity",
+      "label": "배송지 도시",
+      "type": "string"
+    },
+    {
+      "name": "ShippingState",
+      "label": "배송지 주/도",
+      "type": "string"
+    },
+    {
+      "name": "ShippingPostalCode",
+      "label": "배송지 우편번호",
+      "type": "string"
+    },
+    {
+      "name": "ShippingCountry",
+      "label": "배송지 국가",
+      "type": "string"
+    },
+    {
+      "name": "ShippingLatitude",
+      "label": "배송지 위도",
+      "type": "double"
+    },
+    {
+      "name": "ShippingLongitude",
+      "label": "배송지 경도",
+      "type": "double"
+    },
+    {
+      "name": "ShippingGeocodeAccuracy",
+      "label": "배송지 지역 코드 정확도",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "ShippingAddress",
+      "label": "배송지",
+      "type": "address"
+    },
+    {
+      "name": "QuoteToStreet",
+      "label": "견적서 상세주소",
+      "type": "textarea"
+    },
+    {
+      "name": "QuoteToCity",
+      "label": "견적서 도시",
+      "type": "string"
+    },
+    {
+      "name": "QuoteToState",
+      "label": "견적서 주/도",
+      "type": "string"
+    },
+    {
+      "name": "QuoteToPostalCode",
+      "label": "견적서",
+      "type": "string"
+    },
+    {
+      "name": "QuoteToCountry",
+      "label": "견적서 국가",
+      "type": "string"
+    },
+    {
+      "name": "QuoteToLatitude",
+      "label": "견적서 대상 위도",
+      "type": "double"
+    },
+    {
+      "name": "QuoteToLongitude",
+      "label": "견적서 대상 경도",
+      "type": "double"
+    },
+    {
+      "name": "QuoteToGeocodeAccuracy",
+      "label": "견적 수신 지역 코드 정확도",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "QuoteToAddress",
+      "label": "견적서 받는 사람",
+      "type": "address"
+    },
+    {
+      "name": "AdditionalStreet",
+      "label": "추가 받는 상세주소",
+      "type": "textarea"
+    },
+    {
+      "name": "AdditionalCity",
+      "label": "추가 받는 도시",
+      "type": "string"
+    },
+    {
+      "name": "AdditionalState",
+      "label": "추가 받는 주/도",
+      "type": "string"
+    },
+    {
+      "name": "AdditionalPostalCode",
+      "label": "추가 받는 우편번호",
+      "type": "string"
+    },
+    {
+      "name": "AdditionalCountry",
+      "label": "추가 받는 국가",
+      "type": "string"
+    },
+    {
+      "name": "AdditionalLatitude",
+      "label": "추가 받는 사람 위도",
+      "type": "double"
+    },
+    {
+      "name": "AdditionalLongitude",
+      "label": "추가 받는 사람 경도",
+      "type": "double"
+    },
+    {
+      "name": "AdditionalGeocodeAccuracy",
+      "label": "추가 수신 지역 코드 정확도",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "AdditionalAddress",
+      "label": "추가 받는 사람",
+      "type": "address"
+    },
+    {
+      "name": "BillingName",
+      "label": "청구서 받는 사람 이름",
+      "type": "string"
+    },
+    {
+      "name": "ShippingName",
+      "label": "발송물 받는 사람 이름",
+      "type": "string"
+    },
+    {
+      "name": "QuoteToName",
+      "label": "견적서 받는 사람",
+      "type": "string"
+    },
+    {
+      "name": "AdditionalName",
+      "label": "추가받는 사람 이름",
+      "type": "string"
+    },
+    {
+      "name": "Email",
+      "label": "이메일",
+      "type": "email"
+    },
+    {
+      "name": "Phone",
+      "label": "전화",
+      "type": "phone"
+    },
+    {
+      "name": "Fax",
+      "label": "팩스",
+      "type": "phone"
+    },
+    {
+      "name": "ContractId",
+      "label": "계약 id",
+      "type": "reference",
+      "referenceTo": [
+        "Contract"
+      ]
+    },
+    {
+      "name": "AccountId",
+      "label": "상호",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "Discount",
+      "label": "할인",
+      "type": "percent"
+    },
+    {
+      "name": "GrandTotal",
+      "label": "총계",
+      "type": "currency"
+    },
+    {
+      "name": "CanCreateQuoteLineItems",
+      "label": "견적서 행 항목을 만들 수 있음",
+      "type": "boolean"
+    },
+    {
+      "name": "APTotalAmount2__c",
+      "label": "입금안내",
+      "type": "currency"
+    },
+    {
+      "name": "AdvancePaymentRate__c",
+      "label": "선납금 비율",
+      "type": "percent"
+    },
+    {
+      "name": "ContractPeriod__c",
+      "label": "Contract Period",
+      "type": "picklist",
+      "picklistValues": [
+        "3 Years",
+        "2 Years",
+        "1 Years"
+      ]
+    },
+    {
+      "name": "DepositType__c",
+      "label": "입금구분",
+      "type": "picklist",
+      "picklistValues": [
+        "본사",
+        "고객지원",
+        "스마트상점"
+      ]
+    },
+    {
+      "name": "FinalQuoteCheck__c",
+      "label": "최종 견적 여부",
+      "type": "picklist",
+      "picklistValues": [
+        "Y",
+        "N"
+      ]
+    },
+    {
+      "name": "GovermentSupportPrice__c",
+      "label": "국가지원 금액",
+      "type": "currency"
+    },
+    {
+      "name": "DepositTAXIncl__c",
+      "label": "Deposit TAX Incl",
+      "type": "boolean"
+    },
+    {
+      "name": "PaymentTypeQuote__c",
+      "label": "납부방법",
+      "type": "picklist",
+      "picklistValues": [
+        "선납금",
+        "후납금",
+        "Deposit_Included",
+        "일시납"
+      ]
+    },
+    {
+      "name": "Personalcontribution__c",
+      "label": "자부담금",
+      "type": "currency"
+    },
+    {
+      "name": "PromotionAmount__c",
+      "label": "프로모션금액",
+      "type": "currency"
+    },
+    {
+      "name": "PromotionQty__c",
+      "label": "프로모션 수량",
+      "type": "double"
+    },
+    {
+      "name": "Stipulation_del__c",
+      "label": "약정",
+      "type": "double"
+    },
+    {
+      "name": "SupportBusinessType__c",
+      "label": "지원사업종류",
+      "type": "picklist",
+      "picklistValues": [
+        "스마트상점",
+        "여의도 지원사업"
+      ]
+    },
+    {
+      "name": "SupportPriceMax__c",
+      "label": "국가지원 최대지원금액",
+      "type": "currency"
+    },
+    {
+      "name": "SupportRate__c",
+      "label": "국가지원 비율",
+      "type": "percent"
+    },
+    {
+      "name": "fm_BankAccountName__c",
+      "label": "예금주명",
+      "type": "string"
+    },
+    {
+      "name": "fm_Department__c",
+      "label": "부서(미사용)",
+      "type": "string"
+    },
+    {
+      "name": "fm_QuoteCreateDate__c",
+      "label": "작성일자",
+      "type": "datetime"
+    },
+    {
+      "name": "ru_APTotalAmount__c",
+      "label": "선납금 총금액",
+      "type": "currency"
+    },
+    {
+      "name": "ru_AllPaymentTotalAmount__c",
+      "label": "일시납 총금액",
+      "type": "currency"
+    },
+    {
+      "name": "ru_MITotalAmount__c",
+      "label": "월 할부금 총금액 (VAT미포함)",
+      "type": "currency"
+    },
+    {
+      "name": "ru_SubsidiaryTotalAmount__c",
+      "label": "부자재 총금액",
+      "type": "currency"
+    },
+    {
+      "name": "ru_TotalAmounts2__c",
+      "label": "초기 입금액",
+      "type": "currency"
+    },
+    {
+      "name": "ru_TotalAmounts__c",
+      "label": "총 약정금액",
+      "type": "currency"
+    },
+    {
+      "name": "BankAccountNumber__c",
+      "label": "계좌번호",
+      "type": "picklist",
+      "picklistValues": [
+        "140-012-934957",
+        "140-013-010720",
+        "586-043686-04-010"
+      ]
+    },
+    {
+      "name": "BankType__c",
+      "label": "은행구분",
+      "type": "picklist",
+      "picklistValues": [
+        "신한은행(본사)",
+        "기업은행",
+        "신한은행(고객지원)"
+      ]
+    },
+    {
+      "name": "fm_BranchName__c",
+      "label": "지점명",
+      "type": "string"
+    },
+    {
+      "name": "Deposit__c",
+      "label": "Deposit Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_MOUBenefitDetail__c",
+      "label": "MOU 베네핏 상세",
+      "type": "string"
+    },
+    {
+      "name": "fm_MOUBenefit__c",
+      "label": "MOU 베네핏",
+      "type": "string"
+    },
+    {
+      "name": "fm_QuoteRecordTypeDeveloperName__c",
+      "label": "fm_QuoteRecordTypeDeveloperName",
+      "type": "string"
+    },
+    {
+      "name": "fm_RemainingAmount__c",
+      "label": "잔여 할부금",
+      "type": "currency"
+    },
+    {
+      "name": "fm_VAT__c",
+      "label": "총 약정 금액 부가세",
+      "type": "currency"
+    },
+    {
+      "name": "ru_MITotalAmount2__c",
+      "label": "월 할부금 총금액 (VAT포함)",
+      "type": "currency"
+    },
+    {
+      "name": "ru_AllPaymentDiscountAmount__c",
+      "label": "일시납 할인금액",
+      "type": "currency"
+    },
+    {
+      "name": "ru_FinalTotalAmount__c",
+      "label": "(최종)총금액",
+      "type": "currency"
+    },
+    {
+      "name": "GlobalDescription__c",
+      "label": "Description",
+      "type": "string"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "PackageType__c",
+      "label": "Package Type",
+      "type": "picklist",
+      "picklistValues": [
+        "Basic Package(Tablet, Tablet Holder, Power Bank, Power Bank Case, Router, Misc)"
+      ]
+    },
+    {
+      "name": "PaymentTerms__c",
+      "label": "Payment Terms",
+      "type": "string"
+    },
+    {
+      "name": "QuotationDate__c",
+      "label": "Quotation Date",
+      "type": "date"
+    },
+    {
+      "name": "TAX1Rate__c",
+      "label": "TAX1 Rate",
+      "type": "percent"
+    },
+    {
+      "name": "TAX2Rate__c",
+      "label": "TAX2 Rate",
+      "type": "percent"
+    },
+    {
+      "name": "TAX3Rate__c",
+      "label": "TAX3 Rate",
+      "type": "percent"
+    },
+    {
+      "name": "MonthlyPaymantOverseaOnly__c",
+      "label": "Monthly Paymant",
+      "type": "currency"
+    },
+    {
+      "name": "SalesAmount__c",
+      "label": "Sales Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_DepositAmountTAX__c",
+      "label": "Deposit Amount (+TAX)",
+      "type": "currency"
+    },
+    {
+      "name": "fm_Onetimepaymentbenefits__c",
+      "label": "One-time payment benefits",
+      "type": "currency"
+    },
+    {
+      "name": "fm_OverseaTotalAmount__c",
+      "label": "Total Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_SalesAmountTAX__c",
+      "label": "Sales Amount (+TAX)",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TAX1AmountDeposit__c",
+      "label": "TAX1 Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TAX1AmountSales__c",
+      "label": "TAX1 Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TAX2AmountDepsit__c",
+      "label": "TAX2 Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TAX2AmountSales__c",
+      "label": "TAX2 Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TAX3AmountDeposit__c",
+      "label": "TAX3 Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TAX3AmountSales__c",
+      "label": "TAX3 Amount",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TotalAmountExclDeposit__c",
+      "label": "Total Amount (Excl. Deposit)",
+      "type": "currency"
+    },
+    {
+      "name": "fm_TaxRateAmount__c",
+      "label": "fm_TaxRateAmount",
+      "type": "percent"
+    },
+    {
+      "name": "Owner_Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "VirtualAccountStatus__c",
+      "label": "가상계좌 입금 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "입금대기",
+        "입금완료",
+        "취소",
+        "환불요청",
+        "환불완료",
+        "요청대기",
+        "요청취소",
+        "부분입금"
+      ]
+    },
+    {
+      "name": "Conceal_VirtualAccountNumber__c",
+      "label": "계좌번호 숨김",
+      "type": "boolean"
+    }
+  ]
+}

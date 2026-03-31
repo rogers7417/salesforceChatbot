@@ -1,0 +1,303 @@
+{
+  "name": "QuoteLineItem",
+  "label": "견적서 행 아이템",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "견적서 행 아이템 ID",
+      "type": "id"
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "LineNumber",
+      "label": "행 아이템 번호",
+      "type": "string"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "QuoteId",
+      "label": "견적서 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Quote"
+      ]
+    },
+    {
+      "name": "PricebookEntryId",
+      "label": "가격 목록 항목 ID",
+      "type": "reference",
+      "referenceTo": [
+        "PricebookEntry"
+      ]
+    },
+    {
+      "name": "OpportunityLineItemId",
+      "label": "선 항목 ID",
+      "type": "reference",
+      "referenceTo": [
+        "OpportunityLineItem"
+      ]
+    },
+    {
+      "name": "Quantity",
+      "label": "수량",
+      "type": "double"
+    },
+    {
+      "name": "UnitPrice",
+      "label": "판매 가격",
+      "type": "currency"
+    },
+    {
+      "name": "Discount",
+      "label": "할인율",
+      "type": "percent"
+    },
+    {
+      "name": "Description",
+      "label": "행 아이템 설명",
+      "type": "string"
+    },
+    {
+      "name": "ServiceDate",
+      "label": "일자",
+      "type": "date"
+    },
+    {
+      "name": "Product2Id",
+      "label": "제품 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Product2"
+      ]
+    },
+    {
+      "name": "SortOrder",
+      "label": "정렬 순서",
+      "type": "int"
+    },
+    {
+      "name": "ListPrice",
+      "label": "정가",
+      "type": "currency"
+    },
+    {
+      "name": "Subtotal",
+      "label": "소계 ",
+      "type": "currency"
+    },
+    {
+      "name": "TotalPrice",
+      "label": "총가격",
+      "type": "currency"
+    },
+    {
+      "name": "AdvancePaymentAmount__c",
+      "label": "선납금",
+      "type": "currency"
+    },
+    {
+      "name": "AdvancePaymentRate__c",
+      "label": "선납금 비율",
+      "type": "percent"
+    },
+    {
+      "name": "AllPaymentTotalAmount__c",
+      "label": "일시납 총금액",
+      "type": "currency"
+    },
+    {
+      "name": "InstallmentMonth__c",
+      "label": "할부 개월",
+      "type": "double"
+    },
+    {
+      "name": "MonthlyInstallment__c",
+      "label": "월 할부금",
+      "type": "currency"
+    },
+    {
+      "name": "PaymentTypeQuote__c",
+      "label": "납부방법",
+      "type": "picklist",
+      "picklistValues": [
+        "선납금",
+        "후납금",
+        "일시납",
+        "Deposit_Included"
+      ]
+    },
+    {
+      "name": "ProductAmountQuantity__c",
+      "label": "상품 금액 / 대  (VAT 미포함)",
+      "type": "currency"
+    },
+    {
+      "name": "RealTotalAmount__c",
+      "label": "초기 입금액",
+      "type": "currency"
+    },
+    {
+      "name": "SubsidiaryAmount__c",
+      "label": "부자재 금액",
+      "type": "currency"
+    },
+    {
+      "name": "TabletColorType__c",
+      "label": "색상 여부",
+      "type": "picklist",
+      "picklistValues": [
+        "골드",
+        "로즈골드",
+        "블랙",
+        "브론즈",
+        "실버",
+        "메탈그레이",
+        "화이트"
+      ]
+    },
+    {
+      "name": "TabletHolderType__c",
+      "label": "유형 여부",
+      "type": "picklist",
+      "picklistValues": [
+        "고정형",
+        "전용 거치대",
+        "이동형",
+        "목재용",
+        "벽걸이용",
+        "벽케이스",
+        "북케이스",
+        "젤리케이스",
+        "웨이팅용",
+        "미정"
+      ]
+    },
+    {
+      "name": "TabletPaymentType__c",
+      "label": "결제 여부",
+      "type": "picklist",
+      "picklistValues": [
+        "선 결제",
+        "후 결제"
+      ]
+    },
+    {
+      "name": "TabletPowerSupplyType__c",
+      "label": "전기 여부",
+      "type": "picklist",
+      "picklistValues": [
+        "자체전기",
+        "보조배터리 1+1",
+        "전기공사",
+        "보조배터리"
+      ]
+    },
+    {
+      "name": "TabletType__c",
+      "label": "구분",
+      "type": "picklist",
+      "picklistValues": [
+        "마스터태블릿",
+        "태블릿",
+        "서빙로봇",
+        "멀티오더",
+        "웨이팅 마스터태블릿",
+        "웨이팅태블릿"
+      ]
+    },
+    {
+      "name": "TotalAmount__c",
+      "label": "총 약정금액",
+      "type": "currency"
+    },
+    {
+      "name": "fm_QuotelineitemFamily__c",
+      "label": "fm_QuotelineitemFamily",
+      "type": "string"
+    },
+    {
+      "name": "fm_TotalAmountVAT__c",
+      "label": "총 약정금액 부가세",
+      "type": "currency"
+    },
+    {
+      "name": "QLFinalAmount__c",
+      "label": "최종 총금액",
+      "type": "currency"
+    },
+    {
+      "name": "AllPaymentDiscountAmount__c",
+      "label": "일시납 할인금액",
+      "type": "currency"
+    },
+    {
+      "name": "QuoteFinalCheck__c",
+      "label": "견적 최종여부",
+      "type": "picklist",
+      "picklistValues": [
+        "Y",
+        "N"
+      ]
+    },
+    {
+      "name": "ManualCalculation__c",
+      "label": "수동계산",
+      "type": "boolean"
+    }
+  ]
+}

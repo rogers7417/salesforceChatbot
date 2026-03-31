@@ -1,0 +1,293 @@
+{
+  "name": "Visit__c",
+  "label": "방문",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "레코드 ID",
+      "type": "id"
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "Name",
+      "label": "방문명",
+      "type": "string"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastActivityDate",
+      "label": "마지막 활동 일자",
+      "type": "date"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "ConselEnd__c",
+      "label": "상담종료시간",
+      "type": "datetime"
+    },
+    {
+      "name": "ConselStart__c",
+      "label": "상담시작시간",
+      "type": "datetime"
+    },
+    {
+      "name": "IsVisitComplete__c",
+      "label": "방문완료여부",
+      "type": "boolean"
+    },
+    {
+      "name": "LocalInviteDate__c",
+      "label": "방문일정",
+      "type": "datetime"
+    },
+    {
+      "name": "Opportunity__c",
+      "label": "영업기회",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "User__c",
+      "label": "방문담당자",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "VisitSurveyLink__c",
+      "label": "방문 만족도 링크",
+      "type": "url"
+    },
+    {
+      "name": "fm_Department__c",
+      "label": "부서(미사용)",
+      "type": "string"
+    },
+    {
+      "name": "Realtime__c",
+      "label": "실제상담시간",
+      "type": "string"
+    },
+    {
+      "name": "fm_AccountName__c",
+      "label": "Account Name",
+      "type": "string"
+    },
+    {
+      "name": "fm_Address__c",
+      "label": "매장 주소",
+      "type": "string"
+    },
+    {
+      "name": "fm_BusinessLicenseName__c",
+      "label": "사업자 등록증 상호명",
+      "type": "string"
+    },
+    {
+      "name": "fm_CommuicationName__c",
+      "label": "소통_이름",
+      "type": "string"
+    },
+    {
+      "name": "fm_CommuicationPhone__c",
+      "label": "소통_연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_CommuicationType__c",
+      "label": "소통_타입",
+      "type": "string"
+    },
+    {
+      "name": "fm_CompanyBranchName__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "fm_ConselEnd__c",
+      "label": "fm_ConselEnd",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_LeadSource__c",
+      "label": "유입경로",
+      "type": "string"
+    },
+    {
+      "name": "fm_MainContactPhone__c",
+      "label": "고객 Phone",
+      "type": "string"
+    },
+    {
+      "name": "fm_NaverMap__c",
+      "label": "네이버 지도",
+      "type": "string"
+    },
+    {
+      "name": "fm_NaverPlace__c",
+      "label": "네이버 플레이스",
+      "type": "string"
+    },
+    {
+      "name": "fm_OpportunityName__c",
+      "label": "영업기회명",
+      "type": "string"
+    },
+    {
+      "name": "fm_OpportunityOwnerName__c",
+      "label": "영업 담당자",
+      "type": "string"
+    },
+    {
+      "name": "fm_PresidentName__c",
+      "label": "대표자명",
+      "type": "string"
+    },
+    {
+      "name": "fm_PresidentPhone__c",
+      "label": "대표자 연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_Sido__c",
+      "label": "시/군",
+      "type": "string"
+    },
+    {
+      "name": "fm_Sigugun__c",
+      "label": "시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "fm_Type__c",
+      "label": "타입",
+      "type": "string"
+    },
+    {
+      "name": "fm_UserMobile__c",
+      "label": "방문상담원 연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_UserName__c",
+      "label": "방문상담원 명",
+      "type": "string"
+    },
+    {
+      "name": "fm_stageName__c",
+      "label": "영업기회 단계",
+      "type": "string"
+    },
+    {
+      "name": "VisitAssignmentDate__c",
+      "label": "방문담당자 배정일자",
+      "type": "date"
+    },
+    {
+      "name": "OldKeyValue__c",
+      "label": "(과거)KEY값",
+      "type": "string"
+    },
+    {
+      "name": "OldCreatedDate__c",
+      "label": "(과거)생성일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "Visit_Status__c",
+      "label": "Visit Status",
+      "type": "picklist",
+      "picklistValues": [
+        "배정완료",
+        "방문완료",
+        "방문취소"
+      ]
+    },
+    {
+      "name": "Owner_Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "Metadata_Visit_Number__c",
+      "label": "Metadata Visit Number",
+      "type": "double"
+    }
+  ]
+}

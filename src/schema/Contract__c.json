@@ -1,0 +1,1569 @@
+{
+  "name": "Contract__c",
+  "label": "계약",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "레코드 ID",
+      "type": "id"
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "Name",
+      "label": "계약명",
+      "type": "string"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "RecordTypeId",
+      "label": "레코드 유형 ID",
+      "type": "reference",
+      "referenceTo": [
+        "RecordType"
+      ]
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastActivityDate",
+      "label": "마지막 활동 일자",
+      "type": "date"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "AAccountCRN__c",
+      "label": "사업자등록번호",
+      "type": "string"
+    },
+    {
+      "name": "APTotalAmount__c",
+      "label": "선납금 총금액",
+      "type": "currency"
+    },
+    {
+      "name": "AccountNameFR__c",
+      "label": "거래처명",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "Account__c",
+      "label": "상호",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "Address__c",
+      "label": "사업자등록증상 주소",
+      "type": "string"
+    },
+    {
+      "name": "AdvancePaymentAmount__c",
+      "label": "선/후납 입금액",
+      "type": "currency"
+    },
+    {
+      "name": "AdvancePaymentDate__c",
+      "label": "입금일자",
+      "type": "date"
+    },
+    {
+      "name": "AdvancePaymentRate__c",
+      "label": "선납금 비율",
+      "type": "percent"
+    },
+    {
+      "name": "TransfereeUNpayment__c",
+      "label": "양도인 미납부금액",
+      "type": "currency"
+    },
+    {
+      "name": "AssignFirstPayment__c",
+      "label": "양수인 최초 납부일",
+      "type": "date"
+    },
+    {
+      "name": "AssignPaymentType__c",
+      "label": "양수 청구방법",
+      "type": "picklist",
+      "picklistValues": [
+        "하나원큐",
+        "CMS",
+        "일시불",
+        "롯데",
+        "무상지원",
+        "분납",
+        "본사지원(대납)",
+        "렌탈(과거매장)"
+      ]
+    },
+    {
+      "name": "Reducionamount__c",
+      "label": "감면금액",
+      "type": "currency"
+    },
+    {
+      "name": "ContractDateCancel__c",
+      "label": "계약해지일",
+      "type": "date"
+    },
+    {
+      "name": "BankAccountName__c",
+      "label": "계좌(예금주명)",
+      "type": "string"
+    },
+    {
+      "name": "BankAccountNumber__c",
+      "label": "계좌(계좌번호)",
+      "type": "string"
+    },
+    {
+      "name": "BankName__c",
+      "label": "계좌(은행명)",
+      "type": "string"
+    },
+    {
+      "name": "BeforeOpportunity__c",
+      "label": "이전 영업기회",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "BranchName__c",
+      "label": "지점명",
+      "type": "string"
+    },
+    {
+      "name": "BusinessLicenseName_del__c",
+      "label": "사업자등록증 상호",
+      "type": "string"
+    },
+    {
+      "name": "CEOAddress__c",
+      "label": "대표자 주소",
+      "type": "string"
+    },
+    {
+      "name": "CEOBdayy__c",
+      "label": "대표자 생년월일",
+      "type": "date"
+    },
+    {
+      "name": "CEOName__c",
+      "label": "대표자명",
+      "type": "string"
+    },
+    {
+      "name": "CancelReason__c",
+      "label": "해지사유",
+      "type": "string"
+    },
+    {
+      "name": "Checkbox_agree__c",
+      "label": "Checkbox_agree",
+      "type": "boolean"
+    },
+    {
+      "name": "Checkbox_disagree__c",
+      "label": "Checkbox_disagree",
+      "type": "boolean"
+    },
+    {
+      "name": "CoCEO__c",
+      "label": "공동대표자명",
+      "type": "string"
+    },
+    {
+      "name": "ContractCreateDate__c",
+      "label": "계약서작성일",
+      "type": "date"
+    },
+    {
+      "name": "ContractDateEnd__c",
+      "label": "계약만료일",
+      "type": "date"
+    },
+    {
+      "name": "ContractDateStart__c",
+      "label": "계약시작일",
+      "type": "date"
+    },
+    {
+      "name": "ContractOwner__c",
+      "label": "계약 담당자",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "ContractStatus__c",
+      "label": "계약상태",
+      "type": "picklist",
+      "picklistValues": [
+        "사전심사",
+        "사전심사발송",
+        "계약서작성필요",
+        "견적변동",
+        "요청취소",
+        "계약서명대기",
+        "계약서발송완료",
+        "계약취소",
+        "계약서명완료",
+        "계약만료",
+        "계약해지",
+        "양도양수"
+      ]
+    },
+    {
+      "name": "ContractTerms__c",
+      "label": "계약조건",
+      "type": "picklist",
+      "picklistValues": [
+        "독점",
+        "비독점"
+      ]
+    },
+    {
+      "name": "ContractType__c",
+      "label": "계약유형",
+      "type": "picklist",
+      "picklistValues": [
+        "신규",
+        "추가",
+        "재계약(AS)",
+        "재계약(HW)",
+        "재계약(SW)",
+        "양도양수",
+        "전환계약",
+        "신규(SW)",
+        "조기재계약(AS)",
+        "조기재계약(HW)",
+        "무약정",
+        "스테이(HW+SW)",
+        "스테이(SW)"
+      ]
+    },
+    {
+      "name": "DepositUser__c",
+      "label": "입금자명",
+      "type": "string"
+    },
+    {
+      "name": "Email__c",
+      "label": "정산 이메일",
+      "type": "email"
+    },
+    {
+      "name": "EmployeeNumber__c",
+      "label": "종사업자번호",
+      "type": "string"
+    },
+    {
+      "name": "ExtraCost_Amount__c",
+      "label": "기타비용 입금액",
+      "type": "currency"
+    },
+    {
+      "name": "ExtraCost_Date__c",
+      "label": "기타비용 입금일",
+      "type": "date"
+    },
+    {
+      "name": "ExtraCost__c",
+      "label": "기타비용",
+      "type": "multipicklist",
+      "picklistValues": [
+        "출장비",
+        "이전설치비",
+        "사진촬영",
+        "부자재"
+      ]
+    },
+    {
+      "name": "Industry__c",
+      "label": "업종",
+      "type": "string"
+    },
+    {
+      "name": "InstallmentInfo__c",
+      "label": "약정",
+      "type": "string"
+    },
+    {
+      "name": "IsADBanner__c",
+      "label": "롤링광고",
+      "type": "boolean"
+    },
+    {
+      "name": "IsADDrink__c",
+      "label": "상품광고",
+      "type": "boolean"
+    },
+    {
+      "name": "IsServiceUsageConfirm__c",
+      "label": "서비스이용일 확정서 발송",
+      "type": "boolean"
+    },
+    {
+      "name": "ItemId__c",
+      "label": "ItemId",
+      "type": "string"
+    },
+    {
+      "name": "MITotalAmount__c",
+      "label": "월 할부금 총금액 (VAT미포함)",
+      "type": "currency"
+    },
+    {
+      "name": "MOUBenefitDetail__c",
+      "label": "MOU 베네핏 상세",
+      "type": "string"
+    },
+    {
+      "name": "MOUBenefit__c",
+      "label": "MOU 베네핏",
+      "type": "picklist",
+      "picklistValues": [
+        "페이백",
+        "할인",
+        "촬영지원"
+      ]
+    },
+    {
+      "name": "Opportunity__c",
+      "label": "영업기회",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "PaymentType__c",
+      "label": "납부방법",
+      "type": "picklist",
+      "picklistValues": [
+        "선납금",
+        "후납금",
+        "일시납",
+        "Deposit_Included"
+      ]
+    },
+    {
+      "name": "Phone__c",
+      "label": "대표자 연락처",
+      "type": "phone"
+    },
+    {
+      "name": "Pricebook2Id__c",
+      "label": "가격 목록",
+      "type": "reference",
+      "referenceTo": [
+        "Pricebook2"
+      ]
+    },
+    {
+      "name": "RealPaymentAmount__c",
+      "label": "실제 입금액(선납+부자재+추가선납)",
+      "type": "currency"
+    },
+    {
+      "name": "RemainingAmount__c",
+      "label": "잔여 할부금",
+      "type": "currency"
+    },
+    {
+      "name": "RentalContractStage__c",
+      "label": "렌탈계약단계",
+      "type": "picklist",
+      "picklistValues": [
+        "렌탈 계약서 발송",
+        "렌탈 계약서 서명완료"
+      ]
+    },
+    {
+      "name": "Service_EndDate__c",
+      "label": "서비스 만료일",
+      "type": "date"
+    },
+    {
+      "name": "Service_StartDate__c",
+      "label": "서비스 시작일",
+      "type": "date"
+    },
+    {
+      "name": "SpeicalManaged__c",
+      "label": "특수관리",
+      "type": "string"
+    },
+    {
+      "name": "SubsidiaryAmount__c",
+      "label": "부자재금액",
+      "type": "currency"
+    },
+    {
+      "name": "TotalAmount__c",
+      "label": "총 약정금액",
+      "type": "currency"
+    },
+    {
+      "name": "TotalAmounts2__c",
+      "label": "초기 입금액",
+      "type": "currency"
+    },
+    {
+      "name": "TotalTablet__c",
+      "label": "최종 총 태블릿대수",
+      "type": "double"
+    },
+    {
+      "name": "TransferOpportunity__c",
+      "label": "양도)영업기회",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "TransfereeAAccountCRN__c",
+      "label": "양도인 사업자번호",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeAccountHolder_Code__c",
+      "label": "양도인 식별번호",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeAccount__c",
+      "label": "양도인 상호",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "TransfereeAddress__c",
+      "label": "양도인 사업장주소",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeBankAccountNumber__c",
+      "label": "양도인 계좌번호",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeBankName__c",
+      "label": "양도인 은행",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeBranchName__c",
+      "label": "양도인 지점명",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeBusinessLicenseName_del__c",
+      "label": "양도인 사업자등록증상 상호",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeCEOBdayy__c",
+      "label": "양도인 생년월일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeCEOName__c",
+      "label": "양도인 대표자명",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeContractCreateDate__c",
+      "label": "양도인 계약서작성일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeContractDateEnd__c",
+      "label": "양도인 계약만료일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeContractDateStart__c",
+      "label": "양도인 계약시작일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeContractDate__c",
+      "label": "양도인 계약기간",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeContractUser__c",
+      "label": "양도인 계약담당자",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "TransfereeEmail__c",
+      "label": "양도인 이메일",
+      "type": "email"
+    },
+    {
+      "name": "TransfereeFinalPayment__c",
+      "label": "양도인 최종 납부일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeIndustry__c",
+      "label": "양도인 업종",
+      "type": "string"
+    },
+    {
+      "name": "TransfereePaymentType__c",
+      "label": "양도인 납부방법",
+      "type": "string"
+    },
+    {
+      "name": "TransfereePhone__c",
+      "label": "양도인 연락처",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeSerialNumber__c",
+      "label": "양도인 일련번호",
+      "type": "reference",
+      "referenceTo": [
+        "Contract__c"
+      ]
+    },
+    {
+      "name": "TransfereeTypeofB__c",
+      "label": "양도인 업태",
+      "type": "string"
+    },
+    {
+      "name": "TypeofB__c",
+      "label": "업태",
+      "type": "string"
+    },
+    {
+      "name": "TypeofBusiness__c",
+      "label": "사업자형태",
+      "type": "string"
+    },
+    {
+      "name": "fm_Department__c",
+      "label": "부서(미사용)",
+      "type": "string"
+    },
+    {
+      "name": "upgrade_price__c",
+      "label": "업그레이드지원금액_대당금액",
+      "type": "currency"
+    },
+    {
+      "name": "LeftPaymentAmount__c",
+      "label": "초기 입금액 잔금",
+      "type": "currency"
+    },
+    {
+      "name": "RemainingAmountRate__c",
+      "label": "잔여 할부금 비율",
+      "type": "percent"
+    },
+    {
+      "name": "fm_AccountFRManager_del__c",
+      "label": "담당자",
+      "type": "string"
+    },
+    {
+      "name": "fm_AccountHolder_Code__c",
+      "label": "예금주 식별번호",
+      "type": "string"
+    },
+    {
+      "name": "fm_Brand_Branch__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "fm_FinalTotalAmount__c",
+      "label": "(최종)총금액",
+      "type": "currency"
+    },
+    {
+      "name": "fm_InstallConfirmedDate__c",
+      "label": "설치 확정일자",
+      "type": "date"
+    },
+    {
+      "name": "fm_MITotalAmount2__c",
+      "label": "월 할부금 총금액 (VAT포함)",
+      "type": "currency"
+    },
+    {
+      "name": "fm_RecordTypeDeveloperName__c",
+      "label": "fm_RecordTypeDeveloperName",
+      "type": "string"
+    },
+    {
+      "name": "fm_VAT__c",
+      "label": "총 약정금액 부가세",
+      "type": "currency"
+    },
+    {
+      "name": "upgrade_price_discount__c",
+      "label": "업그레이드지원금액_추가할인금액",
+      "type": "currency"
+    },
+    {
+      "name": "OldKeyValue__c",
+      "label": "(과거)KEY값",
+      "type": "string"
+    },
+    {
+      "name": "OldCreatedDate__c",
+      "label": "(과거)생성일자",
+      "type": "datetime"
+    },
+    {
+      "name": "AllPaymentTotalAmount__c",
+      "label": "일시납 총금액",
+      "type": "currency"
+    },
+    {
+      "name": "AllPaymentDiscountAmount__c",
+      "label": "일시납 할인금액",
+      "type": "currency"
+    },
+    {
+      "name": "ReadytoSendContract__c",
+      "label": "계약서발송가능",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_OwnerName__c",
+      "label": "Owner Name",
+      "type": "string"
+    },
+    {
+      "name": "Personalcontribution__c",
+      "label": "자부담금",
+      "type": "currency"
+    },
+    {
+      "name": "GovermentSupportPrice__c",
+      "label": "국가지원 금액",
+      "type": "currency"
+    },
+    {
+      "name": "TEST_DB__c",
+      "label": "TEST DB",
+      "type": "boolean"
+    },
+    {
+      "name": "DocuSignStatus__c",
+      "label": "DocuSign 상태",
+      "type": "string"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "DepositAmountTAX__c",
+      "label": "Deposit (Initial Fee) (+TAX)",
+      "type": "currency"
+    },
+    {
+      "name": "SalesAmountTAX__c",
+      "label": "Sales Amount (+TAX)",
+      "type": "currency"
+    },
+    {
+      "name": "OverseaTotalAmount__c",
+      "label": "Total Amount",
+      "type": "currency"
+    },
+    {
+      "name": "TotalAmountExclDeposit__c",
+      "label": "Total Amount(Excl.Deposit)",
+      "type": "currency"
+    },
+    {
+      "name": "MonthlyPaymantOverseaOnly__c",
+      "label": "Monthly Payment",
+      "type": "currency"
+    },
+    {
+      "name": "Onetimepaymentbenefits__c",
+      "label": "One-Time Payment Benefits",
+      "type": "currency"
+    },
+    {
+      "name": "ID__c",
+      "label": "영업기회ID",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeTotalContractAmount__c",
+      "label": "양도인 총 계약금액",
+      "type": "currency"
+    },
+    {
+      "name": "TransfereeTotalTablet__c",
+      "label": "양도인 총 태블릿 대수",
+      "type": "double"
+    },
+    {
+      "name": "Field3__c",
+      "label": "광고 동의 여부",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeAdvancePayment__c",
+      "label": "양도인 선납금",
+      "type": "currency"
+    },
+    {
+      "name": "TransfereePayment__c",
+      "label": "양도인 기납부 금액",
+      "type": "currency"
+    },
+    {
+      "name": "InstallationConfirm__c",
+      "label": "설치확인서",
+      "type": "picklist",
+      "picklistValues": [
+        "발송",
+        "서명완료"
+      ]
+    },
+    {
+      "name": "Field7__c",
+      "label": "추가납부 금액",
+      "type": "currency"
+    },
+    {
+      "name": "AdvancePayment__c",
+      "label": "선납부 금액",
+      "type": "currency"
+    },
+    {
+      "name": "GuarantorName__c",
+      "label": "연대보증인 성함",
+      "type": "string"
+    },
+    {
+      "name": "GuarantorBirthDate__c",
+      "label": "연대보증인 생년월일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeService_StartDate__c",
+      "label": "양도인 서비스시작일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeService_EndDate__c",
+      "label": "양도인 서비스만료일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeOpportunityID__c",
+      "label": "양도인 영업기회ID",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeRemainingAmount__c",
+      "label": "양도인 잔여금액",
+      "type": "currency"
+    },
+    {
+      "name": "AssignContractDate__c",
+      "label": "양수 납부기간(개월)",
+      "type": "double"
+    },
+    {
+      "name": "AssignTotalTablet__c",
+      "label": "양수 받는 태블릿 대수",
+      "type": "double"
+    },
+    {
+      "name": "AssignTotalAmount__c",
+      "label": "양수 총 계약금액",
+      "type": "currency"
+    },
+    {
+      "name": "RemainingAmount1__c",
+      "label": "잔여 금액",
+      "type": "currency"
+    },
+    {
+      "name": "MITotalAmount3__c",
+      "label": "월 납부금액 합계",
+      "type": "currency"
+    },
+    {
+      "name": "Owner_Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "TransfereeTotalRobot__c",
+      "label": "양도인 총 로봇 수량",
+      "type": "double"
+    },
+    {
+      "name": "AssignTotalRobot__c",
+      "label": "양수인 총 로봇 수량",
+      "type": "double"
+    },
+    {
+      "name": "GuarantorPhone__c",
+      "label": "연대보증인 연락처",
+      "type": "string"
+    },
+    {
+      "name": "GuarantorAddress__c",
+      "label": "연대보증인 주소",
+      "type": "string"
+    },
+    {
+      "name": "CreditRatingType__c",
+      "label": "심사여부",
+      "type": "picklist",
+      "picklistValues": [
+        "조회",
+        "미조회"
+      ]
+    },
+    {
+      "name": "CreditRatingResult__c",
+      "label": "심사결과",
+      "type": "picklist",
+      "picklistValues": [
+        "심사승인",
+        "심사부결",
+        "심사면제"
+      ]
+    },
+    {
+      "name": "ContractSignedDate__c",
+      "label": "계약서명일",
+      "type": "date"
+    },
+    {
+      "name": "CreditScore__c",
+      "label": "신용점수",
+      "type": "string"
+    },
+    {
+      "name": "ProductPaymentType__c",
+      "label": "결제방법",
+      "type": "picklist",
+      "picklistValues": [
+        "하나원큐",
+        "한국캐피탈",
+        "CMS",
+        "로지스올",
+        "일시불",
+        "일시불(카드결제)",
+        "카드결제",
+        "무상지원",
+        "분납",
+        "롯데"
+      ]
+    },
+    {
+      "name": "CMSReason__c",
+      "label": "CMS 사유",
+      "type": "picklist",
+      "picklistValues": [
+        "법인",
+        "나이초과",
+        "외국인",
+        "부적합",
+        "재계약",
+        "공동대표",
+        "특별승인",
+        "팩토링불가",
+        "지원사업",
+        "롯데렌탈",
+        "양도양수",
+        "법인카드",
+        "더본(적합)",
+        "더본(부적합)"
+      ]
+    },
+    {
+      "name": "FactoringOrderNumber__c",
+      "label": "주문번호",
+      "type": "string"
+    },
+    {
+      "name": "fm_ContractID__c",
+      "label": "계약ID",
+      "type": "string"
+    },
+    {
+      "name": "CMSStartDate__c",
+      "label": "청구 시작일",
+      "type": "date"
+    },
+    {
+      "name": "CMSEndDate__c",
+      "label": "청구 만료일",
+      "type": "date"
+    },
+    {
+      "name": "Metadata_Contract_Number__c",
+      "label": "Metadata Contract Number",
+      "type": "double"
+    },
+    {
+      "name": "UnreviewedReason__c",
+      "label": "미조회사유",
+      "type": "string"
+    },
+    {
+      "name": "CMSDetailedReason__c",
+      "label": "CMS 상세사유",
+      "type": "string"
+    },
+    {
+      "name": "DepositAmount__c",
+      "label": "Deposit (Initial Fee)",
+      "type": "currency"
+    },
+    {
+      "name": "Deposit_Date__c",
+      "label": "정산일자",
+      "type": "date"
+    },
+    {
+      "name": "CMSStatus__c",
+      "label": "실행일자",
+      "type": "date"
+    },
+    {
+      "name": "TransferOldKeyValue__c",
+      "label": "양도)과거key값",
+      "type": "string"
+    },
+    {
+      "name": "commissionRate__c",
+      "label": "수수료율",
+      "type": "percent"
+    },
+    {
+      "name": "fm_AdBizDB__c",
+      "label": "광고사업 DB",
+      "type": "boolean"
+    },
+    {
+      "name": "BannerAdAgree__c",
+      "label": "롤링광고 동의여부",
+      "type": "picklist",
+      "picklistValues": [
+        "Agree",
+        "Disagree"
+      ]
+    },
+    {
+      "name": "BillingStatus__c",
+      "label": "청구 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "정상 납부",
+        "미납"
+      ]
+    },
+    {
+      "name": "guaranteedTabletCount__c",
+      "label": "송출 보장 태블릿 수",
+      "type": "double"
+    },
+    {
+      "name": "OperationStatus__c",
+      "label": "운영 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "UNDEFINED",
+        "ACTIVE",
+        "UNPAID",
+        "PRE_CONTRACT",
+        "EXPIRED",
+        "TERMINATED",
+        "UNDEFINED_DEACTIVE"
+      ]
+    },
+    {
+      "name": "ProductAdAgree__c",
+      "label": "상품광고 동의여부",
+      "type": "picklist",
+      "picklistValues": [
+        "Agree",
+        "Disagree"
+      ]
+    },
+    {
+      "name": "UnpaidMonth__c",
+      "label": "미납 개월 수",
+      "type": "double"
+    },
+    {
+      "name": "fm_AdAgree__c",
+      "label": "전체 광고에 대한 동의 여부",
+      "type": "string"
+    },
+    {
+      "name": "fm_Unpaid__c",
+      "label": "미납여부",
+      "type": "boolean"
+    },
+    {
+      "name": "AdAgreementCheck__c",
+      "label": "광고동의여부",
+      "type": "string"
+    },
+    {
+      "name": "TransferContractType__c",
+      "label": "양도 계약유형",
+      "type": "string"
+    },
+    {
+      "name": "PartialTransfer_Adjustment__c",
+      "label": "(분할양수)조정액",
+      "type": "currency"
+    },
+    {
+      "name": "AddPromotionContract__c",
+      "label": "추가 프로모션 계약서",
+      "type": "multipicklist",
+      "picklistValues": [
+        "24",
+        "25",
+        "26",
+        "27"
+      ]
+    },
+    {
+      "name": "ApprovalRental__c",
+      "label": "승인요청 렌탈사",
+      "type": "picklist",
+      "picklistValues": [
+        "100001",
+        "1000002",
+        "1000003",
+        "1000005"
+      ]
+    },
+    {
+      "name": "BankAccountLastFour__c",
+      "label": "계좌(계좌번호 4자리)",
+      "type": "string"
+    },
+    {
+      "name": "BankAccountNumberEncrypt__c",
+      "label": "계좌(계좌번호) 암호화",
+      "type": "encryptedstring"
+    },
+    {
+      "name": "Bank__c",
+      "label": "계좌(은행명)",
+      "type": "picklist",
+      "picklistValues": [
+        "088",
+        "004",
+        "003",
+        "011",
+        "002",
+        "007",
+        "020",
+        "071",
+        "081",
+        "027",
+        "023",
+        "090",
+        "089",
+        "092",
+        "039",
+        "034",
+        "031",
+        "032",
+        "037",
+        "035",
+        "050",
+        "064",
+        "045",
+        "048",
+        "012",
+        "도이치은행",
+        "뱅크오브아메리카",
+        "중국건설은행",
+        "주국공상은행",
+        "중국은행",
+        "HSBC은행",
+        "BNP피리바은행",
+        "JP모간체이스은행"
+      ]
+    },
+    {
+      "name": "BillingMethod__c",
+      "label": "결제유형",
+      "type": "picklist",
+      "picklistValues": [
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    {
+      "name": "CapitalItemCode__c",
+      "label": "캐피탈 상품코드",
+      "type": "string"
+    },
+    {
+      "name": "CapitalNumber__c",
+      "label": "캐피탈상담번호",
+      "type": "string"
+    },
+    {
+      "name": "CardExpirationDate__c",
+      "label": "카드(카드 유효년월)",
+      "type": "string"
+    },
+    {
+      "name": "CardIssuer__c",
+      "label": "카드(카드사)",
+      "type": "picklist",
+      "picklistValues": [
+        "3K",
+        "46",
+        "71",
+        "30",
+        "31",
+        "51",
+        "38",
+        "41",
+        "62",
+        "36",
+        "33",
+        "W1",
+        "37",
+        "39",
+        "35",
+        "42",
+        "15",
+        "3A",
+        "24",
+        "21",
+        "61",
+        "11",
+        "91",
+        "34",
+        "6D",
+        "4M",
+        "3C",
+        "7A",
+        "4J",
+        "4V"
+      ]
+    },
+    {
+      "name": "CardLastFour__c",
+      "label": "카드(카드번호 4자리)",
+      "type": "string"
+    },
+    {
+      "name": "CardNumber__c",
+      "label": "카드(카드번호) 암호화",
+      "type": "encryptedstring"
+    },
+    {
+      "name": "CardOwnerName__c",
+      "label": "카드(카드 소유주명)",
+      "type": "string"
+    },
+    {
+      "name": "ContractForm__c",
+      "label": "계약서양식",
+      "type": "string"
+    },
+    {
+      "name": "ContractorRelationship__c",
+      "label": "계약자와의 관계",
+      "type": "string"
+    },
+    {
+      "name": "FinanceName__c",
+      "label": "금융사거래처",
+      "type": "picklist",
+      "picklistValues": [
+        "100001",
+        "1000002",
+        "1000003",
+        "1000005"
+      ]
+    },
+    {
+      "name": "InstallConfirmSendCount__c",
+      "label": "설치확인서 발송횟수",
+      "type": "double"
+    },
+    {
+      "name": "InstallConfirmSendDate__c",
+      "label": "설치확인서 발송시간",
+      "type": "datetime"
+    },
+    {
+      "name": "InstallationDateChange__c",
+      "label": "설치확정일자 변경일",
+      "type": "datetime"
+    },
+    {
+      "name": "InstallationStatus__c",
+      "label": "설치확인서 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "계약서 발송",
+        "계약서 작성중",
+        "계약서 확정"
+      ]
+    },
+    {
+      "name": "ORLastIntegrationTime__c",
+      "label": "오픈렌탈 최종 수정일",
+      "type": "datetime"
+    },
+    {
+      "name": "PaymentClassification__c",
+      "label": "지불 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "name": "PreCreditCheckStatus__c",
+      "label": "사전심사 상태",
+      "type": "string"
+    },
+    {
+      "name": "RecentlySyncTime__c",
+      "label": "최근 Sync 시간",
+      "type": "datetime"
+    },
+    {
+      "name": "RentalApprovalStatus__c",
+      "label": "렌탈사 승인 결과",
+      "type": "string"
+    },
+    {
+      "name": "ShippingMethod__c",
+      "label": "배송방법",
+      "type": "string"
+    },
+    {
+      "name": "SignAgentBirth__c",
+      "label": "대리인 생년월일",
+      "type": "string"
+    },
+    {
+      "name": "SignAgentCelNum__c",
+      "label": "대리인 휴대폰번호",
+      "type": "string"
+    },
+    {
+      "name": "SignAgentName__c",
+      "label": "대리인 명",
+      "type": "string"
+    },
+    {
+      "name": "SignAgentRlts__c",
+      "label": "대리인 계약자(위임자)와의 관계",
+      "type": "string"
+    },
+    {
+      "name": "Telecom__c",
+      "label": "통신사",
+      "type": "picklist",
+      "picklistValues": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "name": "TransfereeBank__c",
+      "label": "양도인 은행",
+      "type": "picklist",
+      "picklistValues": [
+        "088",
+        "004",
+        "003",
+        "011",
+        "002",
+        "007",
+        "020",
+        "071",
+        "081",
+        "027",
+        "023",
+        "090",
+        "089",
+        "092",
+        "039",
+        "034",
+        "031",
+        "032",
+        "037",
+        "035",
+        "050",
+        "064",
+        "045",
+        "048",
+        "012",
+        "도이치은행",
+        "뱅크오브아메리카",
+        "중국건설은행",
+        "주국공상은행",
+        "중국은행",
+        "HSBC은행",
+        "BNP피리바은행",
+        "JP모간체이스은행"
+      ]
+    },
+    {
+      "name": "VirtualAccountStatus__c",
+      "label": "가상계좌 입금 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "입금대기",
+        "입금완료",
+        "취소",
+        "환불요청",
+        "환불완료",
+        "요청대기",
+        "요청취소",
+        "부분입금"
+      ]
+    },
+    {
+      "name": "fm_PROD_CODE__c",
+      "label": "fm_PROD_CODE",
+      "type": "string"
+    },
+    {
+      "name": "fm_PROD_NAME__c",
+      "label": "fm_PROD_NAME",
+      "type": "string"
+    },
+    {
+      "name": "fm_InstallConfirm__c",
+      "label": "설치확인서 양식",
+      "type": "string"
+    },
+    {
+      "name": "fm_InstallationNeedToRequest__c",
+      "label": "설치확인서 재요청필요여부",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_IsORInteg__c",
+      "label": "오픈렌탈 연동 여부",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_PaymentDate__c",
+      "label": "결제요청일",
+      "type": "string"
+    },
+    {
+      "name": "ru_PaymentAmount__c",
+      "label": "납부금액",
+      "type": "currency"
+    },
+    {
+      "name": "ru_PaymentOrder__c",
+      "label": "납부회차",
+      "type": "double"
+    },
+    {
+      "name": "ru_RemainAmount__c",
+      "label": "잔여할부금",
+      "type": "currency"
+    },
+    {
+      "name": "ru_RemainOrder__c",
+      "label": "잔여회차",
+      "type": "double"
+    },
+    {
+      "name": "Service_EndDate_Reason__c",
+      "label": "서비스 만료일 등록 사유",
+      "type": "picklist",
+      "picklistValues": [
+        "민원 케어",
+        "서비스 장애 보상",
+        "재계약 유도",
+        "신규 계약 혜택"
+      ]
+    },
+    {
+      "name": "guaranteedImpressionCount__c",
+      "label": "송출 보장 노출 수",
+      "type": "double"
+    },
+    {
+      "name": "fm_AdContract_Amount__c",
+      "label": "광고 계약금액",
+      "type": "currency"
+    },
+    {
+      "name": "fm_AdDiscount_Rate__c",
+      "label": "광고 할인율",
+      "type": "percent"
+    },
+    {
+      "name": "fm_AdDiscount_Amount__c",
+      "label": "광고 할인금액",
+      "type": "currency"
+    },
+    {
+      "name": "fm_AdContract_FinalAmount__c",
+      "label": "광고 최종 계약금액",
+      "type": "currency"
+    },
+    {
+      "name": "agencyCommission__c",
+      "label": "대행 수수료",
+      "type": "currency"
+    },
+    {
+      "name": "netSales__c",
+      "label": "순매출",
+      "type": "currency"
+    },
+    {
+      "name": "broadcastStartDate__c",
+      "label": "송출 시작일",
+      "type": "date"
+    },
+    {
+      "name": "broadcastEndDate__c",
+      "label": "송출 만료일",
+      "type": "date"
+    },
+    {
+      "name": "invoiceIssuedDate__c",
+      "label": "세금계산서 발행일",
+      "type": "date"
+    },
+    {
+      "name": "expectedPaymentDate__c",
+      "label": "지급예정일",
+      "type": "date"
+    },
+    {
+      "name": "TransfereeProductPaymentType__c",
+      "label": "양도인 결제방법",
+      "type": "string"
+    },
+    {
+      "name": "GuarantorCreditScore__c",
+      "label": "연대보증신용점수",
+      "type": "string"
+    },
+    {
+      "name": "fm_OpportunityRecordType__c",
+      "label": "영업기회 레코드 유형",
+      "type": "string"
+    },
+    {
+      "name": "Field8__c",
+      "label": "성별",
+      "type": "string"
+    }
+  ]
+}

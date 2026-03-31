@@ -1,0 +1,172 @@
+{
+  "name": "OrderItem",
+  "label": "출고 제품",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "출고 제품 ID",
+      "type": "id"
+    },
+    {
+      "name": "Product2Id",
+      "label": "제품 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Product2"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "OrderId",
+      "label": "출고 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Order"
+      ]
+    },
+    {
+      "name": "PricebookEntryId",
+      "label": "가격 목록 항목 ID",
+      "type": "reference",
+      "referenceTo": [
+        "PricebookEntry"
+      ]
+    },
+    {
+      "name": "OriginalOrderItemId",
+      "label": "최초 출고 제품",
+      "type": "reference",
+      "referenceTo": [
+        "OrderItem"
+      ]
+    },
+    {
+      "name": "QuoteLineItemId",
+      "label": "견적서 행 아이템 ID",
+      "type": "reference",
+      "referenceTo": [
+        "QuoteLineItem"
+      ]
+    },
+    {
+      "name": "AvailableQuantity",
+      "label": "가능 수량",
+      "type": "double"
+    },
+    {
+      "name": "Quantity",
+      "label": "수량",
+      "type": "double"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "UnitPrice",
+      "label": "단가",
+      "type": "currency"
+    },
+    {
+      "name": "ListPrice",
+      "label": "정가",
+      "type": "currency"
+    },
+    {
+      "name": "TotalPrice",
+      "label": "총액",
+      "type": "currency"
+    },
+    {
+      "name": "ServiceDate",
+      "label": "시작 일자",
+      "type": "date"
+    },
+    {
+      "name": "EndDate",
+      "label": "마감 일자",
+      "type": "date"
+    },
+    {
+      "name": "Description",
+      "label": "라인 설명",
+      "type": "string"
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "OrderItemNumber",
+      "label": "제품 주문 번호",
+      "type": "string"
+    },
+    {
+      "name": "Description__c",
+      "label": "비고",
+      "type": "string"
+    },
+    {
+      "name": "fm_OrderStatus__c",
+      "label": "fm_OrderStatus",
+      "type": "string"
+    },
+    {
+      "name": "fm_ProductFamily__c",
+      "label": "제품군(중)",
+      "type": "string"
+    },
+    {
+      "name": "fm_Quantity__c",
+      "label": "수량",
+      "type": "double"
+    },
+    {
+      "name": "InstalledQuantity__c",
+      "label": "설치 수량",
+      "type": "double"
+    },
+    {
+      "name": "SerialNumberTemp__c",
+      "label": "일련번호(임시지장)",
+      "type": "textarea"
+    }
+  ]
+}

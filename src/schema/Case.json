@@ -1,0 +1,1257 @@
+{
+  "name": "Case",
+  "label": "문의사항",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "문의사항 id",
+      "type": "id"
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "MasterRecordId",
+      "label": "마스터 레코드 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Case"
+      ]
+    },
+    {
+      "name": "CaseNumber",
+      "label": "문의사항 번호",
+      "type": "string"
+    },
+    {
+      "name": "ContactId",
+      "label": "연락처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "AccountId",
+      "label": "상호",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "AssetId",
+      "label": "자산 id",
+      "type": "reference",
+      "referenceTo": [
+        "Asset"
+      ]
+    },
+    {
+      "name": "ProductId",
+      "label": "제품 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Product2"
+      ]
+    },
+    {
+      "name": "EntitlementId",
+      "label": "권리 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Entitlement"
+      ]
+    },
+    {
+      "name": "SourceId",
+      "label": "문의사항 소스",
+      "type": "reference",
+      "referenceTo": [
+        "EmailMessage",
+        "SocialPost"
+      ]
+    },
+    {
+      "name": "BusinessHoursId",
+      "label": "업무 시간 ID",
+      "type": "reference",
+      "referenceTo": [
+        "BusinessHours"
+      ]
+    },
+    {
+      "name": "ParentId",
+      "label": "상위 문의사항",
+      "type": "reference",
+      "referenceTo": [
+        "Case"
+      ]
+    },
+    {
+      "name": "SuppliedName",
+      "label": "이름",
+      "type": "string"
+    },
+    {
+      "name": "SuppliedEmail",
+      "label": "-",
+      "type": "email"
+    },
+    {
+      "name": "SuppliedPhone",
+      "label": "전화",
+      "type": "string"
+    },
+    {
+      "name": "SuppliedCompany",
+      "label": "회사",
+      "type": "string"
+    },
+    {
+      "name": "Type",
+      "label": "1차 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "등록 및 수정",
+        "이용문의",
+        "계약 및 수납",
+        "광고 및 마케팅",
+        "연동/설치/철거",
+        "케어서비스 (OB)",
+        "AS",
+        "구매",
+        "오류 및 장애",
+        "해지",
+        "서비스 퀄리티 불만",
+        "포토그래퍼 (사진)",
+        "기타",
+        "Agentforce 응대",
+        "일괄수정",
+        "기타_ops",
+        "신규",
+        "추가설치",
+        "재계약",
+        "양도양수",
+        "CS이관"
+      ]
+    },
+    {
+      "name": "RecordTypeId",
+      "label": "문의사항 레코드 유형",
+      "type": "reference",
+      "referenceTo": [
+        "RecordType"
+      ]
+    },
+    {
+      "name": "Status",
+      "label": "상태",
+      "type": "picklist",
+      "picklistValues": [
+        "New",
+        "확인 중",
+        "고객 부재",
+        "문의사항 이관",
+        "진행대기",
+        "진행중",
+        "진행 완료",
+        "Closed",
+        "현장 문의사항 접수",
+        "현장 문의사항 내부 확인중",
+        "현장 문의사항 내부이관",
+        "현장 문의사항 종료",
+        "정기점검 예약",
+        "정기점검 완료",
+        "정기점검 취소"
+      ]
+    },
+    {
+      "name": "Reason",
+      "label": "문의사항 이유",
+      "type": "picklist",
+      "picklistValues": [
+        "User didn't attend training",
+        "Complex functionality",
+        "Existing problem",
+        "Instructions not clear",
+        "New problem"
+      ]
+    },
+    {
+      "name": "Origin",
+      "label": "접수경로",
+      "type": "picklist",
+      "picklistValues": [
+        "IB",
+        "IB 콜백",
+        "OB",
+        "카카오톡",
+        "기타",
+        "법인폰",
+        "Matrix Chat",
+        "이메일",
+        "유무선 통화",
+        "Slack(타부서 이관)"
+      ]
+    },
+    {
+      "name": "Language",
+      "label": "언어",
+      "type": "picklist",
+      "picklistValues": [
+        "en_US",
+        "de",
+        "es",
+        "fr",
+        "it",
+        "ja",
+        "sv",
+        "ko",
+        "zh_TW",
+        "zh_CN",
+        "pt_BR",
+        "nl_NL",
+        "da",
+        "th",
+        "fi",
+        "ru",
+        "es_MX",
+        "no"
+      ]
+    },
+    {
+      "name": "Subject",
+      "label": "비고",
+      "type": "string"
+    },
+    {
+      "name": "Priority",
+      "label": "중요도",
+      "type": "picklist",
+      "picklistValues": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "name": "Description",
+      "label": "-",
+      "type": "textarea"
+    },
+    {
+      "name": "IsClosed",
+      "label": "마감됨",
+      "type": "boolean"
+    },
+    {
+      "name": "ClosedDate",
+      "label": "마감 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "IsEscalated",
+      "label": "에스컬레이션됨",
+      "type": "boolean"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "문의사항 통화",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "OwnerId",
+      "label": "수관자",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "IsClosedOnCreate",
+      "label": "작성 날짜 마감",
+      "type": "boolean"
+    },
+    {
+      "name": "SlaStartDate",
+      "label": "SLA 정책 시작 시간",
+      "type": "datetime"
+    },
+    {
+      "name": "SlaExitDate",
+      "label": "SLA 정책 종료 시간",
+      "type": "datetime"
+    },
+    {
+      "name": "IsStopped",
+      "label": "중지됨",
+      "type": "boolean"
+    },
+    {
+      "name": "StopStartDate",
+      "label": "중지 시점",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "ContactPhone",
+      "label": "연락처 전화",
+      "type": "phone"
+    },
+    {
+      "name": "ContactMobile",
+      "label": "연락처 휴대폰",
+      "type": "phone"
+    },
+    {
+      "name": "ContactEmail",
+      "label": "연락처 이메일",
+      "type": "email"
+    },
+    {
+      "name": "ContactFax",
+      "label": "연락처 팩스",
+      "type": "phone"
+    },
+    {
+      "name": "Comments",
+      "label": "내부 소통용",
+      "type": "textarea"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "AssetWarrantyId",
+      "label": "자산 보증 ID",
+      "type": "reference",
+      "referenceTo": [
+        "AssetWarranty"
+      ]
+    },
+    {
+      "name": "ServiceContractId",
+      "label": "서비스 계약 ID",
+      "type": "reference",
+      "referenceTo": [
+        "ServiceContract"
+      ]
+    },
+    {
+      "name": "MilestoneStatus",
+      "label": "중대 사건 상태",
+      "type": "string"
+    },
+    {
+      "name": "Benefit_Amount__c",
+      "label": "지급금액",
+      "type": "currency"
+    },
+    {
+      "name": "Benefit_Type__c",
+      "label": "혜택종류",
+      "type": "picklist",
+      "picklistValues": [
+        "상품권",
+        "현금"
+      ]
+    },
+    {
+      "name": "CaseType_Detail__c",
+      "label": "사례 유형 상세",
+      "type": "picklist",
+      "picklistValues": [
+        "MKT 프로모션 : MKT-24-0425-0531-패밀리프로모션_혜택01",
+        "MKT-24-0425-0531-패밀리프로모션_혜택02",
+        "MKT-24-0122-0229-새해프로모션",
+        "SAL 프로모션 : 5+1 스텔스 프로모션",
+        "전기공사 5만원 페이백",
+        "LGU+인터넷 무상지원 : 없음",
+        "사진촬영지원"
+      ]
+    },
+    {
+      "name": "Account_Bday__c",
+      "label": "생년월일",
+      "type": "date"
+    },
+    {
+      "name": "Account_Email__c",
+      "label": "이메일",
+      "type": "string"
+    },
+    {
+      "name": "Case_BranchName__c",
+      "label": "지점명",
+      "type": "string"
+    },
+    {
+      "name": "Clone_Account_Bank_Customer__c",
+      "label": "계좌(입금자명)",
+      "type": "string"
+    },
+    {
+      "name": "Clone_BankAccount_Number__c",
+      "label": "계좌(계좌번호)",
+      "type": "string"
+    },
+    {
+      "name": "fm_Account_BankName__c",
+      "label": "계좌(은행명)",
+      "type": "string"
+    },
+    {
+      "name": "ComplainType__c",
+      "label": "불만 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "Lv.0) 불만없음",
+        "Lv.1) 일반불만",
+        "Lv.2) 상급자통화요청",
+        "Lv.3) 매장내방요구",
+        "Lv.4) 보상요청",
+        "Lv.5) 계약해지 / 철거요청",
+        "Lv.6) 소비자원 및 공정위원회 언급",
+        "Lv.7) 언론 / SNS / 카페 유포 언급",
+        "Lv.8) 내용증명 및 소송 / 협박성 언급",
+        "Lv.9) 상해 / 폭발 / 화재",
+        "Lv.10) 자살 및 신변위협 언급"
+      ]
+    },
+    {
+      "name": "Type2__c",
+      "label": "2차 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "메뉴 수정",
+        "상점 수정",
+        "프랜차이즈 수정",
+        "태블릿 기기",
+        "주문용 앱",
+        "마스터 앱",
+        "선결제",
+        "포스",
+        "빌지",
+        "QR/NFC",
+        "티오더 사장님 APP",
+        "점주 어드민",
+        "기타 이용 문의",
+        "가입",
+        "계약",
+        "수납",
+        "광고",
+        "마케팅",
+        "연동",
+        "설치",
+        "철거",
+        "태블릿",
+        "보조배터리",
+        "리더기",
+        "공유기",
+        "포스 연동",
+        "기타 오류 문의",
+        "온라인",
+        "추가 구매 문의",
+        "배송 문의",
+        "결제 문의",
+        "오프라인",
+        "티오더 사장님 APP(오류 및 장애)",
+        "점주 어드민(오류 및 장애)",
+        "선결제(오류 및 장애)",
+        "빌지(오류 및 장애)",
+        "서빙로봇",
+        "환불 문의",
+        "기타(구매)",
+        "- (케어서비스)",
+        "- (A/S)",
+        "- (해지)",
+        "- (포토그래퍼)",
+        "- (기타)",
+        "이메일검수",
+        "로고&배너",
+        "상품",
+        "분류",
+        "옵션",
+        "번역",
+        "완료검수",
+        "개발관련",
+        "광고검수",
+        "채널영업",
+        "사장님APP",
+        "담당자 구두 소통",
+        "그룹배너 삭제",
+        "일괄 업무 확인 요청",
+        "유의매장",
+        "회의",
+        "오류",
+        "피드백",
+        "기타",
+        "인바운드세일즈",
+        "아웃바운드세일즈",
+        "채널세일즈",
+        "CCTV"
+      ]
+    },
+    {
+      "name": "Type3__c",
+      "label": "3차 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "일반상품 수정",
+        "옵션상품 수정",
+        "직원호출 수정",
+        "분류 수정",
+        "기타",
+        "로고 수정",
+        "배너 수정",
+        "언어번역 수정",
+        "테마 수정",
+        "메뉴 수정",
+        "상점 수정",
+        "태블릿 이용방법",
+        "태블릿 설정 문의",
+        "와이파이 설정",
+        "태블릿 전원",
+        "자동 온오프",
+        "홈 앱",
+        "기타 앱",
+        "주문용 앱 이용 문의",
+        "주문용 앱 버전 업데이트",
+        "상품 이미지 송출",
+        "주문 연동",
+        "자동 로그아웃",
+        "테이블 수정",
+        "배너/로고 노출",
+        "마스터 앱 이용 문의",
+        "마스터 앱 버전 업데이트",
+        "추가 기능 설정",
+        "알림음 설정",
+        "결제 내역",
+        "메뉴별 결제",
+        "결제 취소/보류",
+        "현금결제",
+        "테이블 정리",
+        "데몬설치 및 설정",
+        "영수증 관련",
+        "선/후결제 전환",
+        "테이블 점유",
+        "포스 업데이트",
+        "층구분 기능",
+        "옵션 상품 출력",
+        "층구분 출력",
+        "이용방법 문의",
+        "통합인증가입 절차",
+        "접속 / 로그인 정보",
+        "계약 단순 문의",
+        "계약 취소",
+        "추가 계약",
+        "계약 상이",
+        "계약서 미서명",
+        "양도양수",
+        "상호명 변경",
+        "서류 발행",
+        "불완전 계약 언급",
+        "수납 단순 문의",
+        "미납/연체",
+        "계좌 변경 요청",
+        "세금계산서 관련",
+        "환불 요청",
+        "타사 주류 광고 등록",
+        "저작권 이미지 검수",
+        "프로모션 단순 문의",
+        "프로모션 변경 요청",
+        "연동 요청",
+        "연동 지연",
+        "연동 일정 변경",
+        "전기 공사",
+        "환경 공사",
+        "설치 일정",
+        "철거 문의",
+        "철거 일정",
+        "태블릿",
+        "보조배터리",
+        "거치대",
+        "리더기",
+        "케이블",
+        "터치 불량 (고스트 터치)",
+        "충전 불량",
+        "포트 불량",
+        "화면 불량",
+        "전원 불량",
+        "기기 멈춤",
+        "기기 느림",
+        "펌웨어 불량",
+        "와이파이 연결 불량",
+        "태블릿 팽창 현상 (스웰링)",
+        "기기 파손",
+        "터짐 및 화재",
+        "성능 저하",
+        "LED 불량",
+        "배터리 팽창 (스웰링)",
+        "인식불량",
+        "네트워크 불량",
+        "기기파손",
+        "AP장비 추가 및 교체",
+        "주문 연동 오류 _단순 해결 (미들웨어)",
+        "주문 연동 오류",
+        "주문 연동 지연",
+        "중복 주문",
+        "미출력",
+        "중복 출력",
+        "출력 지연",
+        "로그인 안됨",
+        "로그인 풀림",
+        "수정 오류",
+        "네트워크 오류",
+        "포스 접수 실패",
+        "결제창 문제",
+        "오류 코드 팝업",
+        "VAN사 오류",
+        "불친절",
+        "오안내 및 오처리",
+        "처리 지연",
+        "처리 미흡",
+        "약속 미이행",
+        "사후처리 미흡",
+        "출력 내용",
+        "부착물 관련",
+        "접속 관련",
+        "노출 정보 관련",
+        "광고 제거",
+        "단순 이용문의",
+        "더치페이 기능",
+        "신규가입 문의",
+        "재계약 문의",
+        "이중납",
+        "U+ 인터넷 프로모션",
+        "설치 1주일 이내 케어",
+        "설치 1개월 이내 케어",
+        "설치 6개월 이후 케어",
+        "설치 12개월 이후 케어",
+        "AS 사후 관리",
+        "컴플레인 사후 관리",
+        "AS 단순 문의",
+        "일정 문의",
+        "AS 제품 회수 요청",
+        "AS 제품 오배송",
+        "AS 제품 불량",
+        "접수 누락",
+        "접수 취소",
+        "서빙로봇 오류 문의",
+        "해지 (단순변심)",
+        "해지 (비용측면)",
+        "해지 (소프트웨어 불만)",
+        "해지 (하드웨어 불만)",
+        "해지 (서비스 불만)",
+        "해지 (기타)",
+        "이미지 등록 요청",
+        "촬영 요청",
+        "추가 확인 요청",
+        "원본 요청",
+        "일정 변경",
+        "부재중 인입",
+        "이전 상담사 전달",
+        "오발신",
+        "단선",
+        "외부기관 인입",
+        "고객 이탈 종료",
+        "CCTV"
+      ]
+    },
+    {
+      "name": "CaseOrigin__c",
+      "label": "최초 접수자",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "AddType1__c",
+      "label": "부가 유형 1차",
+      "type": "multipicklist",
+      "picklistValues": [
+        "불만",
+        "대량 이슈",
+        "개선요청",
+        "포기호"
+      ]
+    },
+    {
+      "name": "AddType2__c",
+      "label": "부가 유형 2차",
+      "type": "multipicklist",
+      "picklistValues": [
+        "Lv.1) 일반불만",
+        "Lv.2) 상급자통화요청",
+        "Lv.3) 매장내방요구",
+        "Lv.4) 보상요청",
+        "Lv.5) 계약해지 / 철거요청",
+        "Lv.6) 소비자원 및 공정위원회 언급",
+        "Lv.7) 언론 / SNS / 카페 유포 언급",
+        "Lv.8) 내용증명 및 소송 / 협박성 언급",
+        "Lv.9) 상해 / 폭발 / 화재",
+        "Lv.10) 자살 및 신변위협 언급",
+        "대량 이슈",
+        "개선요청",
+        "콜백 진행",
+        "콜백 부재"
+      ]
+    },
+    {
+      "name": "AbandonedCall__c",
+      "label": "포기호(선택)",
+      "type": "picklist",
+      "picklistValues": [
+        "콜백 진행",
+        "콜백 부재"
+      ]
+    },
+    {
+      "name": "TransferStatus__c",
+      "label": "이관 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "대기중",
+        "처리중",
+        "처리완료"
+      ]
+    },
+    {
+      "name": "fm_CaseTransferee__c",
+      "label": "이관자",
+      "type": "string"
+    },
+    {
+      "name": "Description__c",
+      "label": "상담 내용",
+      "type": "textarea"
+    },
+    {
+      "name": "ImprovementRequest__c",
+      "label": "개선 요청 수집(선택)",
+      "type": "boolean"
+    },
+    {
+      "name": "InternalCommunication__c",
+      "label": "내부 소통용",
+      "type": "textarea"
+    },
+    {
+      "name": "MassIssue__c",
+      "label": "대량 이슈(선택)",
+      "type": "boolean"
+    },
+    {
+      "name": "Matrix_Call_Category__c",
+      "label": "상담유형 추천",
+      "type": "textarea"
+    },
+    {
+      "name": "Matrix_Call_Emotion__c",
+      "label": "고객감정 분석",
+      "type": "textarea"
+    },
+    {
+      "name": "Matrix_Call_ID__c",
+      "label": "콜 ID",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Call_Summary__c",
+      "label": "요약",
+      "type": "textarea"
+    },
+    {
+      "name": "Matrix_Call_Tag__c",
+      "label": "콜 태그",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Call_Type__c",
+      "label": "콜 유형",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Callback_Count__c",
+      "label": "콜백 요청 건수",
+      "type": "double"
+    },
+    {
+      "name": "Matrix_Callback_Phone__c",
+      "label": "콜백 전화번호",
+      "type": "phone"
+    },
+    {
+      "name": "Matrix_IVR_Tag_Memo__c",
+      "label": "IVR 인입경로",
+      "type": "string"
+    },
+    {
+      "name": "TransferDescription__c",
+      "label": "수관자 처리 결과",
+      "type": "textarea"
+    },
+    {
+      "name": "TransferEndDate__c",
+      "label": "이관 종료일자",
+      "type": "datetime"
+    },
+    {
+      "name": "TransferMemo__c",
+      "label": "이관 메모",
+      "type": "textarea"
+    },
+    {
+      "name": "TransferStartDate__c",
+      "label": "이관 시작일자",
+      "type": "datetime"
+    },
+    {
+      "name": "num__c",
+      "label": "Number",
+      "type": "string"
+    },
+    {
+      "name": "storecode__c",
+      "label": "Store Code",
+      "type": "string"
+    },
+    {
+      "name": "storename__c",
+      "label": "Store Name",
+      "type": "string"
+    },
+    {
+      "name": "storeplace__c",
+      "label": "Store Place",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_DNIS_Memo__c",
+      "label": "대표번호",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Callback_Message__c",
+      "label": "콜백 메시지",
+      "type": "textarea"
+    },
+    {
+      "name": "RelatedCase__c",
+      "label": "관련 상담",
+      "type": "reference",
+      "referenceTo": [
+        "Case"
+      ]
+    },
+    {
+      "name": "ChatKey__c",
+      "label": "ChatKey",
+      "type": "string"
+    },
+    {
+      "name": "fm_StoreBranch__c",
+      "label": "상호 지점명",
+      "type": "string"
+    },
+    {
+      "name": "CaseLeadtime__c",
+      "label": "리드타임",
+      "type": "string"
+    },
+    {
+      "name": "Division__c",
+      "label": "본부",
+      "type": "string"
+    },
+    {
+      "name": "Dead_Line__c",
+      "label": "DeadLine",
+      "type": "string"
+    },
+    {
+      "name": "ClosedToday__c",
+      "label": "당일종료",
+      "type": "boolean"
+    },
+    {
+      "name": "MatrixChatUserId__c",
+      "label": "Matrix Chat User",
+      "type": "reference",
+      "referenceTo": [
+        "MatrixChatUser__c"
+      ]
+    },
+    {
+      "name": "MatrixChat_Center_Id__c",
+      "label": "Center Id",
+      "type": "string"
+    },
+    {
+      "name": "MatrixChat_Contents__c",
+      "label": "Chat Contents",
+      "type": "textarea"
+    },
+    {
+      "name": "MatrixChat_IsConnected__c",
+      "label": "채팅 연결",
+      "type": "boolean"
+    },
+    {
+      "name": "MatrixChat_Room_Id__c",
+      "label": "Room Id",
+      "type": "double"
+    },
+    {
+      "name": "MatrixChat_Session_Id__c",
+      "label": "Session Id",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Chat_End_Time__c",
+      "label": "Chat End Time",
+      "type": "datetime"
+    },
+    {
+      "name": "Matrix_Chat_Inbound_Time__c",
+      "label": "Chat Inbound Time",
+      "type": "datetime"
+    },
+    {
+      "name": "Matrix_Chat_Inquiry_Category__c",
+      "label": "Inquiry Category",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Chat_Request_Time__c",
+      "label": "Chat Request Time",
+      "type": "datetime"
+    },
+    {
+      "name": "Matrix_Chat_Room_Id__c",
+      "label": "Chat Room ID",
+      "type": "double"
+    },
+    {
+      "name": "Matrix_Chat_Start_Time__c",
+      "label": "Chat Start Time",
+      "type": "datetime"
+    },
+    {
+      "name": "Matrix_Chat_Waiting_Time__c",
+      "label": "Chat Waiting Time",
+      "type": "double"
+    },
+    {
+      "name": "IsFieldService__c",
+      "label": "IsFieldService",
+      "type": "boolean"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "StoreType__c",
+      "label": "매장유형",
+      "type": "picklist",
+      "picklistValues": [
+        "기존매장",
+        "신규매장",
+        "양도양수"
+      ]
+    },
+    {
+      "name": "Matrix_Chat_IsEnd__c",
+      "label": "채팅세션종료",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_ReciptCompany__c",
+      "label": "최초 접수자 소속",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Chat_Assigned__c",
+      "label": "상담원 배정",
+      "type": "boolean"
+    },
+    {
+      "name": "Jira__c",
+      "label": "지라",
+      "type": "reference",
+      "referenceTo": [
+        "Jira__c"
+      ]
+    },
+    {
+      "name": "Matrix_Chat_Chatting_Time__c",
+      "label": "Chatting Time",
+      "type": "double"
+    },
+    {
+      "name": "SpaceId__c",
+      "label": "스페이스 ID",
+      "type": "string"
+    },
+    {
+      "name": "WorkOrder__c",
+      "label": "작업 주문",
+      "type": "reference",
+      "referenceTo": [
+        "WorkOrder"
+      ]
+    },
+    {
+      "name": "Brand_Branch__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "CaseType__c",
+      "label": "문의사항 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "정기점검(케어서비스)",
+        "현장 엔지니어 문의사항(내부)",
+        "현장 엔지니어 문의사항(외부)"
+      ]
+    },
+    {
+      "name": "Classification__c",
+      "label": "구분",
+      "type": "picklist",
+      "picklistValues": [
+        "미들웨어 설치 (연동)",
+        "메뉴/상점 세팅",
+        "기술 지원 요청",
+        "고객케어팀 확인 요청",
+        "고객 소통 요청",
+        "방문 접수 요청"
+      ]
+    },
+    {
+      "name": "CaseWorkOrder__c",
+      "label": "문의사항(작업주문 확인용)",
+      "type": "reference",
+      "referenceTo": [
+        "Case"
+      ]
+    },
+    {
+      "name": "CustomerPhone__c",
+      "label": "고객 연락처",
+      "type": "string"
+    },
+    {
+      "name": "Descritption__c",
+      "label": "상세 내용",
+      "type": "textarea"
+    },
+    {
+      "name": "ExOwner__c",
+      "label": "이전 담당자",
+      "type": "string"
+    },
+    {
+      "name": "Time__c",
+      "label": "시간 양해",
+      "type": "string"
+    },
+    {
+      "name": "CreatedDate_Desc__c",
+      "label": "시작 일자 정렬",
+      "type": "double"
+    },
+    {
+      "name": "CaseLeadtime_Number__c",
+      "label": "리드타임(시간.분)",
+      "type": "double"
+    },
+    {
+      "name": "CreatedTime__c",
+      "label": "시작 시간",
+      "type": "string"
+    },
+    {
+      "name": "CreatedTime_Time__c",
+      "label": "시작 시간 (시)",
+      "type": "string"
+    },
+    {
+      "name": "ClosedTime__c",
+      "label": "종료 시간",
+      "type": "string"
+    },
+    {
+      "name": "ClosedTime_Time__c",
+      "label": "종료 시간 (시)",
+      "type": "string"
+    },
+    {
+      "name": "Division_CaseOrigin__c",
+      "label": "본부 (최초 접수자)",
+      "type": "string"
+    },
+    {
+      "name": "Department_CaseOrigin__c",
+      "label": "부서 (최초 접수자)",
+      "type": "string"
+    },
+    {
+      "name": "Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "TerminationType__c",
+      "label": "종료 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "고객 무응답 종료",
+        "고객 이탈 종료",
+        "문의해결 종료",
+        "중복인입 종료",
+        "문자 발신 후 콜백 종료",
+        "완료",
+        "반려",
+        "Closed Won",
+        "Closed Lost",
+        "점주 이탈",
+        "오인입"
+      ]
+    },
+    {
+      "name": "ProductStatus__c",
+      "label": "상품 등록 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "노출 등록",
+        "판매중지(숨김) 처리",
+        "품절 상태 등록"
+      ]
+    },
+    {
+      "name": "Transfer_Check__c",
+      "label": "이관 여부",
+      "type": "boolean"
+    },
+    {
+      "name": "TransferLeadtime__c",
+      "label": "이관 리드타임",
+      "type": "string"
+    },
+    {
+      "name": "TransferLeadtime_not_closed__c",
+      "label": "이관 후 경과시간",
+      "type": "string"
+    },
+    {
+      "name": "Matrix_Is_CSATSent__c",
+      "label": "만족도 전송완료",
+      "type": "boolean"
+    },
+    {
+      "name": "Brand_Branch_Search__c",
+      "label": "상호(지점명)_검색조회용",
+      "type": "string"
+    },
+    {
+      "name": "DueDate__c",
+      "label": "업무 기한",
+      "type": "date"
+    },
+    {
+      "name": "ProcessPriority__c",
+      "label": "작업 시기",
+      "type": "picklist",
+      "picklistValues": [
+        "미리 작업 불가 / 적용 일자 당일 작업 필요",
+        "미리 작업 불가 / 해당 일자 출근 직후 최우선 업무 필요",
+        "🚨최대한 빨리 / ASAP",
+        "최대한 빨리 / ASAP"
+      ]
+    },
+    {
+      "name": "IsImmediate__c",
+      "label": "즉시 작업 여부",
+      "type": "picklist",
+      "picklistValues": [
+        "(즉시 가능)",
+        "(ASAP)"
+      ]
+    },
+    {
+      "name": "ChannelName__c",
+      "label": "채널 이름",
+      "type": "string"
+    },
+    {
+      "name": "fm_RecordTypeDeveloperName__c",
+      "label": "fm_RecordTypeDeveloperName",
+      "type": "string"
+    },
+    {
+      "name": "Opportunity__c",
+      "label": "영업기회",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    }
+  ]
+}

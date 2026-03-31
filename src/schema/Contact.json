@@ -1,0 +1,896 @@
+{
+  "name": "Contact",
+  "label": "연락처",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "연락처 ID",
+      "type": "id"
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "MasterRecordId",
+      "label": "마스터 레코드 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "AccountId",
+      "label": "상호",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "LastName",
+      "label": "성명",
+      "type": "string"
+    },
+    {
+      "name": "FirstName",
+      "label": "(미입력)",
+      "type": "string"
+    },
+    {
+      "name": "Salutation",
+      "label": "(미입력)",
+      "type": "picklist",
+      "picklistValues": [
+        "Mr.",
+        "Ms.",
+        "Mrs.",
+        "Dr.",
+        "Prof.",
+        "Mx."
+      ]
+    },
+    {
+      "name": "Name",
+      "label": "전체 이름",
+      "type": "string"
+    },
+    {
+      "name": "RecordTypeId",
+      "label": "레코드 유형 ID",
+      "type": "reference",
+      "referenceTo": [
+        "RecordType"
+      ]
+    },
+    {
+      "name": "OtherStreet",
+      "label": "기타 상세 주소",
+      "type": "textarea"
+    },
+    {
+      "name": "OtherCity",
+      "label": "기타 시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "OtherState",
+      "label": "기타 시/도",
+      "type": "string"
+    },
+    {
+      "name": "OtherPostalCode",
+      "label": "기타 우편 번호",
+      "type": "string"
+    },
+    {
+      "name": "OtherCountry",
+      "label": "기타 국가",
+      "type": "string"
+    },
+    {
+      "name": "OtherLatitude",
+      "label": "기타 위도",
+      "type": "double"
+    },
+    {
+      "name": "OtherLongitude",
+      "label": "기타 경도",
+      "type": "double"
+    },
+    {
+      "name": "OtherGeocodeAccuracy",
+      "label": "Other Geocode Accuracy",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "OtherAddress",
+      "label": "기타 주소",
+      "type": "address"
+    },
+    {
+      "name": "MailingStreet",
+      "label": "메일링 상세 주소",
+      "type": "textarea"
+    },
+    {
+      "name": "MailingCity",
+      "label": "메일링 시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "MailingState",
+      "label": "메일링 시/도",
+      "type": "string"
+    },
+    {
+      "name": "MailingPostalCode",
+      "label": "메일링 우편 번호",
+      "type": "string"
+    },
+    {
+      "name": "MailingCountry",
+      "label": "메일링 국가",
+      "type": "string"
+    },
+    {
+      "name": "MailingLatitude",
+      "label": "우편 위도",
+      "type": "double"
+    },
+    {
+      "name": "MailingLongitude",
+      "label": "우편 경도",
+      "type": "double"
+    },
+    {
+      "name": "MailingGeocodeAccuracy",
+      "label": "Mailing Geocode Accuracy",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "MailingAddress",
+      "label": "메일링 주소",
+      "type": "address"
+    },
+    {
+      "name": "Phone",
+      "label": "연락처",
+      "type": "phone"
+    },
+    {
+      "name": "Fax",
+      "label": "근무지 팩스",
+      "type": "phone"
+    },
+    {
+      "name": "MobilePhone",
+      "label": "휴대폰",
+      "type": "phone"
+    },
+    {
+      "name": "HomePhone",
+      "label": "자택 전화 번호",
+      "type": "phone"
+    },
+    {
+      "name": "OtherPhone",
+      "label": "기타 전화",
+      "type": "phone"
+    },
+    {
+      "name": "AssistantPhone",
+      "label": "비서 전화",
+      "type": "phone"
+    },
+    {
+      "name": "ReportsToId",
+      "label": "상급자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "Email",
+      "label": "이메일",
+      "type": "email"
+    },
+    {
+      "name": "Title",
+      "label": "직급",
+      "type": "string"
+    },
+    {
+      "name": "Department",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "AssistantName",
+      "label": "비서 이름",
+      "type": "string"
+    },
+    {
+      "name": "LeadSource",
+      "label": "유입경로",
+      "type": "picklist",
+      "picklistValues": [
+        "홈페이지",
+        "전화",
+        "인바운드",
+        "아웃바운드",
+        "프랜차이즈소개",
+        "파트너사 소개",
+        "매장소개",
+        "카카오채널",
+        "스마트스토어",
+        "지원사업",
+        "임직원 소개건",
+        "사장님 앱",
+        "제휴업체소개"
+      ]
+    },
+    {
+      "name": "Birthdate",
+      "label": "생년월일",
+      "type": "date"
+    },
+    {
+      "name": "Description",
+      "label": "연락처 내용",
+      "type": "textarea"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "연락처 통화",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "HasOptedOutOfEmail",
+      "label": "이메일 수신거부",
+      "type": "boolean"
+    },
+    {
+      "name": "HasOptedOutOfFax",
+      "label": "팩스 수신거부",
+      "type": "boolean"
+    },
+    {
+      "name": "DoNotCall",
+      "label": "전화사절",
+      "type": "boolean"
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastActivityDate",
+      "label": "마지막 활동",
+      "type": "date"
+    },
+    {
+      "name": "LastCURequestDate",
+      "label": "최종 연락처 관리 요청 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastCUUpdateDate",
+      "label": "최종 연락처 관리 저장 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "EmailBouncedReason",
+      "label": "이메일 바운스 원인",
+      "type": "string"
+    },
+    {
+      "name": "EmailBouncedDate",
+      "label": "이메일 바운스 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "IsEmailBounced",
+      "label": "이메일이 바운스됨",
+      "type": "boolean"
+    },
+    {
+      "name": "PhotoUrl",
+      "label": "사진 URL",
+      "type": "url"
+    },
+    {
+      "name": "Jigsaw",
+      "label": "Data.com 키",
+      "type": "string"
+    },
+    {
+      "name": "JigsawContactId",
+      "label": "Jigsaw Contact ID",
+      "type": "string"
+    },
+    {
+      "name": "Pronouns",
+      "label": "대명사",
+      "type": "picklist",
+      "picklistValues": [
+        "He/Him",
+        "She/Her",
+        "They/Them",
+        "He/They",
+        "She/They",
+        "Not Listed"
+      ]
+    },
+    {
+      "name": "GenderIdentity",
+      "label": "성정체성",
+      "type": "picklist",
+      "picklistValues": [
+        "Male",
+        "Female",
+        "Nonbinary",
+        "Not Listed"
+      ]
+    },
+    {
+      "name": "AccountName__c",
+      "label": "지점명",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "CEOBDay__c",
+      "label": "생년월일",
+      "type": "date"
+    },
+    {
+      "name": "ContactType__c",
+      "label": "타입",
+      "type": "picklist",
+      "picklistValues": [
+        "대표자",
+        "운영자",
+        "정산담당자",
+        "[B2B] 대표자",
+        "[B2B] 실무자",
+        "[B2B] 정산담당자",
+        "[B2B] 운영",
+        "이관 데이터",
+        "본사/거점센터",
+        "협력업체",
+        "캠페인담당자",
+        "매체담당자"
+      ]
+    },
+    {
+      "name": "ExtensionNumber__c",
+      "label": "내선번호",
+      "type": "string"
+    },
+    {
+      "name": "ExternalID__c",
+      "label": "ExternalID",
+      "type": "string"
+    },
+    {
+      "name": "IsMainContact__c",
+      "label": "소통 연락처",
+      "type": "boolean"
+    },
+    {
+      "name": "fm_Account_Number__c",
+      "label": "대표번호",
+      "type": "string"
+    },
+    {
+      "name": "fm_Department__c",
+      "label": "(미사용)부서",
+      "type": "string"
+    },
+    {
+      "name": "fm_Account_Name__c",
+      "label": "지점명",
+      "type": "string"
+    },
+    {
+      "name": "fm_Brand_Branch__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "PrivacyInfoDate__c",
+      "label": "개인정보 수집 동의(필수) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "PrivacyInfoYN__c",
+      "label": "개인정보 수집 동의(필수)",
+      "type": "boolean"
+    },
+    {
+      "name": "advertisinginfoDate__c",
+      "label": "광고성 정보 수신 동의(선택) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "advertisinginfoYN__c",
+      "label": "광고성 정보 수신 동의(선택)",
+      "type": "boolean"
+    },
+    {
+      "name": "thirdpartyDate__c",
+      "label": "개인정보 제3자 제공 동의(로봇전용-필수) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "thirdpartyYN__c",
+      "label": "개인정보 제3자 제공 동의(로봇전용-필수)",
+      "type": "boolean"
+    },
+    {
+      "name": "OldKeyValue__c",
+      "label": "(과거)KEY값",
+      "type": "string"
+    },
+    {
+      "name": "OldCreatedDate__c",
+      "label": "(과거)생성일자",
+      "type": "date"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "Identifier__c",
+      "label": "Identifier",
+      "type": "string"
+    },
+    {
+      "name": "et4ae5__Mobile_Country_Code__c",
+      "label": "Mobile Country Code",
+      "type": "picklist",
+      "picklistValues": [
+        "US",
+        "AC",
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AI",
+        "AL",
+        "AM",
+        "AO",
+        "AQ",
+        "AR",
+        "AS",
+        "AT",
+        "AU",
+        "AW",
+        "AX",
+        "AZ",
+        "BA",
+        "BB",
+        "BD",
+        "BE",
+        "BF",
+        "BG",
+        "BH",
+        "BI",
+        "BJ",
+        "BL",
+        "BM",
+        "BN",
+        "BO",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BV",
+        "BW",
+        "BY",
+        "BZ",
+        "CA",
+        "CC",
+        "CD",
+        "CF",
+        "CG",
+        "CH",
+        "CI",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO",
+        "CR",
+        "CU",
+        "CV",
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DE",
+        "DJ",
+        "DK",
+        "DM",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "EG",
+        "ER",
+        "ES",
+        "ET",
+        "FI",
+        "FJ",
+        "FK",
+        "FM",
+        "FO",
+        "FR",
+        "GA",
+        "GB",
+        "GD",
+        "GE",
+        "GF",
+        "GG",
+        "GH",
+        "GI",
+        "GL",
+        "GM",
+        "GN",
+        "GP",
+        "GQ",
+        "GR",
+        "GS",
+        "GT",
+        "GU",
+        "GW",
+        "GY",
+        "HK",
+        "HM",
+        "HN",
+        "HR",
+        "HT",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IM",
+        "IN",
+        "IO",
+        "IQ",
+        "IR",
+        "IS",
+        "IT",
+        "JE",
+        "JM",
+        "JO",
+        "JP",
+        "KE",
+        "KG",
+        "KH",
+        "KI",
+        "KM",
+        "KN",
+        "KP",
+        "KR",
+        "KW",
+        "KY",
+        "KZ",
+        "LA",
+        "LB",
+        "LC",
+        "LI",
+        "LK",
+        "LR",
+        "LS",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MF",
+        "MG",
+        "MH",
+        "MK",
+        "ML",
+        "MM",
+        "MN",
+        "MO",
+        "MP",
+        "MQ",
+        "MR",
+        "MS",
+        "MT",
+        "MU",
+        "MV",
+        "MW",
+        "MX",
+        "MY",
+        "MZ",
+        "NA",
+        "NC",
+        "NE",
+        "NF",
+        "NG",
+        "NI",
+        "NL",
+        "NO",
+        "NP",
+        "NR",
+        "NU",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PF",
+        "PG",
+        "PH",
+        "PK",
+        "PL",
+        "PM",
+        "PN",
+        "PR",
+        "PS",
+        "PT",
+        "PW",
+        "PY",
+        "QA",
+        "RE",
+        "RO",
+        "RS",
+        "RU",
+        "RW",
+        "SA",
+        "SB",
+        "SC",
+        "SD",
+        "SE",
+        "SG",
+        "SH",
+        "SI",
+        "SJ",
+        "SK",
+        "SL",
+        "SM",
+        "SN",
+        "SO",
+        "SR",
+        "SS",
+        "ST",
+        "SV",
+        "SX",
+        "SY",
+        "SZ",
+        "TA",
+        "TC",
+        "TD",
+        "TG",
+        "TH",
+        "TJ",
+        "TK",
+        "TL",
+        "TM",
+        "TN",
+        "TO",
+        "TR",
+        "TT",
+        "TV",
+        "TW",
+        "TZ",
+        "UA",
+        "UG",
+        "UY",
+        "UZ",
+        "VA",
+        "VC",
+        "VE",
+        "VG",
+        "VI",
+        "VN",
+        "VU",
+        "WF",
+        "WS",
+        "YE",
+        "YT",
+        "ZA",
+        "ZM",
+        "ZW"
+      ]
+    },
+    {
+      "name": "et4ae5__HasOptedOutOfMobile__c",
+      "label": "Mobile Opt Out",
+      "type": "boolean"
+    },
+    {
+      "name": "Owner_Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "PhoneClone__c",
+      "label": "연락처Clone",
+      "type": "phone"
+    },
+    {
+      "name": "fm_AccountID__c",
+      "label": "연락처ID",
+      "type": "string"
+    },
+    {
+      "name": "fm_SearchInformation__c",
+      "label": "연락처 Search용 정보",
+      "type": "string"
+    },
+    {
+      "name": "IsAgentforce__c",
+      "label": "IsAgentforce",
+      "type": "boolean"
+    },
+    {
+      "name": "ContactDepartment__c",
+      "label": "연락처 부서",
+      "type": "string"
+    },
+    {
+      "name": "Hashtag__c",
+      "label": "#해시태그",
+      "type": "textarea"
+    },
+    {
+      "name": "Memo__c",
+      "label": "메모",
+      "type": "textarea"
+    },
+    {
+      "name": "User__c",
+      "label": "세일즈포스 유저",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "tcallId__c",
+      "label": "티콜 ID",
+      "type": "string"
+    },
+    {
+      "name": "FR_Hotline__c",
+      "label": "프랜차이즈 핫라인 대상",
+      "type": "boolean"
+    },
+    {
+      "name": "EmploymentStatus__c",
+      "label": "재직 여부",
+      "type": "picklist",
+      "picklistValues": [
+        "재직중",
+        "퇴사",
+        "휴직중"
+      ]
+    },
+    {
+      "name": "MarketingActivityDate__c",
+      "label": "최근 마케팅 활동일",
+      "type": "date"
+    },
+    {
+      "name": "EmailOptOutReason__c",
+      "label": "이메일 수신거부 사유",
+      "type": "string"
+    },
+    {
+      "name": "fm_AdBizDB__c",
+      "label": "광고사업 DB",
+      "type": "boolean"
+    },
+    {
+      "name": "mkt_PrivacyInfoYN__c",
+      "label": "마케팅 목적의 개인정보 수집 및 이용 동의(선택)",
+      "type": "boolean"
+    },
+    {
+      "name": "mkt_PrivacyInfoDate__c",
+      "label": "마케팅 목적의 개인정보 수집 및 이용 동의(선택) 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "HasOptedOutOfSurvey__c",
+      "label": "설문 수신거부",
+      "type": "boolean"
+    }
+  ]
+}

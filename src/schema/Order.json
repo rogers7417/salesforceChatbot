@@ -1,0 +1,707 @@
+{
+  "name": "Order",
+  "label": "출고",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "출고 ID",
+      "type": "id"
+    },
+    {
+      "name": "OwnerId",
+      "label": "출고 소유자",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "ContractId",
+      "label": "계약 id",
+      "type": "reference",
+      "referenceTo": [
+        "Contract"
+      ]
+    },
+    {
+      "name": "AccountId",
+      "label": "상호",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "Pricebook2Id",
+      "label": "가격 목록 id",
+      "type": "reference",
+      "referenceTo": [
+        "Pricebook2"
+      ]
+    },
+    {
+      "name": "OriginalOrderId",
+      "label": "최초 출고",
+      "type": "reference",
+      "referenceTo": [
+        "Order"
+      ]
+    },
+    {
+      "name": "OpportunityId",
+      "label": "영업기회",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "QuoteId",
+      "label": "견적서 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Quote"
+      ]
+    },
+    {
+      "name": "EffectiveDate",
+      "label": "출고신청서 작성일자",
+      "type": "date"
+    },
+    {
+      "name": "EndDate",
+      "label": "출고 마감 일자",
+      "type": "date"
+    },
+    {
+      "name": "IsReductionOrder",
+      "label": "축소 출고",
+      "type": "boolean"
+    },
+    {
+      "name": "Status",
+      "label": "진행상태",
+      "type": "picklist",
+      "picklistValues": [
+        "출고신청서작성",
+        "재작성요청",
+        "출고전",
+        "출고진행중",
+        "출고완료"
+      ]
+    },
+    {
+      "name": "Description",
+      "label": "설명",
+      "type": "textarea"
+    },
+    {
+      "name": "CustomerAuthorizedById",
+      "label": "ID에 의하여 인증된 고객",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "CustomerAuthorizedDate",
+      "label": "고객 인증 일자",
+      "type": "date"
+    },
+    {
+      "name": "CompanyAuthorizedById",
+      "label": "ID에 의하여 인증된 회사",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "CompanyAuthorizedDate",
+      "label": "회사 인증 일자",
+      "type": "date"
+    },
+    {
+      "name": "Type",
+      "label": "출고 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "일반",
+        "추가구매",
+        "A/S",
+        "긴급민원_고객지원팀",
+        "샘플",
+        "본사 출고(샘플X)"
+      ]
+    },
+    {
+      "name": "BillingStreet",
+      "label": "청구지 상세주소",
+      "type": "textarea"
+    },
+    {
+      "name": "BillingCity",
+      "label": "청구지 시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "BillingState",
+      "label": "청구지 시/도",
+      "type": "string"
+    },
+    {
+      "name": "BillingPostalCode",
+      "label": "청구지 우편번호",
+      "type": "string"
+    },
+    {
+      "name": "BillingCountry",
+      "label": "청구지 국가",
+      "type": "string"
+    },
+    {
+      "name": "BillingLatitude",
+      "label": "청구지 위도",
+      "type": "double"
+    },
+    {
+      "name": "BillingLongitude",
+      "label": "청구지 경도",
+      "type": "double"
+    },
+    {
+      "name": "BillingGeocodeAccuracy",
+      "label": "Billing Geocode Accuracy",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "BillingAddress",
+      "label": "청구지",
+      "type": "address"
+    },
+    {
+      "name": "ShippingStreet",
+      "label": "배송지 상세주소",
+      "type": "textarea"
+    },
+    {
+      "name": "ShippingCity",
+      "label": "배송지 시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "ShippingState",
+      "label": "배송지 시/도",
+      "type": "string"
+    },
+    {
+      "name": "ShippingPostalCode",
+      "label": "배송지 우편번호",
+      "type": "string"
+    },
+    {
+      "name": "ShippingCountry",
+      "label": "배송지 국가",
+      "type": "string"
+    },
+    {
+      "name": "ShippingLatitude",
+      "label": "배송지 위도",
+      "type": "double"
+    },
+    {
+      "name": "ShippingLongitude",
+      "label": "배송지 경도",
+      "type": "double"
+    },
+    {
+      "name": "ShippingGeocodeAccuracy",
+      "label": "Shipping Geocode Accuracy",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "ShippingAddress",
+      "label": "배송지",
+      "type": "address"
+    },
+    {
+      "name": "Name",
+      "label": "출고 이름",
+      "type": "string"
+    },
+    {
+      "name": "PoDate",
+      "label": "PO 일자",
+      "type": "date"
+    },
+    {
+      "name": "PoNumber",
+      "label": "PO 번호",
+      "type": "string"
+    },
+    {
+      "name": "OrderReferenceNumber",
+      "label": "출고 참조 번호",
+      "type": "string"
+    },
+    {
+      "name": "BillToContactId",
+      "label": "요금 청구 연락처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "ShipToContactId",
+      "label": "배송지 연락처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "ActivatedDate",
+      "label": "활성화된 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "ActivatedById",
+      "label": "활성화한 사람 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "StatusCode",
+      "label": "상태 범주",
+      "type": "picklist",
+      "picklistValues": [
+        "Draft",
+        "Activated",
+        "Canceled",
+        "Expired",
+        "Superseded"
+      ]
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "출고 통화",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "OrderNumber",
+      "label": "출고 번호",
+      "type": "string"
+    },
+    {
+      "name": "TotalAmount",
+      "label": "출고 금액",
+      "type": "currency"
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "AmaranthCode__c",
+      "label": "Amaranth Code",
+      "type": "string"
+    },
+    {
+      "name": "DeliveryType__c",
+      "label": "배송방법",
+      "type": "picklist",
+      "picklistValues": [
+        "00004",
+        "00001",
+        "퀵(긴급)",
+        "00002",
+        "00003",
+        "-"
+      ]
+    },
+    {
+      "name": "InstallConfirmedDate__c",
+      "label": "설치 확정일자",
+      "type": "date"
+    },
+    {
+      "name": "InstallationPartners__c",
+      "label": "설치 업체",
+      "type": "picklist",
+      "picklistValues": [
+        "A1-01",
+        "B1-01",
+        "B1-02",
+        "B2-01",
+        "B9-01",
+        "B7-01",
+        "B11-1",
+        "B8-00",
+        "B3-01",
+        "B6-01",
+        "B5-01",
+        "B10-1",
+        "B4-01",
+        "B12-1",
+        "B13-00",
+        "E1-01",
+        "E1-03",
+        "E1-02",
+        "E1-04",
+        "E1-05",
+        "E1-08",
+        "E1-07",
+        "-",
+        "테스터",
+        "우리ENC",
+        "torder_USA",
+        "FMS",
+        "ADVANCE_SOLUTIONS",
+        "BANKCARD_SERVICES",
+        "torder_Canada",
+        "UNINET",
+        "1T4MERCHANT",
+        "TIO_SOLUTION",
+        "Credit Solution(SUK)",
+        "Self_Installation",
+        "Others",
+        "PI팀_테스트"
+      ]
+    },
+    {
+      "name": "InternalUserContact__c",
+      "label": "연락처",
+      "type": "phone"
+    },
+    {
+      "name": "MasterTabletAmount__c",
+      "label": "마스터 태블릿 수량",
+      "type": "double"
+    },
+    {
+      "name": "OrderDecision__c",
+      "label": "출고 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "신규 출고",
+        "계약서 업데이트용",
+        "A/S",
+        "소모품 추가구매",
+        "양도양수"
+      ]
+    },
+    {
+      "name": "OrderRequest__c",
+      "label": "물류신청서 특이사항(인쇄용)",
+      "type": "string"
+    },
+    {
+      "name": "OrderType__c",
+      "label": "출고유형",
+      "type": "picklist",
+      "picklistValues": [
+        "00001",
+        "00002",
+        "00004",
+        "00003",
+        "00008",
+        "00009",
+        "00011",
+        "00005",
+        "99999",
+        "22222",
+        "00006",
+        "00010",
+        "00026",
+        "00023",
+        "00021",
+        "00024",
+        "00015",
+        "00025",
+        "00000",
+        "00022",
+        "00012",
+        "00013",
+        "11111"
+      ]
+    },
+    {
+      "name": "OutputDate__c",
+      "label": "출고 일자",
+      "type": "date"
+    },
+    {
+      "name": "Request_Internal__c",
+      "label": "요청사항(내부용)",
+      "type": "string"
+    },
+    {
+      "name": "ShipAddress__c",
+      "label": "매장 주소(배송지)",
+      "type": "string"
+    },
+    {
+      "name": "fm_OrdersPhone__c",
+      "label": "출고 소유자 연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_OwnerDepartment__c",
+      "label": "출고 소유자 부서(미사용)",
+      "type": "string"
+    },
+    {
+      "name": "Brand_Branch__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "Field1__c",
+      "label": "견적 내용",
+      "type": "string"
+    },
+    {
+      "name": "fm_BranchName__c",
+      "label": "지점명",
+      "type": "string"
+    },
+    {
+      "name": "fm_CommuicationPhone__c",
+      "label": "소통_연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_ContractStatus__c",
+      "label": "계약상태",
+      "type": "string"
+    },
+    {
+      "name": "fm_PresidentPhone__c",
+      "label": "대표자 연락처",
+      "type": "string"
+    },
+    {
+      "name": "fm_TabletID__c",
+      "label": "태블릿 ID",
+      "type": "string"
+    },
+    {
+      "name": "fm_TabletPW__c",
+      "label": "태블릿 PW",
+      "type": "string"
+    },
+    {
+      "name": "IsCallout__c",
+      "label": "IsCallout",
+      "type": "boolean"
+    },
+    {
+      "name": "OwnerEmpCd__c",
+      "label": "Owner empCd",
+      "type": "string"
+    },
+    {
+      "name": "OldKeyValue__c",
+      "label": "(과거)KEY값",
+      "type": "string"
+    },
+    {
+      "name": "OldCreatedDate__c",
+      "label": "(과거)생성일자",
+      "type": "datetime"
+    },
+    {
+      "name": "ru_OrderitemRecordQty__c",
+      "label": "출고제품 레코드 수량",
+      "type": "double"
+    },
+    {
+      "name": "fm_OpportunityId__c",
+      "label": "영업기회 ID",
+      "type": "string"
+    },
+    {
+      "name": "fm_BOUser__c",
+      "label": "BO담당자",
+      "type": "string"
+    },
+    {
+      "name": "fm_DepartmentBO__c",
+      "label": "부서(BO)",
+      "type": "string"
+    },
+    {
+      "name": "PresidentPhone__c",
+      "label": "대표자 연락처",
+      "type": "string"
+    },
+    {
+      "name": "CommunicationPhone__c",
+      "label": "소통 연락처",
+      "type": "string"
+    },
+    {
+      "name": "LocalType__c",
+      "label": "국내해외 구분",
+      "type": "picklist",
+      "picklistValues": [
+        "Korea",
+        "US",
+        "Canada",
+        "Other country"
+      ]
+    },
+    {
+      "name": "Owner_Department__c",
+      "label": "부서",
+      "type": "string"
+    },
+    {
+      "name": "TorderTag_Status__c",
+      "label": "멀티오더 출고 여부",
+      "type": "boolean"
+    },
+    {
+      "name": "torderTag_senddate__c",
+      "label": "멀티오더 출고예정일",
+      "type": "date"
+    },
+    {
+      "name": "fm_PaymentType__c",
+      "label": "결제방식",
+      "type": "string"
+    },
+    {
+      "name": "Courier__c",
+      "label": "택배사",
+      "type": "picklist",
+      "picklistValues": [
+        "CJ대한통운",
+        "경동택배"
+      ]
+    },
+    {
+      "name": "CourierDescription__c",
+      "label": "비고(택배)",
+      "type": "textarea"
+    },
+    {
+      "name": "TrackingNumber__c",
+      "label": "운송장번호",
+      "type": "string"
+    },
+    {
+      "name": "IsSignedConfirmation__c",
+      "label": "서명 완료",
+      "type": "boolean"
+    },
+    {
+      "name": "Installation__c",
+      "label": "설치",
+      "type": "reference",
+      "referenceTo": [
+        "Installation__c"
+      ]
+    },
+    {
+      "name": "Case__c",
+      "label": "문의사항",
+      "type": "reference",
+      "referenceTo": [
+        "Case"
+      ]
+    },
+    {
+      "name": "SignedDate__c",
+      "label": "서명 완료 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "fm_Account_FRHQ__c",
+      "label": "상호의 FR본사",
+      "type": "string"
+    },
+    {
+      "name": "ru_ItemQty__c",
+      "label": "총 제품 개수",
+      "type": "double"
+    }
+  ]
+}
