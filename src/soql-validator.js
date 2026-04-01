@@ -36,8 +36,17 @@ function validateAndFix(query) {
     fixes.push('COUNT() 뒤 필드 제거');
   }
 
-  // 4. COUNT() cnt 같은 alias 제거
-  fixed = fixed.replace(/COUNT\(\)\s+\w+/gi, 'COUNT()');
+  // 4. COUNT() 뒤 FROM 누락 수정 + alias 제거
+  // COUNT() Lead WHERE → COUNT() FROM Lead WHERE (FROM 누락)
+  if (/COUNT\(\)\s+\w+\s+WHERE/i.test(fixed) && !/COUNT\(\)\s+FROM\b/i.test(fixed)) {
+    fixed = fixed.replace(/COUNT\(\)\s+(\w+)\s+WHERE/i, 'COUNT() FROM $1 WHERE');
+    fixes.push('COUNT() FROM 누락 수정');
+  }
+  // COUNT() cnt FROM → COUNT() FROM (alias 제거, FROM이 뒤에 있는 경우만)
+  if (/COUNT\(\)\s+\w+\s+FROM/i.test(fixed)) {
+    fixed = fixed.replace(/COUNT\(\)\s+\w+\s+FROM/i, 'COUNT() FROM');
+    fixes.push('COUNT() alias 제거');
+  }
 
   // 5. 세미콜론이 쿼리 안에 남아있으면 제거
   fixed = fixed.replace(/;/g, '');
@@ -66,7 +75,16 @@ function validateAndFix(query) {
     }
   }
 
-  // 9. Event에서 Owner 커스텀 필드 접근 불가 — SELECT/WHERE에서 제거
+  // 9. FROM 누락 수정 — 간단한 replace로 처리
+  if (!/\bFROM\b/i.test(fixed)) {
+    fixed = fixed.replace(/COUNT\(\)\s+(\w+)\s+WHERE/i, 'COUNT() FROM $1 WHERE');
+    fixed = fixed.replace(/\)\s+(\w+)\s+WHERE/i, ') FROM $1 WHERE');
+    // 일반 필드: SELECT Name Lead WHERE → SELECT Name FROM Lead WHERE
+    fixed = fixed.replace(/SELECT\s+([\w.,\s]+?)\s+([A-Z]\w+(?:__c)?)\s+WHERE/i, 'SELECT $1 FROM $2 WHERE');
+    if (/\bFROM\b/i.test(fixed)) fixes.push('FROM 누락 수정');
+  }
+
+  // 10. Event에서 Owner 커스텀 필드 접근 불가 — SELECT/WHERE에서 제거
   if (/\bFROM\s+Event\b/i.test(fixed)) {
     if (/Owner\.Team__c|Owner\.Department|Owner\.SlackMemberID__c/i.test(fixed)) {
       fixed = fixed.replace(/,?\s*Owner\.Team__c/gi, '');
