@@ -41,6 +41,8 @@
 - "노꼬치킨 안양" → {"intent": "search", "keyword": "노꼬치킨(안양)"}
 - "청당콩이랑 어떻게 됐어?" → {"intent": "search", "keyword": "청당콩이랑"}
 - "스시이안앤 전체 설치 대수" → {"intent": "brand", "keyword": "스시이안앤"}
+- "국수나무 설치 대수" → {"intent": "brand", "keyword": "국수나무"}
+- "한신포차 몇대 깔려있어?" → {"intent": "brand", "keyword": "한신포차"}
 - "오유정님 오늘 미팅 건수" → {"intent": "meeting", "names": ["오유정"], "date": "today"}
 - "문은기/정용현/박해규 다음달 미팅" → {"intent": "meeting", "names": ["문은기", "정용현", "박해규"], "date": "next_month"}
 - "내 미팅 알려줘" → {"intent": "meeting", "names": ["me"], "date": "today"}

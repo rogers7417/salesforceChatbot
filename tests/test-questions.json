@@ -1,0 +1,188 @@
+{
+  "description": "Salesforce 영업팀 챗봇 테스트 질문 20개",
+  "generated": "2026-04-01",
+  "categories": [
+    {
+      "category": "매장 검색",
+      "description": "오타, 줄임말 포함한 매장/업체명 검색",
+      "questions": [
+        {
+          "id": 1,
+          "question": "노꼬치킨 안양점 어떻게 됐어?",
+          "type": "search",
+          "difficulty": "쉬움",
+          "expected_behavior": "intent=search, keyword='노꼬치킨(안양)' 으로 분류. Account에서 Name LIKE '%노꼬치킨%안양%' 검색하여 매장 정보 반환"
+        },
+        {
+          "id": 2,
+          "question": "청당콩이랑 진행상황",
+          "type": "search",
+          "difficulty": "보통",
+          "expected_behavior": "intent=search로 분류. '청당콩이랑'이라는 오타/줄임말 포함 매장명으로 Account 검색. 유사 매장이 여러 개면 선택지 제공"
+        },
+        {
+          "id": 3,
+          "question": "스시이안앤 강남 현황",
+          "type": "search",
+          "difficulty": "보통",
+          "expected_behavior": "intent=search, keyword='스시이안앤(강남)'. Account + Opportunity + Lead 등 관련 정보를 종합하여 매장 현황 반환"
+        }
+      ]
+    },
+    {
+      "category": "브랜드 조회",
+      "description": "브랜드 전체 설치 현황, 태블릿 수 등",
+      "questions": [
+        {
+          "id": 4,
+          "question": "본가 전체 설치 대수 알려줘",
+          "type": "brand",
+          "difficulty": "쉬움",
+          "expected_behavior": "intent=brand, keyword='본가'. Account에서 브랜드명으로 검색 후 ContractTabletQuantity__c 합산하여 태블릿 수 반환"
+        },
+        {
+          "id": 5,
+          "question": "명륜진사갈비 출고 현황",
+          "type": "brand",
+          "difficulty": "보통",
+          "expected_behavior": "intent=brand, keyword='명륜진사갈비'. Order 테이블에서 해당 브랜드 관련 출고 상태별 건수 조회"
+        },
+        {
+          "id": 6,
+          "question": "한신포차 몇대 깔려있어?",
+          "type": "brand",
+          "difficulty": "보통",
+          "expected_behavior": "intent=brand, keyword='한신포차'. '몇대 깔려있어'를 태블릿 설치 대수로 해석. Account에서 ContractTabletQuantity__c 또는 ActivableTabletNumber__c 합산"
+        }
+      ]
+    },
+    {
+      "category": "미팅/일정",
+      "description": "특정 사람, 팀 단위 미팅 조회",
+      "questions": [
+        {
+          "id": 7,
+          "question": "오유정님 이번주 미팅 몇건이야?",
+          "type": "meeting",
+          "difficulty": "쉬움",
+          "expected_behavior": "intent=meeting, names=['오유정'], date='this_week'. Event에서 Owner.Name='오유정' AND ActivityDate = THIS_WEEK 조회하여 건수 반환"
+        },
+        {
+          "id": 8,
+          "question": "문은기/정용현/박해규 다음달 미팅 일정",
+          "type": "meeting",
+          "difficulty": "보통",
+          "expected_behavior": "intent=meeting, names=['문은기','정용현','박해규'], date='next_month'. 3명의 User ID를 찾고 Event에서 OwnerId IN (...) AND ActivityDate = NEXT_MONTH 조회"
+        },
+        {
+          "id": 9,
+          "question": "ae/am 이번달 미팅 건수",
+          "type": "query",
+          "difficulty": "보통",
+          "expected_behavior": "fixed-query 매칭 ('am 미팅' 또는 'ae 미팅'). 채널세일즈 AE/AM 팀 User 조회 후 Event에서 해당 User들의 이번달 미팅 건수 반환"
+        }
+      ]
+    },
+    {
+      "category": "파트너사/Lead",
+      "description": "파트너사 소개 현황, Lead 관련 질문",
+      "questions": [
+        {
+          "id": 10,
+          "question": "이번달 파트너사 리드 소개 현황",
+          "type": "query",
+          "difficulty": "쉬움",
+          "expected_behavior": "fixed-query 매칭 ('이번달 리드 소개'). Lead에서 PartnerName__c != null AND CreatedDate = THIS_MONTH 조회하여 파트너사별 소개 리드 목록 반환"
+        },
+        {
+          "id": 11,
+          "question": "lead 안준 파트너사 정리해줘",
+          "type": "query",
+          "difficulty": "보통",
+          "expected_behavior": "fixed-query 매칭 ('lead 안준 파트너'). 전체 파트너사 목록과 Lead 소개 파트너사를 각각 조회 후 앱에서 비교하여 미소개 파트너사 반환"
+        },
+        {
+          "id": 12,
+          "question": "이번달 오인입 몇건이야?",
+          "type": "query",
+          "difficulty": "쉬움",
+          "expected_behavior": "fixed-query 매칭 ('이번달 오인입'). Lead에서 Status='종료' AND LossReason__c='오인입' AND CreatedDate=THIS_MONTH COUNT 반환"
+        }
+      ]
+    },
+    {
+      "category": "분석/통계",
+      "description": "전환율, 건수, 팀별 현황 등 분석형 질문",
+      "questions": [
+        {
+          "id": 13,
+          "question": "채널TM파트 잠재고객 계류건 알려줘",
+          "type": "query",
+          "difficulty": "보통",
+          "expected_behavior": "intent=query. LLM이 SOQL 생성: Lead에서 Status NOT IN ('종료') AND Owner의 Department='채널매니지먼트' AND Team__c='TM' 조건으로 조회"
+        },
+        {
+          "id": 14,
+          "question": "이번달 리드 전환율 어떻게 돼?",
+          "type": "query",
+          "difficulty": "어려움",
+          "expected_behavior": "intent=query. LLM이 SOQL 생성: 이번달 전체 Lead 건수와 IsConverted=true 건수를 각각 조회 후 비율 계산. 단일 SOQL로 안 되어 복수 쿼리 필요할 수 있음"
+        },
+        {
+          "id": 15,
+          "question": "이번달 종료건 몇개야?",
+          "type": "query",
+          "difficulty": "쉬움",
+          "expected_behavior": "fixed-query 매칭 ('이번달 종료건'). Lead에서 Status='종료' AND CreatedDate=THIS_MONTH COUNT 반환"
+        }
+      ]
+    },
+    {
+      "category": "후속 질문",
+      "description": "'그 중에', '거기서' 등 이전 문맥에 의존하는 질문",
+      "questions": [
+        {
+          "id": 16,
+          "question": "그 중에 오인입 건만 보여줘",
+          "type": "query",
+          "difficulty": "어려움",
+          "expected_behavior": "이전 대화에서 조회한 Lead 결과를 문맥으로 참조해야 함. 문맥이 없으면 실패하거나, 독립 질문으로 재해석하여 오인입 건 전체를 조회할 수 있음"
+        },
+        {
+          "id": 17,
+          "question": "거기서 담당자별로 정리해줘",
+          "type": "query",
+          "difficulty": "어려움",
+          "expected_behavior": "이전 조회 결과를 담당자(Owner)별로 그룹핑하여 재정리. 이전 문맥이 없으면 처리 불가. 문맥 유지 기능에 따라 성공 여부 결정"
+        },
+        {
+          "id": 18,
+          "question": "2",
+          "type": "select",
+          "difficulty": "쉬움",
+          "expected_behavior": "intent=select, number=2. 이전에 선택지가 제시된 상태에서 2번 항목을 선택. 이전 상태가 없으면 '선택할 항목이 없습니다' 등 안내"
+        }
+      ]
+    },
+    {
+      "category": "어려운 질문",
+      "description": "챗봇이 실패할 가능성이 높은 복합 질문",
+      "questions": [
+        {
+          "id": 19,
+          "question": "채널BO파트에서 이번달 CW 미진행이면서 견적서도 없는 영업기회 담당자별로 정리해줘",
+          "type": "query",
+          "difficulty": "어려움",
+          "expected_behavior": "intent=query. 복합 조건 필요: (1) User에서 채널매니지먼트+백오피스 팀 조회, (2) Opportunity에서 해당 Owner + IsClosed=false + StageName!='Closed Won' 조회, (3) Quote 존재 여부 확인. 서브쿼리 제한으로 LLM이 정확한 SOQL을 생성하기 어려울 수 있음. 여러 쿼리를 조합해야 하며 실패 가능성 높음"
+        },
+        {
+          "id": 20,
+          "question": "지난 3개월간 파트너사별 리드 전환율 top 5랑 해당 파트너사의 활성 매장 수도 같이 보여줘",
+          "type": "query",
+          "difficulty": "어려움",
+          "expected_behavior": "intent=query. 매우 복합적: (1) 3개월간 파트너사별 Lead 건수, (2) 파트너사별 전환 건수(IsConverted), (3) 전환율 계산 및 순위, (4) 해당 파트너사의 활성 매장 수(PartnerTorderStoreQty__c). SOQL에서 GROUP BY + 비율 계산이 제한적이고 다중 테이블 조인 필요. 챗봇이 단일 응답으로 처리하기 매우 어려움"
+        }
+      ]
+    }
+  ]
+}

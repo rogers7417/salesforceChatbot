@@ -14,15 +14,18 @@ function validateAndFix(query) {
   }
 
   // 2. 테이블 alias 제거 (FROM Account a → FROM Account)
-  fixed = fixed.replace(/\bFROM\s+(\w+)\s+([a-z])\b(?!\w)/gi, (match, table, alias) => {
-    // alias가 WHERE, ORDER 등이면 건너뜀
-    if (['WHERE', 'ORDER', 'LIMIT', 'AND', 'OR', 'GROUP'].includes(alias.toUpperCase())) return match;
-    fixes.push(`alias "${alias}" 제거`);
-    // alias.field → field 로도 치환
-    const aliasPattern = new RegExp(`\\b${alias}\\.`, 'g');
-    fixed = fixed.replace(aliasPattern, '');
-    return `FROM ${table}`;
-  });
+  const aliasMatch = fixed.match(/\bFROM\s+(\w+)\s+([a-z])\b(?!\w)/i);
+  if (aliasMatch) {
+    const [, table, alias] = aliasMatch;
+    if (!['WHERE', 'ORDER', 'LIMIT', 'AND', 'OR', 'GROUP'].includes(alias.toUpperCase())) {
+      // 먼저 alias.field → field 치환
+      const aliasPattern = new RegExp(`\\b${alias}\\.`, 'g');
+      fixed = fixed.replace(aliasPattern, '');
+      // 그 다음 FROM Table alias → FROM Table
+      fixed = fixed.replace(/\bFROM\s+(\w+)\s+[a-z]\b(?!\w)/i, `FROM ${table}`);
+      fixes.push(`alias "${alias}" 제거`);
+    }
+  }
 
   // 3. COUNT()와 다른 필드 동시 SELECT 금지
   // SELECT Name, COUNT() FROM → SELECT COUNT() FROM
@@ -92,6 +95,11 @@ function validateAndFix(query) {
       fixed = fixed.replace(/,?\s*Owner\.SlackMemberID__c/gi, '');
       fixed = fixed.replace(/\bAND\s+Owner\.Team__c\s*(=|IN|LIKE)[^)]*(\)|'[^']*')/gi, '');
       fixed = fixed.replace(/\bWHERE\s+Owner\.Team__c\s*(=|IN|LIKE)[^)]*(\)|'[^']*')\s*AND/gi, 'WHERE');
+      // SELECT 필드가 비었으면 기본 필드 추가
+      if (/SELECT\s+FROM/i.test(fixed)) {
+        fixed = fixed.replace(/SELECT\s+FROM/i, 'SELECT Id, Subject, Owner.Name, ActivityDate, StartDateTime, EndDateTime FROM');
+        fixes.push('Event SELECT 필드 비어서 기본값 추가');
+      }
       fixes.push('Event에서 Owner 커스텀 필드 제거');
     }
   }
