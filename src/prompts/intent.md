@@ -7,15 +7,18 @@
 2. "search" - 매장명, 업체명, 지점명을 검색할 때
 3. "brand" - 브랜드 전체 현황, 설치 대수, 출고 현황 등을 물어볼 때
 4. "meeting" - 특정 사람의 미팅, 방문, 일정, 미팅 건수 등을 물어볼 때
-5. "select" - 숫자를 입력해서 선택할 때
-6. "query" - 위 카테고리에 안 맞는 Salesforce 데이터 조회/분석 질문
-7. "unknown" - Salesforce와 무관한 질문
+5. "activity" - 특정 담당자의 활동 현황, 뭐하는지, 진행상황 등을 물어볼 때 (팀장용)
+6. "select" - 숫자를 입력해서 선택할 때
+7. "query" - 위 카테고리에 안 맞는 Salesforce 데이터 조회/분석 질문
+8. "unknown" - Salesforce와 무관한 질문
 
 규칙:
 - 오타가 있어도 매장명/업체명으로 보이면 search로 판단
 - "어떻게 됐어?", "진행상황", "현황" 등이 매장명과 함께 오면 search
 - "전체", "브랜드", "설치 대수", "출고", "몇 대" 등이 포함되면 brand
 - "미팅", "방문", "일정", "스케줄", "미팅 건수" 등이 사람 이름과 함께 오면 meeting
+- "뭐해", "뭐하고 있어", "활동", "현황", "진행상황", "어떻게 돼가" 등이 사람 이름과 함께 오면 activity
+- "김철수 오늘 뭐해?"처럼 특정 사람의 활동을 물어보면 activity (본인이 아닌 다른 사람)
 - 팀/파트별 조회, 계류건, CW 미진행, DB 인입 등 분석형 질문은 query
 - 날짜가 없으면 오늘로 간주
 - 숫자만 입력하면 select
@@ -28,6 +31,7 @@
 - brand: {"intent": "brand", "keyword": "브랜드명"}
 - meeting (1명): {"intent": "meeting", "names": ["사람 이름"], "date": "today"}
 - meeting (여러명): {"intent": "meeting", "names": ["이름1", "이름2"], "date": "next_month"}
+- activity (담당자 활동): {"intent": "activity", "name": "사람 이름", "date": "today"}
 - select: {"intent": "select", "number": 1}
 - query: {"intent": "query"}
 - unknown: {"intent": "unknown"}
@@ -40,6 +44,10 @@
 - "오유정님 오늘 미팅 건수" → {"intent": "meeting", "names": ["오유정"], "date": "today"}
 - "문은기/정용현/박해규 다음달 미팅" → {"intent": "meeting", "names": ["문은기", "정용현", "박해규"], "date": "next_month"}
 - "내 미팅 알려줘" → {"intent": "meeting", "names": ["me"], "date": "today"}
+- "김철수 오늘 뭐해?" → {"intent": "activity", "name": "김철수", "date": "today"}
+- "박영희 이번 주 활동" → {"intent": "activity", "name": "박영희", "date": "this_week"}
+- "정용현 어떻게 돼가?" → {"intent": "activity", "name": "정용현", "date": "today"}
+- "문은기 진행상황" → {"intent": "activity", "name": "문은기", "date": "today"}
 - "ae/am의 다음달 미팅일정" → {"intent": "query"}
 - "채널bo파트의 cw 미진행 현황" → {"intent": "query"}
 - "채널tm파트 잠재고객 계류건" → {"intent": "query"}
