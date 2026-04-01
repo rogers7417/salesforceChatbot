@@ -8,6 +8,25 @@
  */
 require('dotenv').config();
 
+// 필수 환경 변수 검증
+const REQUIRED_ENV = [
+  'SLACK_BOT_TOKEN',
+  'SLACK_APP_TOKEN',
+  'SF_LOGIN_URL',
+  'SF_CLIENT_ID',
+  'SF_CLIENT_SECRET',
+  'SF_USERNAME',
+  'SF_PASSWORD',
+  'CLAUDE_API_KEY',
+];
+
+const missing = REQUIRED_ENV.filter(key => !process.env[key]);
+if (missing.length > 0) {
+  console.error(`❌ 필수 환경 변수 누락: ${missing.join(', ')}`);
+  console.error('   .env 파일을 확인하세요.');
+  process.exit(1);
+}
+
 const { App } = require('@slack/bolt');
 const { classifyIntent } = require('./intent');
 const { searchAccounts, searchByKeyword, getMyTodos, findUserBySlackId } = require('./search-salesforce');
@@ -19,6 +38,7 @@ const { generateAndExecute, summarizeResults } = require('./soql-generator');
 const { summarize } = require('./summarize');
 const { logQuery } = require('./query-logger');
 const { formatMyTodos, formatSearchResult, formatAccountList, formatBrandSummary, formatMeetings } = require('./format');
+const logger = require('./logger');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -74,6 +94,34 @@ app.message(async ({ message, say }) => {
     const sfUserId = sfUser?.Id || null;
 
     const session = getSession(userId);
+
+    // /help 명령어
+    if (text === '/help' || text === '도움말' || text === '?') {
+      const helpMsg = `*Sales Chatbot 사용법*
+
+*기본 명령어*
+  /help - 이 도움말 보기
+  /log - 최근 7일 질문 로그 보기
+
+*검색 기능*
+  매장명 입력 - 업체 검색 (Lead/Opportunity/Account)
+  브랜드명 현황 - 브랜드별 출고 현황
+
+*일정 조회*
+  오늘 뭐해? - 내 할 일 (Lead + 영업기회)
+  홍길동 미팅 - 특정 인원 미팅 일정
+  내 미팅 이번주 - 내 미팅 일정
+
+*자연어 질문*
+  이번 달 Closed Won 영업기회 - SOQL 자동 생성
+  Lead 전환율 - 자연어로 데이터 조회
+
+*팁*
+  - 검색 결과가 여러 건이면 숫자로 선택
+  - AI가 Slack 대화도 함께 요약해줌`;
+      await say(helpMsg);
+      return;
+    }
 
     // 세션에 선택 대기 중인 경우 숫자 입력 체크
     // /log 명령어 — 질문 로그 요약
@@ -152,7 +200,7 @@ app.message(async ({ message, say }) => {
       throw handleErr;
     }
   } catch (err) {
-    console.error('에러:', err);
+    logger.error('App', '메시지 처리 실패', err, { userId, text });
     await say(`오류가 발생했습니다: ${err.message}`);
   }
 });

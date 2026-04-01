@@ -4,12 +4,14 @@
 const fs = require('fs');
 const path = require('path');
 const Anthropic = require('@anthropic-ai/sdk');
+const { claudeLimiter } = require('./rate-limiter');
 
 const client = new Anthropic({ apiKey: process.env.CLAUDE_API_KEY });
 const systemPrompt = fs.readFileSync(path.join(__dirname, 'prompts', 'intent.md'), 'utf-8');
 
 async function classifyIntent(text) {
   try {
+    await claudeLimiter.acquire();
     const response = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 100,

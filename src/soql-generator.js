@@ -7,6 +7,7 @@ const Anthropic = require('@anthropic-ai/sdk');
 const { getSalesforceToken, soqlQuery } = require('./salesforce');
 const { matchFixedQuery } = require('./fixed-queries');
 const { validateAndFix } = require('./soql-validator');
+const { claudeLimiter } = require('./rate-limiter');
 
 const client = new Anthropic({ apiKey: process.env.CLAUDE_API_KEY });
 
@@ -171,6 +172,7 @@ async function generateAndExecute(question, history = []) {
     }
 
     // SOQL 생성
+    await claudeLimiter.acquire();
     const response = await client.messages.create({
       model,
       max_tokens: 500,
@@ -280,6 +282,7 @@ async function summarizeResults(question, queryResults) {
   3. 경쟁사 이탈 → 차별점 강조 자료 준비
 ` : '';
 
+  await claudeLimiter.acquire();
   const response = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 2048,
