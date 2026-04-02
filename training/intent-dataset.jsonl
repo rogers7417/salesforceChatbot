@@ -1,0 +1,281 @@
+{"text": "오늘 뭐해", "label": "todo"}
+{"text": "할일 알려줘", "label": "todo"}
+{"text": "오늘 해야 할 거", "label": "todo"}
+{"text": "투두", "label": "todo"}
+{"text": "나 뭐하지", "label": "todo"}
+{"text": "오늘 할 일 뭐야", "label": "todo"}
+{"text": "내 업무 뭐 있어", "label": "todo"}
+{"text": "오늘 업무 알려줘", "label": "todo"}
+{"text": "할일 있어?", "label": "todo"}
+{"text": "오늘 스케줄", "label": "todo"}
+{"text": "오늘 할 거 정리해줘", "label": "todo"}
+{"text": "내 할일 목록", "label": "todo"}
+{"text": "뭐해야돼", "label": "todo"}
+{"text": "내 오늘 일정", "label": "todo"}
+{"text": "오늘 해야할게 뭐야", "label": "todo"}
+{"text": "할일목록 보여줘", "label": "todo"}
+{"text": "할거 뭐있냐", "label": "todo"}
+{"text": "나 오늘 뭐해야하지", "label": "todo"}
+{"text": "오늘 뭐 있어?", "label": "todo"}
+{"text": "할일좀", "label": "todo"}
+{"text": "내 업무 뭐냐", "label": "todo"}
+{"text": "오늘 투두 보여줘", "label": "todo"}
+{"text": "할 게 뭐가 있지", "label": "todo"}
+{"text": "오늘자 업무", "label": "todo"}
+{"text": "업무 리스트 줘", "label": "todo"}
+{"text": "내가 해야 할 게 뭐야", "label": "todo"}
+{"text": "할일 체크", "label": "todo"}
+{"text": "오늘 해야 할 일 정리", "label": "todo"}
+{"text": "투두리스트 보여줘", "label": "todo"}
+{"text": "나 뭐 해야함?", "label": "todo"}
+{"text": "국수나무 강남점", "label": "search"}
+{"text": "본가 어떻게 됐어?", "label": "search"}
+{"text": "투파인드피터", "label": "search"}
+{"text": "스시이안앤 신논현", "label": "search"}
+{"text": "한신포차 홍대", "label": "search"}
+{"text": "노꼬치킨 안양", "label": "search"}
+{"text": "청당콩이랑 어떻게 됐어?", "label": "search"}
+{"text": "봉구스밥버거 잠실점", "label": "search"}
+{"text": "매드포갈릭", "label": "search"}
+{"text": "고기리막국수", "label": "search"}
+{"text": "역전우동 현황", "label": "search"}
+{"text": "새마을식당 강남", "label": "search"}
+{"text": "원할머니보쌈", "label": "search"}
+{"text": "bbq 수원점", "label": "search"}
+{"text": "교촌치킨 역삼", "label": "search"}
+{"text": "명륜진사갈비 진행상황", "label": "search"}
+{"text": "홍콩반점 마포점", "label": "search"}
+{"text": "이디야커피 판교", "label": "search"}
+{"text": "더본코리아", "label": "search"}
+{"text": "백수나무", "label": "search"}
+{"text": "국수나므", "label": "search"}
+{"text": "한싱포차", "label": "search"}
+{"text": "투파인드피타", "label": "search"}
+{"text": "스시이안엔", "label": "search"}
+{"text": "빽다방 구로점", "label": "search"}
+{"text": "롯데리아 신촌", "label": "search"}
+{"text": "맘스터치 건대점", "label": "search"}
+{"text": "서가앤쿡 판교점 어떻게 됐지", "label": "search"}
+{"text": "김밥천국 강남역점", "label": "search"}
+{"text": "본죽 사당점 현황 알려줘", "label": "search"}
+{"text": "컴포즈커피 진행상황 어때?", "label": "search"}
+{"text": "해물탕집 진행어때", "label": "search"}
+{"text": "명동교자 본점", "label": "search"}
+{"text": "순남시래기 상태 알려줘", "label": "search"}
+{"text": "미소야 어떻게 돼가?", "label": "search"}
+{"text": "요기요파스타 가로수길점", "label": "search"}
+{"text": "족발야시장 종로점 어떻게 됨?", "label": "search"}
+{"text": "놀부부대찌개 분당점", "label": "search"}
+{"text": "한솥도시락", "label": "search"}
+{"text": "죠스떡볶이 홍대", "label": "search"}
+{"text": "우육면관 이태원", "label": "search"}
+{"text": "피자헛 강서", "label": "search"}
+{"text": "네네치킨 광명점 현황좀", "label": "search"}
+{"text": "버거킹 사당역", "label": "search"}
+{"text": "형님집 합정점", "label": "search"}
+{"text": "동대문엽기떡볶이 건대", "label": "search"}
+{"text": "청기와타운 일산", "label": "search"}
+{"text": "곱창고 영등포", "label": "search"}
+{"text": "감성타코 역삼점 진행중이야?", "label": "search"}
+{"text": "장충동왕족발 이태원점", "label": "search"}
+{"text": "스시이안앤 전체 설치 대수", "label": "brand"}
+{"text": "국수나무 설치 대수", "label": "brand"}
+{"text": "한신포차 몇대 깔려있어?", "label": "brand"}
+{"text": "본가 전체 현황", "label": "brand"}
+{"text": "투파인드피터 브랜드 현황", "label": "brand"}
+{"text": "국수나무 전체 매장 몇 개야", "label": "brand"}
+{"text": "새마을식당 설치 현황", "label": "brand"}
+{"text": "한신포차 전체 설치대수 알려줘", "label": "brand"}
+{"text": "교촌치킨 몇 대 설치됐어?", "label": "brand"}
+{"text": "역전우동 출고 현황", "label": "brand"}
+{"text": "bbq 브랜드 현황 좀", "label": "brand"}
+{"text": "명륜진사갈비 태블릿 몇 대야", "label": "brand"}
+{"text": "원할머니보쌈 전체 설치 현황", "label": "brand"}
+{"text": "이디야 전체 몇 대야", "label": "brand"}
+{"text": "봉구스밥버거 브랜드 현황", "label": "brand"}
+{"text": "롯데리아 전체 설치 대수", "label": "brand"}
+{"text": "놀부부대찌개 몇대 깔려있어", "label": "brand"}
+{"text": "죠스떡볶이 전체 현황 알려줘", "label": "brand"}
+{"text": "한솥도시락 설치 현황 보여줘", "label": "brand"}
+{"text": "맘스터치 브랜드 몇 대?", "label": "brand"}
+{"text": "피자헛 전체 현황 어떻게 돼?", "label": "brand"}
+{"text": "네네치킨 태블릿 대수", "label": "brand"}
+{"text": "버거킹 전체 설치 대수 알려줘", "label": "brand"}
+{"text": "김밥천국 전체 몇 대 설치됐어", "label": "brand"}
+{"text": "국수나무 출고 몇 대야", "label": "brand"}
+{"text": "스시이안앤 출고 현황", "label": "brand"}
+{"text": "빽다방 설치 대수 확인", "label": "brand"}
+{"text": "홍콩반점 전체 매장 몇 대", "label": "brand"}
+{"text": "컴포즈커피 전체 설치 대수 알려줘", "label": "brand"}
+{"text": "본죽 브랜드 현황 보여줘", "label": "brand"}
+{"text": "오유정님 오늘 미팅 건수", "label": "meeting"}
+{"text": "문은기 미팅 알려줘", "label": "meeting"}
+{"text": "정용현 이번주 미팅", "label": "meeting"}
+{"text": "박해규 미팅 몇 건이야", "label": "meeting"}
+{"text": "명세준 다음주 미팅 일정", "label": "meeting"}
+{"text": "구준모 오늘 방문 일정", "label": "meeting"}
+{"text": "김보미 미팅 스케줄", "label": "meeting"}
+{"text": "송슬기 이번달 미팅 건수", "label": "meeting"}
+{"text": "문은기/정용현/박해규 다음달 미팅", "label": "meeting"}
+{"text": "오유정, 김보미 이번주 미팅", "label": "meeting"}
+{"text": "내 미팅 알려줘", "label": "meeting"}
+{"text": "나 오늘 미팅 있어?", "label": "meeting"}
+{"text": "내 이번주 미팅 건수", "label": "meeting"}
+{"text": "명세준님 방문 일정 알려줘", "label": "meeting"}
+{"text": "구준모 이번 달 방문", "label": "meeting"}
+{"text": "오유정 다음달 미팅 일정", "label": "meeting"}
+{"text": "정용현 미팅 건수 알려줘", "label": "meeting"}
+{"text": "박해규님 내일 미팅", "label": "meeting"}
+{"text": "김보미 미팅 있어?", "label": "meeting"}
+{"text": "송슬기 오늘 방문 있나요", "label": "meeting"}
+{"text": "문은기 저번주 미팅", "label": "meeting"}
+{"text": "정용현/명세준 이번주 미팅 건수", "label": "meeting"}
+{"text": "구준모, 박해규, 김보미 다음주 미팅", "label": "meeting"}
+{"text": "오유정 미팅 일정 보여줘", "label": "meeting"}
+{"text": "내 미팅 몇 건이야", "label": "meeting"}
+{"text": "송슬기님 미팅 건수 확인", "label": "meeting"}
+{"text": "명세준 내일 방문 일정", "label": "meeting"}
+{"text": "문은기 다음달 방문 스케줄", "label": "meeting"}
+{"text": "나 이번달 미팅 총 몇 건?", "label": "meeting"}
+{"text": "정용현 오늘 일정 알려줘", "label": "meeting"}
+{"text": "박해규 이번주 방문 건수", "label": "meeting"}
+{"text": "오유정/송슬기 이번달 미팅", "label": "meeting"}
+{"text": "구준모 미팅 스케줄 보여줘", "label": "meeting"}
+{"text": "김보미님 이번 주 미팅 건수 알려줘", "label": "meeting"}
+{"text": "명세준, 구준모 오늘 방문 일정", "label": "meeting"}
+{"text": "문은기 미팅 스케쥴 알려줘", "label": "meeting"}
+{"text": "박해규 방문일정 확인", "label": "meeting"}
+{"text": "송슬기 저번달 미팅 몇 건", "label": "meeting"}
+{"text": "내 방문 일정", "label": "meeting"}
+{"text": "정용현 다음 주 방문", "label": "meeting"}
+{"text": "이번달 오인입 건수", "label": "query"}
+{"text": "오인입 몇건이야", "label": "query"}
+{"text": "이번달 리드 건수", "label": "query"}
+{"text": "이번달 신규 리드 몇 건이야?", "label": "query"}
+{"text": "저번달 리드 건수", "label": "query"}
+{"text": "이번달 종료건", "label": "query"}
+{"text": "이번달 종료 건수 알려줘", "label": "query"}
+{"text": "파트너사 리드 소개 현황", "label": "query"}
+{"text": "이번달 lead 소개한 파트너사", "label": "query"}
+{"text": "lead 안 준 파트너사 정리해줘", "label": "query"}
+{"text": "리드 안준 파트너사 목록", "label": "query"}
+{"text": "cw 미진행 현황", "label": "query"}
+{"text": "closed won 안 된 영업기회", "label": "query"}
+{"text": "활성 매장 수", "label": "query"}
+{"text": "활성매장 몇 개야", "label": "query"}
+{"text": "채널bo파트의 cw 미진행 현황", "label": "query"}
+{"text": "채널tm파트 잠재고객 계류건", "label": "query"}
+{"text": "db인입되지 않는 파트너사 정리", "label": "query"}
+{"text": "ae/am의 다음달 미팅일정", "label": "query"}
+{"text": "am 미팅 이번달 몇 건", "label": "query"}
+{"text": "ae 미팅 현황", "label": "query"}
+{"text": "인바운드 팀 리드 현황", "label": "query"}
+{"text": "채널세일즈 팀별 리드", "label": "query"}
+{"text": "이번주 방문 일정 전체", "label": "query"}
+{"text": "오늘 방문 일정", "label": "query"}
+{"text": "이번달 전환율 어떻게 돼?", "label": "query"}
+{"text": "리드 전환율", "label": "query"}
+{"text": "이번달 Closed Won 건수", "label": "query"}
+{"text": "지난달 CW 건수 알려줘", "label": "query"}
+{"text": "팀별 미팅 현황", "label": "query"}
+{"text": "채널AE 리드 몇 건이야", "label": "query"}
+{"text": "채널TM 계류건 현황", "label": "query"}
+{"text": "인사이드필드 이번달 리드", "label": "query"}
+{"text": "백오피스 팀 종료건 몇 건", "label": "query"}
+{"text": "이번달 오인입 중 파트너사 리드", "label": "query"}
+{"text": "부서별 리드 현황 정리해줘", "label": "query"}
+{"text": "이번달 설치 건수", "label": "query"}
+{"text": "출고 완료 건수", "label": "query"}
+{"text": "이번달 출고 현황", "label": "query"}
+{"text": "견적서 현황 보여줘", "label": "query"}
+{"text": "이번달 영업기회 몇 건", "label": "query"}
+{"text": "방문배정 상태인 영업기회", "label": "query"}
+{"text": "이번달 계약 건수", "label": "query"}
+{"text": "재계약 현황 알려줘", "label": "query"}
+{"text": "파트너사 MOU 만료 임박한 곳", "label": "query"}
+{"text": "이번주 설치 일정", "label": "query"}
+{"text": "채널세일즈팀 이번달 CW 현황", "label": "query"}
+{"text": "중복유입 건수 몇 건이야", "label": "query"}
+{"text": "장기부재 리드 몇 건", "label": "query"}
+{"text": "오늘 신규 리드 몇 건 들어왔어?", "label": "query"}
+{"text": "리드 상태별 현황 보여줘", "label": "query"}
+{"text": "2", "label": "select"}
+{"text": "1", "label": "select"}
+{"text": "3", "label": "select"}
+{"text": "5", "label": "select"}
+{"text": "첫번째", "label": "select"}
+{"text": "두번째", "label": "select"}
+{"text": "세번째", "label": "select"}
+{"text": "2번", "label": "select"}
+{"text": "1번 선택", "label": "select"}
+{"text": "4번째", "label": "select"}
+{"text": "안녕", "label": "unknown"}
+{"text": "안녕하세요", "label": "unknown"}
+{"text": "반갑습니다", "label": "unknown"}
+{"text": "오늘 날씨 어때?", "label": "unknown"}
+{"text": "점심 뭐 먹지", "label": "unknown"}
+{"text": "ㅋㅋㅋ", "label": "unknown"}
+{"text": "고마워", "label": "unknown"}
+{"text": "수고하세요", "label": "unknown"}
+{"text": "뭐야 이게", "label": "unknown"}
+{"text": "ㅎㅇ", "label": "unknown"}
+{"text": "너 이름이 뭐야", "label": "unknown"}
+{"text": "몇시야", "label": "unknown"}
+{"text": "오늘 주식 어때", "label": "unknown"}
+{"text": "퇴근하고 싶다", "label": "unknown"}
+{"text": "배고파", "label": "unknown"}
+{"text": "커피 마시고 싶어", "label": "unknown"}
+{"text": "회식 어디서 해?", "label": "unknown"}
+{"text": "넌 뭘 할 수 있어?", "label": "unknown"}
+{"text": "도움말", "label": "unknown"}
+{"text": "테스트", "label": "unknown"}
+{"text": "잠재고객 상태가 부재중인 리드 목록", "label": "query"}
+{"text": "보류 사유별 잠재고객 현황 정리해줘", "label": "query"}
+{"text": "계약상태가 계약서명완료인 건 몇 개야", "label": "query"}
+{"text": "계약만료일이 이번달인 계약 리스트", "label": "query"}
+{"text": "계약유형이 양도양수인 건 보여줘", "label": "query"}
+{"text": "선납금 총금액 기준 상위 매장", "label": "query"}
+{"text": "설치 구분이 신규 출고인 건 이번달 몇 건", "label": "query"}
+{"text": "진행 상태가 설치예정인 설치 건수", "label": "query"}
+{"text": "연동처리여부가 보류인 설치 목록", "label": "query"}
+{"text": "설치 유형별 건수 현황", "label": "query"}
+{"text": "출고 진행상태가 출고진행중인 건", "label": "query"}
+{"text": "출고 유형이 A/S인 건 이번달 몇 건이야", "label": "query"}
+{"text": "운송장번호 없는 출고완료 건 있어?", "label": "query"}
+{"text": "출고신청서 작성일자가 이번주인 건", "label": "query"}
+{"text": "문의사항 접수경로별 건수", "label": "query"}
+{"text": "1차 유형이 해지인 문의사항 몇 건", "label": "query"}
+{"text": "문의사항 상태가 진행중인 건 리스트", "label": "query"}
+{"text": "과업 제목이 통화인 것 중 상태 Open인 건", "label": "query"}
+{"text": "중요도 High인 과업 목록 보여줘", "label": "query"}
+{"text": "방문완료여부가 true인 방문 이번달 건수", "label": "query"}
+{"text": "방문담당자 배정일자가 이번주인 방문", "label": "query"}
+{"text": "영업기회 단계가 견적인 건 몇 개야", "label": "query"}
+{"text": "경과일 60일 이상인 영업기회 리스트", "label": "query"}
+{"text": "운영 상태가 UNPAID인 거래처 목록", "label": "query"}
+{"text": "MOU시작일이 올해인 거래처 보여줘", "label": "query"}
+{"text": "MOU종료일 임박한 파트너사 정리", "label": "query"}
+{"text": "총 계약 태블릿 수가 20대 이상인 매장", "label": "query"}
+{"text": "FR본사별 매장 수 현황", "label": "query"}
+{"text": "소개 파트너사별 거래처 수", "label": "query"}
+{"text": "매장상태가 오픈전인 거래처 몇 개야", "label": "query"}
+{"text": "계약시작일이 지난달인 계약 목록", "label": "query"}
+{"text": "계약해지일이 이번달인 건 알려줘", "label": "query"}
+{"text": "납부방법이 선납금인 계약 건수", "label": "query"}
+{"text": "잔여 할부금이 남아있는 계약 리스트", "label": "query"}
+{"text": "서비스 만료일이 다음달인 계약 보여줘", "label": "query"}
+{"text": "설치완료일이 이번달인 건 몇 개", "label": "query"}
+{"text": "태블릿 수 5대 이상인 설치 건", "label": "query"}
+{"text": "포스 유형별 설치 건수 현황", "label": "query"}
+{"text": "방문 진행상태가 방문거절인 설치", "label": "query"}
+{"text": "출고 구분이 소모품 추가구매인 건 목록", "label": "query"}
+{"text": "배송방법별 출고 건수", "label": "query"}
+{"text": "출고 금액 상위 10건 보여줘", "label": "query"}
+{"text": "문의사항 중요도 High인데 아직 안 닫힌 건", "label": "query"}
+{"text": "접수경로가 카카오톡인 문의사항 이번달 건수", "label": "query"}
+{"text": "유입경로가 홈페이지인 잠재고객 이번달 몇 건", "label": "query"}
+{"text": "취소사유가 예산 부족인 리드 현황", "label": "query"}
+{"text": "영업기회 단계별 건수 현황 보여줘", "label": "query"}
+{"text": "설치 확정일자가 다음주인 영업기회", "label": "query"}
+{"text": "계약상태가 사전심사인 건 리스트 줘", "label": "query"}
+{"text": "출고제품 레코드 수량이 10개 이상인 출고 건", "label": "query"}

@@ -1,0 +1,83 @@
+{
+  "total": 281,
+  "pass": 272,
+  "fail": 9,
+  "accuracy": "96.8%",
+  "byIntent": {
+    "todo": {
+      "total": 30,
+      "pass": 28
+    },
+    "search": {
+      "total": 50,
+      "pass": 50
+    },
+    "brand": {
+      "total": 30,
+      "pass": 25
+    },
+    "meeting": {
+      "total": 40,
+      "pass": 39
+    },
+    "query": {
+      "total": 101,
+      "pass": 100
+    },
+    "select": {
+      "total": 10,
+      "pass": 10
+    },
+    "unknown": {
+      "total": 20,
+      "pass": 20
+    }
+  },
+  "fails": [
+    {
+      "text": "오늘 스케줄",
+      "expected": "todo",
+      "actual": "meeting"
+    },
+    {
+      "text": "내 오늘 일정",
+      "expected": "todo",
+      "actual": "meeting"
+    },
+    {
+      "text": "새마을식당 설치 현황",
+      "expected": "brand",
+      "actual": "search"
+    },
+    {
+      "text": "명륜진사갈비 태블릿 몇 대야",
+      "expected": "brand",
+      "actual": "search"
+    },
+    {
+      "text": "죠스떡볶이 전체 현황 알려줘",
+      "expected": "brand",
+      "actual": "search"
+    },
+    {
+      "text": "한솥도시락 설치 현황 보여줘",
+      "expected": "brand",
+      "actual": "search"
+    },
+    {
+      "text": "피자헛 전체 현황 어떻게 돼?",
+      "expected": "brand",
+      "actual": "search"
+    },
+    {
+      "text": "정용현 다음 주 방문",
+      "expected": "meeting",
+      "actual": "activity"
+    },
+    {
+      "text": "오늘 방문 일정",
+      "expected": "query",
+      "actual": "meeting"
+    }
+  ]
+}
