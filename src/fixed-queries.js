@@ -60,6 +60,24 @@ const FIXED_QUERIES = [
     ],
   },
   {
+    patterns: ['오늘 설치', '오늘 설치 일정', '오늘 설치 현황'],
+    queries: [
+      "SELECT Name, Account__r.Name, InstallationDate__c, InstallationType__c, InstallationStage__c, InstallationStatus__c, Owner.Name, ServiceTerritory__r.Name, Opportunity__r.Name, NumbeofTablets__c FROM Installation__c WHERE InstallationDate__c = TODAY ORDER BY Account__r.Name LIMIT 50",
+    ],
+  },
+  {
+    patterns: ['내일 설치', '내일 설치 일정', '내일 설치 현황'],
+    queries: [
+      "SELECT Name, Account__r.Name, InstallationDate__c, InstallationType__c, InstallationStage__c, InstallationStatus__c, Owner.Name, ServiceTerritory__r.Name, Opportunity__r.Name, NumbeofTablets__c FROM Installation__c WHERE InstallationDate__c = TOMORROW ORDER BY Account__r.Name LIMIT 50",
+    ],
+  },
+  {
+    patterns: ['이번주 설치', '이번주 설치 일정'],
+    queries: [
+      "SELECT Name, Account__r.Name, InstallationDate__c, InstallationType__c, InstallationStage__c, Owner.Name, ServiceTerritory__r.Name, NumbeofTablets__c FROM Installation__c WHERE InstallationDate__c = THIS_WEEK ORDER BY InstallationDate__c LIMIT 100",
+    ],
+  },
+  {
     patterns: ['활성 매장 수', '활성 매장 건수', '활성매장'],
     queries: [
       "SELECT COUNT() FROM Account WHERE OperationStatus__c = 'ACTIVE'",

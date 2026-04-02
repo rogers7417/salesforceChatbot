@@ -222,5 +222,8 @@
   예: "오늘 방문 일정" → SELECT ... FROM Visit__c WHERE DAY_ONLY(LocalInviteDate__c) = TODAY
 - "작업", "AS" = WorkOrder 사용
 - 키워드 매핑: 설치→Installation__c, 방문→Visit__c, 작업/AS→WorkOrder
+- "누가 설치해?", "설치 담당" → Installation__c에서 ServiceTerritory__r.Name (설치 업체), Owner.Name (담당자) 조회
+  예: SELECT Account__r.Name, ServiceTerritory__r.Name, Owner.Name, InstallationDate__c FROM Installation__c WHERE Account__r.Name LIKE '%매장명%' AND InstallationDate__c >= TODAY LIMIT 5
+- 이전 질문이 "설치 일정"이었고 후속 질문에 특정 매장명이 나오면 → Installation__c에서 해당 매장의 설치 정보 조회 (search가 아님!)
 - Visit__c 날짜 필터: DAY_ONLY(LocalInviteDate__c) = TODAY
 - Visit__c 상태 값: 배정완료, 방문완료, 방문취소 등
