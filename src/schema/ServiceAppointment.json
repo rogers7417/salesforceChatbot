@@ -1,0 +1,708 @@
+{
+  "name": "ServiceAppointment",
+  "label": "서비스 약속",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "서비스 약속 ID",
+      "type": "id"
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "AppointmentNumber",
+      "label": "약속 번호",
+      "type": "string"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "ParentRecordId",
+      "label": "상위 레코드 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Account",
+        "Asset",
+        "Case",
+        "Lead",
+        "Opportunity",
+        "ProductServiceCampaignItem",
+        "WorkOrder",
+        "WorkOrderLineItem"
+      ]
+    },
+    {
+      "name": "ParentRecordType",
+      "label": "상위 레코드 유형",
+      "type": "string"
+    },
+    {
+      "name": "AccountId",
+      "label": "거래처",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "WorkTypeId",
+      "label": "작업 유형 ID",
+      "type": "reference",
+      "referenceTo": [
+        "WorkType"
+      ]
+    },
+    {
+      "name": "ContactId",
+      "label": "연락처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "Street",
+      "label": "상세 주소",
+      "type": "textarea"
+    },
+    {
+      "name": "City",
+      "label": "시/군/구",
+      "type": "string"
+    },
+    {
+      "name": "State",
+      "label": "시/도",
+      "type": "string"
+    },
+    {
+      "name": "PostalCode",
+      "label": "우편 번호",
+      "type": "string"
+    },
+    {
+      "name": "Country",
+      "label": "국가",
+      "type": "string"
+    },
+    {
+      "name": "Latitude",
+      "label": "위도",
+      "type": "double"
+    },
+    {
+      "name": "Longitude",
+      "label": "경도",
+      "type": "double"
+    },
+    {
+      "name": "GeocodeAccuracy",
+      "label": "지역 코드 정확도",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "Address",
+      "label": "주소",
+      "type": "address"
+    },
+    {
+      "name": "Description",
+      "label": "설명",
+      "type": "textarea"
+    },
+    {
+      "name": "EarliestStartTime",
+      "label": "허용된 가장 빠른 시작",
+      "type": "datetime"
+    },
+    {
+      "name": "DueDate",
+      "label": "기한",
+      "type": "datetime"
+    },
+    {
+      "name": "Duration",
+      "label": "기간",
+      "type": "double"
+    },
+    {
+      "name": "ArrivalWindowStartTime",
+      "label": "이동 시작",
+      "type": "datetime"
+    },
+    {
+      "name": "ArrivalWindowEndTime",
+      "label": "이동 종료",
+      "type": "datetime"
+    },
+    {
+      "name": "Status",
+      "label": "상태",
+      "type": "picklist",
+      "picklistValues": [
+        "Completed",
+        "None",
+        "Dispatched",
+        "In Progress",
+        "Cannot Complete",
+        "Canceled",
+        "Scheduled"
+      ]
+    },
+    {
+      "name": "SchedStartTime",
+      "label": "예약 시작",
+      "type": "datetime"
+    },
+    {
+      "name": "SchedEndTime",
+      "label": "예약 종료",
+      "type": "datetime"
+    },
+    {
+      "name": "ActualStartTime",
+      "label": "실제 시작",
+      "type": "datetime"
+    },
+    {
+      "name": "ActualEndTime",
+      "label": "실제 종료",
+      "type": "datetime"
+    },
+    {
+      "name": "ActualDuration",
+      "label": "실제 기간(분)",
+      "type": "double"
+    },
+    {
+      "name": "DurationType",
+      "label": "기간 유형",
+      "type": "picklist",
+      "picklistValues": [
+        "Hours",
+        "Minutes"
+      ]
+    },
+    {
+      "name": "DurationInMinutes",
+      "label": "기간(분)",
+      "type": "double"
+    },
+    {
+      "name": "ServiceTerritoryId",
+      "label": "업체",
+      "type": "reference",
+      "referenceTo": [
+        "ServiceTerritory"
+      ]
+    },
+    {
+      "name": "Subject",
+      "label": "제목",
+      "type": "string"
+    },
+    {
+      "name": "ParentRecordStatusCategory",
+      "label": "상위 레코드 상태 범주",
+      "type": "picklist",
+      "picklistValues": [
+        "New",
+        "InProgress",
+        "OnHold",
+        "Completed",
+        "Closed",
+        "None",
+        "CannotComplete",
+        "Canceled"
+      ]
+    },
+    {
+      "name": "StatusCategory",
+      "label": "상태 범주",
+      "type": "picklist",
+      "picklistValues": [
+        "None",
+        "Scheduled",
+        "Dispatched",
+        "InProgress",
+        "CannotComplete",
+        "Completed",
+        "Canceled"
+      ]
+    },
+    {
+      "name": "ServiceNote",
+      "label": "서비스 노트",
+      "type": "textarea"
+    },
+    {
+      "name": "RelatedBundleId",
+      "label": "관련 번들 ID",
+      "type": "reference",
+      "referenceTo": [
+        "ServiceAppointment"
+      ]
+    },
+    {
+      "name": "IsManuallyBundled",
+      "label": "수동으로 번들 처리됨",
+      "type": "boolean"
+    },
+    {
+      "name": "IsBundleMember",
+      "label": "번들 구성원",
+      "type": "boolean"
+    },
+    {
+      "name": "IsBundle",
+      "label": "번들",
+      "type": "boolean"
+    },
+    {
+      "name": "BundlePolicyId",
+      "label": "예약 번들 정책 ID",
+      "type": "reference",
+      "referenceTo": [
+        "ApptBundlePolicy"
+      ]
+    },
+    {
+      "name": "IsOffsiteAppointment",
+      "label": "오프사이트 예약",
+      "type": "boolean"
+    },
+    {
+      "name": "ApptBookingInfoUrl",
+      "label": "약속 예약 URL",
+      "type": "textarea"
+    },
+    {
+      "name": "ServiceDocumentTemplate",
+      "label": "서비스 문서 템플릿",
+      "type": "string"
+    },
+    {
+      "name": "FSL__Duration_In_Minutes__c",
+      "label": "예약 기간",
+      "type": "double"
+    },
+    {
+      "name": "FSL__InJeopardyReason__c",
+      "label": "위험 이유",
+      "type": "picklist",
+      "picklistValues": [
+        "Delayed Start",
+        "Delayed Finish",
+        "No Response",
+        "Due Date Approaching"
+      ]
+    },
+    {
+      "name": "FSL__Schedule_Mode__c",
+      "label": "일정 모듈",
+      "type": "picklist",
+      "picklistValues": [
+        "Manual",
+        "Automatic",
+        "Optimization",
+        "None",
+        "Drag and Drop",
+        "Schedule",
+        "Global Optimization",
+        "In Day Optimization",
+        "Resource Optimization"
+      ]
+    },
+    {
+      "name": "FSL__Time_Dependency__c",
+      "label": "시간 종속성",
+      "type": "picklist",
+      "picklistValues": [
+        "Same Start",
+        "Start After Finish",
+        "Finish Before Start"
+      ]
+    },
+    {
+      "name": "FSL__Appointment_Grade__c",
+      "label": "약속 등급",
+      "type": "double"
+    },
+    {
+      "name": "FSL__Auto_Schedule__c",
+      "label": "자동 일정",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Emergency__c",
+      "label": "긴급",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__GanttColor__c",
+      "label": "Gantt 색상",
+      "type": "string"
+    },
+    {
+      "name": "FSL__GanttIcon__c",
+      "label": "Gantt 아이콘",
+      "type": "textarea"
+    },
+    {
+      "name": "FSL__GanttLabel__c",
+      "label": "Gantt 레이블",
+      "type": "string"
+    },
+    {
+      "name": "FSL__Gantt_Display_Date__c",
+      "label": "Gantt 표시 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "FSL__Gantt_Label_Details__c",
+      "label": "Gantt 레이블 세부 사항",
+      "type": "string"
+    },
+    {
+      "name": "FSL__InJeopardy__c",
+      "label": "위험",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__InternalSLRGeolocation__Latitude__s",
+      "label": "내부 SLR 지리적 위치 (위도)",
+      "type": "double"
+    },
+    {
+      "name": "FSL__InternalSLRGeolocation__Longitude__s",
+      "label": "내부 SLR 지리적 위치 (경도)",
+      "type": "double"
+    },
+    {
+      "name": "FSL__InternalSLRGeolocation__c",
+      "label": "내부 SLR 지리적 위치",
+      "type": "location"
+    },
+    {
+      "name": "FSL__IsFillInCandidate__c",
+      "label": "후보자 채우기",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__IsMultiDay__c",
+      "label": "Is MultiDay",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Last_Updated_Epoch__c",
+      "label": "최근 업데이트된 연대",
+      "type": "double"
+    },
+    {
+      "name": "FSL__MDS_Calculated_length__c",
+      "label": "수일 기준 작업 계산 기간",
+      "type": "double"
+    },
+    {
+      "name": "FSL__MDT_Operational_Time__c",
+      "label": "수일 기준 작업 시간",
+      "type": "textarea"
+    },
+    {
+      "name": "FSL__Pinned__c",
+      "label": "고정",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Prevent_Geocoding_For_Chatter_Actions__c",
+      "label": "Chatter 작업에 대한 위치 정보 금지",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Related_Service__c",
+      "label": "관련 서비스",
+      "type": "reference",
+      "referenceTo": [
+        "ServiceAppointment"
+      ]
+    },
+    {
+      "name": "FSL__Same_Day__c",
+      "label": "같은 날",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Same_Resource__c",
+      "label": "같은 자원",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Schedule_over_lower_priority_appointment__c",
+      "label": "후순위 약속에 앞서 일정 잡기",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Scheduling_Policy_Used__c",
+      "label": "사용된 일정 예약 정책",
+      "type": "reference",
+      "referenceTo": [
+        "FSL__Scheduling_Policy__c"
+      ]
+    },
+    {
+      "name": "FSL__UpdatedByOptimization__c",
+      "label": "UpdatedByOptimization",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Use_Async_Logic__c",
+      "label": "비동기 로직 사용",
+      "type": "boolean"
+    },
+    {
+      "name": "FSL__Virtual_Service_For_Chatter_Action__c",
+      "label": "Chatter 작업에 대한 가상 서비스(SLR)",
+      "type": "boolean"
+    },
+    {
+      "name": "BarcodeAccountStatus__c",
+      "label": "거래처 Id 스캔 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "일치",
+        "불일치",
+        "스캔미진행"
+      ]
+    },
+    {
+      "name": "fm_Brand_Branch__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "fm_DueDate__c",
+      "label": "기한 수식",
+      "type": "string"
+    },
+    {
+      "name": "fm_EarliestStartTime__c",
+      "label": "허용된 가장 이른 시간 수식",
+      "type": "string"
+    },
+    {
+      "name": "AppointmentTime__c",
+      "label": "약속 시간",
+      "type": "time"
+    },
+    {
+      "name": "AssignedCompany__c",
+      "label": "할당된 업체",
+      "type": "string"
+    },
+    {
+      "name": "BarcodeAccountId__c",
+      "label": "거래처 Id 바코드",
+      "type": "string"
+    },
+    {
+      "name": "DistanceDifference__c",
+      "label": "거리 차이",
+      "type": "double"
+    },
+    {
+      "name": "InstallStartTime__c",
+      "label": "시작 시간",
+      "type": "time"
+    },
+    {
+      "name": "ScannedBarcodeWhenStart__c",
+      "label": "작업 시작시 스캔한 바코드",
+      "type": "string"
+    },
+    {
+      "name": "WorkOrder__c",
+      "label": "작업 주문",
+      "type": "reference",
+      "referenceTo": [
+        "WorkOrder"
+      ]
+    },
+    {
+      "name": "WorkPlan__c",
+      "label": "작업 계획",
+      "type": "reference",
+      "referenceTo": [
+        "WorkPlan"
+      ]
+    },
+    {
+      "name": "testDateTimeField__c",
+      "label": "테스트 날짜/시간 필드",
+      "type": "datetime"
+    },
+    {
+      "name": "testTimeField__c",
+      "label": "테스트 시간 필드",
+      "type": "time"
+    },
+    {
+      "name": "fm_Adress__c",
+      "label": "매장 주소",
+      "type": "string"
+    },
+    {
+      "name": "fm_InstallConfirmedDate__c",
+      "label": "설치 요청일자",
+      "type": "date"
+    },
+    {
+      "name": "fm_InstallationDate__c",
+      "label": "설치 요청일자",
+      "type": "string"
+    },
+    {
+      "name": "fm_Payment__c",
+      "label": "결제방식",
+      "type": "string"
+    },
+    {
+      "name": "fm_SpecialCompanyType__c",
+      "label": "특별매장여부",
+      "type": "string"
+    },
+    {
+      "name": "fm_VisitPreferredDate__c",
+      "label": "방문 선호 일시",
+      "type": "string"
+    },
+    {
+      "name": "fm_WorkOrderRecordType__c",
+      "label": "작업 주문 레코드 유형",
+      "type": "string"
+    },
+    {
+      "name": "fm_WorkOrderType__c",
+      "label": "작업 주문 유형",
+      "type": "string"
+    },
+    {
+      "name": "fm_ServiceTerritoryNmae__c",
+      "label": "설치 업체",
+      "type": "string"
+    },
+    {
+      "name": "test_field__c",
+      "label": "서비스약속번호(테스트",
+      "type": "string"
+    },
+    {
+      "name": "txt_Brand_Branch__c",
+      "label": "상호(지점명)",
+      "type": "string"
+    },
+    {
+      "name": "ReasonForUpdate__c",
+      "label": "시간 변경 사유",
+      "type": "textarea"
+    },
+    {
+      "name": "SchedLeadtime__c",
+      "label": "예약 소요 시간",
+      "type": "double"
+    },
+    {
+      "name": "ActualLeadtime__c",
+      "label": "실제 소요 시간",
+      "type": "double"
+    },
+    {
+      "name": "InstallTime__c",
+      "label": "설치시간(정산용)",
+      "type": "double"
+    },
+    {
+      "name": "Engineer__c",
+      "label": "할당된 자원",
+      "type": "string"
+    },
+    {
+      "name": "ArrivalWindowLeadtime__c",
+      "label": "이동 소요 시간",
+      "type": "double"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "name": "ITService__c",
+  "label": "IT서비스",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "레코드 ID",
+      "type": "id"
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Group",
+        "User"
+      ]
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "Name",
+      "label": "순번",
+      "type": "string"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "LastActivityDate",
+      "label": "마지막 활동 일자",
+      "type": "date"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "ConnectionEnd__c",
+      "label": "연동 종료",
+      "type": "datetime"
+    },
+    {
+      "name": "ConnectionPerson__c",
+      "label": "연동담당자",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "ConnectionStart__c",
+      "label": "연동 시작",
+      "type": "datetime"
+    },
+    {
+      "name": "Description__c",
+      "label": "설명",
+      "type": "textarea"
+    },
+    {
+      "name": "Name__c",
+      "label": "이름",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "POS__c",
+      "label": "포스",
+      "type": "string"
+    },
+    {
+      "name": "ProcessingStatus__c",
+      "label": "연동처리여부",
+      "type": "picklist",
+      "picklistValues": [
+        "처리중",
+        "보류",
+        "처리완료"
+      ]
+    },
+    {
+      "name": "Related__c",
+      "label": "관련항목",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "TotalPOS__c",
+      "label": "포스대수",
+      "type": "double"
+    },
+    {
+      "name": "Type__c",
+      "label": "유형",
+      "type": "picklist",
+      "picklistValues": [
+        "메뉴연동만",
+        "포스변경"
+      ]
+    },
+    {
+      "name": "ConnectionTime__c",
+      "label": "실제연동시간",
+      "type": "string"
+    },
+    {
+      "name": "fm_Phone__c",
+      "label": "연락처",
+      "type": "string"
+    }
+  ]
+}

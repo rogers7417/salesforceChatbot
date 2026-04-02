@@ -1,0 +1,469 @@
+{
+  "name": "Asset",
+  "label": "자산",
+  "fields": [
+    {
+      "name": "Id",
+      "label": "자산 id",
+      "type": "id"
+    },
+    {
+      "name": "ContactId",
+      "label": "연락처 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Contact"
+      ]
+    },
+    {
+      "name": "AccountId",
+      "label": "거래처",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "ParentId",
+      "label": "상위 자산 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Asset"
+      ]
+    },
+    {
+      "name": "RootAssetId",
+      "label": "루트 자산 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Asset"
+      ]
+    },
+    {
+      "name": "Product2Id",
+      "label": "제품 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Product2"
+      ]
+    },
+    {
+      "name": "ProductCode",
+      "label": "제품 코드",
+      "type": "string"
+    },
+    {
+      "name": "ProductFamily",
+      "label": "제품군(미사용)",
+      "type": "picklist",
+      "picklistValues": [
+        "견적용",
+        "물류용"
+      ]
+    },
+    {
+      "name": "ProductDescription",
+      "label": "제품 설명",
+      "type": "string"
+    },
+    {
+      "name": "IsCompetitorProduct",
+      "label": "경쟁사 자산",
+      "type": "boolean"
+    },
+    {
+      "name": "CreatedDate",
+      "label": "작성 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "CreatedById",
+      "label": "작성자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LastModifiedDate",
+      "label": "최종 수정 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "LastModifiedById",
+      "label": "최종 수정자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "SystemModstamp",
+      "label": "시스템 모드 스탬프",
+      "type": "datetime"
+    },
+    {
+      "name": "IsDeleted",
+      "label": "삭제됨",
+      "type": "boolean"
+    },
+    {
+      "name": "CurrencyIsoCode",
+      "label": "통화 ISO 코드",
+      "type": "picklist",
+      "picklistValues": [
+        "KRW",
+        "USD",
+        "CAD"
+      ]
+    },
+    {
+      "name": "Name",
+      "label": "자산 이름",
+      "type": "string"
+    },
+    {
+      "name": "SerialNumber",
+      "label": "일련 번호",
+      "type": "string"
+    },
+    {
+      "name": "InstallDate",
+      "label": "설치 날짜",
+      "type": "date"
+    },
+    {
+      "name": "ManufactureDate",
+      "label": "제조 날짜",
+      "type": "date"
+    },
+    {
+      "name": "StatusReason",
+      "label": "상태 이유",
+      "type": "picklist",
+      "picklistValues": [
+        "Online",
+        "Paused",
+        "Standby",
+        "Offline",
+        "Not Ready",
+        "Off"
+      ]
+    },
+    {
+      "name": "Uuid",
+      "label": "고유 식별자",
+      "type": "string"
+    },
+    {
+      "name": "ExternalIdentifier",
+      "label": "외부 ID",
+      "type": "string"
+    },
+    {
+      "name": "PurchaseDate",
+      "label": "구매 날짜",
+      "type": "date"
+    },
+    {
+      "name": "UsageEndDate",
+      "label": "사용 종료 날짜",
+      "type": "date"
+    },
+    {
+      "name": "Status",
+      "label": "상태",
+      "type": "picklist",
+      "picklistValues": [
+        "정상",
+        "양도",
+        "양수",
+        "회수",
+        "전수조사 확인필요"
+      ]
+    },
+    {
+      "name": "DigitalAssetStatus",
+      "label": "디지털 자산 상태",
+      "type": "picklist",
+      "picklistValues": [
+        "On",
+        "Off",
+        "Warning",
+        "Error"
+      ]
+    },
+    {
+      "name": "SumDowntime",
+      "label": "누적 가동 중지",
+      "type": "double"
+    },
+    {
+      "name": "SumUnplannedDowntime",
+      "label": "누적 비계획 가동 중지",
+      "type": "double"
+    },
+    {
+      "name": "UptimeRecordStart",
+      "label": "작동 시간 기록 시작 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "UptimeRecordEnd",
+      "label": "작동 시간 기록 종료 일자",
+      "type": "datetime"
+    },
+    {
+      "name": "AverageUptimePerDay",
+      "label": "일일 평균 작동 시간",
+      "type": "double"
+    },
+    {
+      "name": "Availability",
+      "label": "가용성",
+      "type": "percent"
+    },
+    {
+      "name": "Reliability",
+      "label": "안정성",
+      "type": "percent"
+    },
+    {
+      "name": "Price",
+      "label": "가격",
+      "type": "currency"
+    },
+    {
+      "name": "Quantity",
+      "label": "수량",
+      "type": "double"
+    },
+    {
+      "name": "Description",
+      "label": "설명",
+      "type": "textarea"
+    },
+    {
+      "name": "OwnerId",
+      "label": "소유자 ID",
+      "type": "reference",
+      "referenceTo": [
+        "User"
+      ]
+    },
+    {
+      "name": "LocationId",
+      "label": "위치 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Location"
+      ]
+    },
+    {
+      "name": "AssetProvidedById",
+      "label": "자산 제공 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "AssetServicedById",
+      "label": "자산 서비스 제공 ID",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "IsInternal",
+      "label": "내부 자산",
+      "type": "boolean"
+    },
+    {
+      "name": "AssetLevel",
+      "label": "자산 수준",
+      "type": "int"
+    },
+    {
+      "name": "StockKeepingUnit",
+      "label": "제품 SKU",
+      "type": "string"
+    },
+    {
+      "name": "ConsequenceOfFailure",
+      "label": "실패할 경우 벌어질 일",
+      "type": "picklist",
+      "picklistValues": [
+        "Insignificant",
+        "Minor",
+        "Moderate",
+        "Major",
+        "Critical"
+      ]
+    },
+    {
+      "name": "Street",
+      "label": "상세 주소",
+      "type": "textarea"
+    },
+    {
+      "name": "City",
+      "label": "구/군/시",
+      "type": "string"
+    },
+    {
+      "name": "State",
+      "label": "시/도",
+      "type": "string"
+    },
+    {
+      "name": "PostalCode",
+      "label": "우편 번호",
+      "type": "string"
+    },
+    {
+      "name": "Country",
+      "label": "국가",
+      "type": "string"
+    },
+    {
+      "name": "Latitude",
+      "label": "위도",
+      "type": "double"
+    },
+    {
+      "name": "Longitude",
+      "label": "경도",
+      "type": "double"
+    },
+    {
+      "name": "GeocodeAccuracy",
+      "label": "지역 코드 정확도",
+      "type": "picklist",
+      "picklistValues": [
+        "Address",
+        "NearAddress",
+        "Block",
+        "Street",
+        "ExtendedZip",
+        "Zip",
+        "Neighborhood",
+        "City",
+        "County",
+        "State",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "Address",
+      "label": "주소",
+      "type": "address"
+    },
+    {
+      "name": "MeanTimeToRepair",
+      "label": "평균 수리 소요 시간",
+      "type": "double"
+    },
+    {
+      "name": "MeanTimeBetweenFailures",
+      "label": "개별 실패 사이의 평균 소요 시간",
+      "type": "double"
+    },
+    {
+      "name": "LastViewedDate",
+      "label": "마지막으로 본 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "LastReferencedDate",
+      "label": "마지막 참조 날짜",
+      "type": "datetime"
+    },
+    {
+      "name": "ASEndDate__c",
+      "label": "A/S 만료일",
+      "type": "date"
+    },
+    {
+      "name": "Form__c",
+      "label": "형태",
+      "type": "string"
+    },
+    {
+      "name": "Location__c",
+      "label": "매장 주소(설치위치)",
+      "type": "string"
+    },
+    {
+      "name": "ProductCode__c",
+      "label": "제품 코드",
+      "type": "string"
+    },
+    {
+      "name": "ProductFamily__c",
+      "label": "제품군(중)",
+      "type": "string"
+    },
+    {
+      "name": "SubsidiaryCategory__c",
+      "label": "부자재 구분",
+      "type": "string"
+    },
+    {
+      "name": "Opportunity__c",
+      "label": "영업기회",
+      "type": "reference",
+      "referenceTo": [
+        "Opportunity"
+      ]
+    },
+    {
+      "name": "OrderItem__c",
+      "label": "출고 제품",
+      "type": "reference",
+      "referenceTo": [
+        "OrderItem"
+      ]
+    },
+    {
+      "name": "QuantityTemp__c",
+      "label": "수량(임시저장)",
+      "type": "double"
+    },
+    {
+      "name": "TransfereeAccount__c",
+      "label": "양수 거래처",
+      "type": "reference",
+      "referenceTo": [
+        "Account"
+      ]
+    },
+    {
+      "name": "Warranty__c",
+      "label": "보증 만료일",
+      "type": "date"
+    },
+    {
+      "name": "Installation__c",
+      "label": "설치",
+      "type": "reference",
+      "referenceTo": [
+        "Installation__c"
+      ]
+    },
+    {
+      "name": "WorkOrder__c",
+      "label": "작업 주문",
+      "type": "reference",
+      "referenceTo": [
+        "WorkOrder"
+      ]
+    },
+    {
+      "name": "fm_Department__c",
+      "label": "부서",
+      "type": "string"
+    }
+  ]
+}

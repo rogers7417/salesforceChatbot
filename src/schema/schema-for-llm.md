@@ -143,11 +143,49 @@
 - Quantity (수량), fm_ProductFamily__c (제품군: 태블릿, 충전기&케이블, 거치대, 공유기 등)
 - InstalledQuantity__c (설치 수량)
 
+## WorkOrder (작업 주문)
+- Id, WorkOrderNumber, Status (상태), OwnerId → User
+- AccountId → Account, OpportunityName__c → Opportunity
+- Installation__c → Installation__c (설치)
+- CaseId → Case (문의사항)
+- WorkOrderType__c (작업 주문 유형), ASType1__c (1차 분류), ASType2__c (2차 분류)
+- NumbeofTablets__c (태블릿 수)
+- StartDate (작업 확정 일자), EndDate (마감 일자)
+- fm_InstallationDate__c (설치 요청일자)
+- BOUser__c → User (담당자), ITOwner__c → User (연동 담당자)
+- ServiceTerritoryId → ServiceTerritory (업체)
+- TerminationType__c (종료 유형)
+
+## ServiceAppointment (서비스 약속)
+- Id, Status (상태), OwnerId → User
+- ParentRecordId → WorkOrder/Account/Case 등 (상위 레코드)
+- AccountId → Account, ServiceTerritoryId → ServiceTerritory
+- DueDate (기한)
+- WorkOrder__c → WorkOrder
+- fm_InstallConfirmedDate__c (설치 요청일자)
+- InstallTime__c (설치시간)
+
+## Asset (자산/장비)
+- Id, Name (자산 이름), Status (상태)
+- AccountId → Account, Product2Id → Product2
+- Opportunity__c → Opportunity, Installation__c → Installation__c
+- WorkOrder__c → WorkOrder, OrderItem__c → OrderItem
+- InstallDate (설치 날짜), UsageEndDate (사용 종료 날짜)
+- ASEndDate__c (A/S 만료일)
+
+## ITService__c (IT서비스)
+- Id, Name (순번), OwnerId → User
+- Related__c → Opportunity (관련 영업기회)
+- ConnectionPerson__c → User (연동담당자)
+- ProcessingStatus__c (연동처리여부), Type__c (유형)
+
 ## 관계
 - Account ← Lead (Company LIKE), Opportunity (AccountId), Order (AccountId), Event (AccountId), Case (AccountId), Contract__c (Account__c), Installation__c (Account__c), Visit__c (via Opportunity)
 - Opportunity ← Quote (OpportunityId), Visit__c (Opportunity__c), Contract__c (Opportunity__c), Installation__c (Opportunity__c), Case (Opportunity__c)
 - User ← Lead/Opportunity/Event/Order/Task (OwnerId), Visit__c (User__c)
 - Order ← OrderItem (OrderId), Installation__c (Order__c)
+- Installation__c ← WorkOrder (Installation__c), Asset (Installation__c)
+- WorkOrder ← ServiceAppointment (WorkOrder__c)
 
 ## 업무 용어
 - "오인입" = Lead에서 Status='종료' AND LossReason__c='오인입'
@@ -176,5 +214,10 @@
 - "채널BO" = Department='채널매니지먼트' AND Team__c='백오피스'
 - "방문 상담", "방문 일정" = Visit__c에서 조회 (Event가 아님!)
 - "방문" 관련 질문은 항상 Visit__c 사용
+- "설치" 관련 질문은 Installation__c 사용 (Visit__c가 아님!)
+- "설치 일정", "설치 현황" = Installation__c (InstallationDate__c, InstallationStage__c)
+- "방문 일정" = Visit__c (LocalInviteDate__c, Visit_Status__c)
+- "작업 주문", "AS" = WorkOrder (Status, WorkOrderType__c)
+- 구분: 방문=Visit__c, 설치=Installation__c, 작업/AS=WorkOrder
 - Visit__c 날짜 필터: DAY_ONLY(LocalInviteDate__c) = TODAY
 - Visit__c 상태 값: 배정완료, 방문완료, 방문취소 등
