@@ -279,3 +279,53 @@
 {"text": "설치 확정일자가 다음주인 영업기회", "label": "query"}
 {"text": "계약상태가 사전심사인 건 리스트 줘", "label": "query"}
 {"text": "출고제품 레코드 수량이 10개 이상인 출고 건", "label": "query"}
+{"text": "오늘 설치 예정인 매장 리스트", "label": "query"}
+{"text": "설치 진행상태가 설치예정인 건 몇 개야", "label": "query"}
+{"text": "이번주 설치완료된 건수", "label": "query"}
+{"text": "연동처리 안 된 설치 건 목록", "label": "query"}
+{"text": "설치 요청일자가 다음주인 건 알려줘", "label": "query"}
+{"text": "설치 구분이 A/S인 건 이번달 현황", "label": "query"}
+{"text": "방문 진행상태가 보류인 설치 리스트 좀", "label": "query"}
+{"text": "마스터 태블릿 수 3대 이상인 설치 건 있어?", "label": "query"}
+{"text": "설치업체별 이번달 설치완료 건수 보여줘", "label": "query"}
+{"text": "설치확정 안 된 건 중에 설치 요청일 지난 거 있어", "label": "query"}
+{"text": "이번달 작업 주문 현황", "label": "query"}
+{"text": "작업 주문 상태가 방문 접수인 건 몇 개야", "label": "query"}
+{"text": "우선 순위 Critical인 작업 주문 목록", "label": "query"}
+{"text": "작업 주문 유형이 A/S인 건 이번주 몇 건이야", "label": "query"}
+{"text": "클레임 건인 작업 주문 리스트 보여줘", "label": "query"}
+{"text": "작업 주문 중 설치 완료 상태인 건수 알려줘", "label": "query"}
+{"text": "정기점검 대상 작업 주문 현황", "label": "query"}
+{"text": "고객 성향이 강성인 작업 주문 있나요", "label": "query"}
+{"text": "작업 주문 유형별 건수 정리해줘", "label": "query"}
+{"text": "보조 배터리 사용하는 작업 주문 몇 건이야", "label": "query"}
+{"text": "오늘 서비스 약속 일정 보여줘", "label": "query"}
+{"text": "서비스 약속 상태가 Dispatched인 건 목록", "label": "query"}
+{"text": "이번주 예약 시작 일정 전체 알려줘", "label": "query"}
+{"text": "서비스 약속 실제 소요 시간 평균 얼마나 돼?", "label": "query"}
+{"text": "상태가 Canceled인 서비스 약속 이번달 몇 건", "label": "query"}
+{"text": "설치 업체별 서비스 약속 건수 현황", "label": "query"}
+{"text": "긴급 서비스 약속 목록 보여줘", "label": "query"}
+{"text": "서비스 약속 중 Cannot Complete 상태인 건 있어?", "label": "query"}
+{"text": "할당된 자원별 이번주 서비스 약속 건수", "label": "query"}
+{"text": "시간 변경 사유가 있는 서비스 약속 리스트", "label": "query"}
+{"text": "자산 상태가 회수인 건 목록 보여줘", "label": "query"}
+{"text": "A/S 만료일이 이번달인 자산 리스트", "label": "query"}
+{"text": "설치 날짜가 이번달인 자산 몇 개야", "label": "query"}
+{"text": "보증 만료일 임박한 자산 목록 알려줘", "label": "query"}
+{"text": "제품군별 자산 수량 현황", "label": "query"}
+{"text": "양도 상태인 자산 건수 몇 건이야", "label": "query"}
+{"text": "일련 번호 없는 자산 있어?", "label": "query"}
+{"text": "자산 중 디지털 자산 상태가 Error인 건 목록", "label": "query"}
+{"text": "사용 종료 날짜가 지난 자산 리스트 줘", "label": "query"}
+{"text": "거래처별 자산 수량 상위 10개 보여줘", "label": "query"}
+{"text": "IT서비스 연동처리여부가 처리중인 건 몇 개야", "label": "query"}
+{"text": "IT서비스 유형별 현황 보여줘", "label": "query"}
+{"text": "연동처리 보류 중인 IT서비스 목록", "label": "query"}
+{"text": "이번달 IT서비스 처리완료 건수", "label": "query"}
+{"text": "포스변경 유형 IT서비스 이번주 현황", "label": "query"}
+{"text": "IT서비스 연동담당자별 처리 건수 알려줘", "label": "query"}
+{"text": "연동 시작했는데 아직 종료 안 된 IT서비스 건", "label": "query"}
+{"text": "메뉴연동만 유형인 IT서비스 몇 건이야", "label": "query"}
+{"text": "IT서비스 포스대수 5대 이상인 건 목록", "label": "query"}
+{"text": "이번달 신규 생성된 IT서비스 건수 알려줘", "label": "query"}
