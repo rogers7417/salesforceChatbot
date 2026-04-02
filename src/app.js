@@ -173,7 +173,21 @@ app.message(async ({ message, say }) => {
         await handleTodo(sfUser, say);
         logQuery({ ...logBase, success: true });
       } else if (intent.intent === 'search') {
-        await handleSearch(intent.keyword || text, sfUserId, userId, say);
+        const subIntent = intent.sub_intent || 'general';
+        if (subIntent === 'install') {
+          // 설치 담당/업체 조회
+          await handleQuery(`${intent.keyword || text} 설치 담당 업체 조회 (Installation__c에서 ServiceTerritory__r.Name, Owner.Name 조회)`, userId, say);
+        } else if (subIntent === 'contract') {
+          await handleQuery(`${intent.keyword || text} 계약 현황 조회 (Contract__c에서 조회)`, userId, say);
+        } else if (subIntent === 'history') {
+          await handleQuery(`${intent.keyword || text} 활동 이력 조회 (Task에서 조회)`, userId, say);
+        } else {
+          await handleSearch(intent.keyword || text, sfUserId, userId, say);
+        }
+        logQuery({ ...logBase, success: true });
+      } else if (intent.intent === 'install') {
+        // 설치 업체별 설치 일정
+        await handleQuery(`${intent.keyword || text} 설치 업체의 설치 일정 (Installation__c에서 ServiceTerritory__r.Name = '${intent.keyword}' 조회, 기간: ${intent.date || 'today'})`, userId, say);
         logQuery({ ...logBase, success: true });
       } else if (intent.intent === 'brand') {
         await handleBrand(intent.keyword || text, say);

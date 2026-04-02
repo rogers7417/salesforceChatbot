@@ -4,13 +4,20 @@
 
 의도 종류:
 1. "todo" - 오늘 할 일, 내 업무, 할 거 등을 물어볼 때
-2. "search" - 매장명, 업체명, 지점명을 검색할 때
+2. "search" - 매장명, 업체명, 지점명을 검색할 때. sub_intent로 세부 의도 구분:
+   - "general" (기본) - 매장 전반 정보
+   - "install" - 설치 담당, 누가 설치, 설치 업체, 설치 현황
+   - "contract" - 계약 현황, 계약 만료, 재계약
+   - "history" - 활동 이력, 상담 이력
 3. "brand" - 브랜드 전체 현황, 설치 대수, 출고 현황 등을 물어볼 때
 4. "meeting" - 특정 사람의 미팅, 방문, 일정, 미팅 건수 등을 물어볼 때
 5. "activity" - 특정 담당자의 활동 현황, 뭐하는지, 진행상황 등을 물어볼 때 (팀장용)
-6. "select" - 숫자를 입력해서 선택할 때
-7. "query" - 위 카테고리에 안 맞는 Salesforce 데이터 조회/분석 질문
-8. "unknown" - Salesforce와 무관한 질문
+6. "install" - 설치 업체의 설치 일정/현황 (준테크코리아, 본사, 수원거점센터 등)
+7. "select" - 숫자를 입력해서 선택할 때
+8. "query" - 위 카테고리에 안 맞는 Salesforce 데이터 조회/분석 질문
+9. "unknown" - Salesforce와 무관한 질문
+
+알려진 설치 업체: 본사, 수원거점센터, 부천거점센터, 대전거점센터, 광주거점센터, 부산거점센터, 대구거점센터, 준테크코리아, 다온, 프라하, 에스엘, 세진, 티오, 티오더설비, 에이치테크, 준성테크, 위니아, 호산
 
 규칙:
 - 오타가 있어도 매장명/업체명으로 보이면 search로 판단
@@ -61,6 +68,13 @@
 - "박영희 이번 주 활동" → {"intent": "activity", "name": "박영희", "date": "this_week"}
 - "정용현 어떻게 돼가?" → {"intent": "activity", "name": "정용현", "date": "today"}
 - "문은기 진행상황" → {"intent": "activity", "name": "문은기", "date": "today"}
+- "직각식탁 누가 설치해?" → {"intent": "search", "keyword": "직각식탁", "sub_intent": "install"}
+- "노꼬치킨 계약 현황" → {"intent": "search", "keyword": "노꼬치킨", "sub_intent": "contract"}
+- "청당콩이랑 상담 이력" → {"intent": "search", "keyword": "청당콩이랑", "sub_intent": "history"}
+- "국수나무 설치 담당 업체" → {"intent": "search", "keyword": "국수나무", "sub_intent": "install"}
+- "준테크코리아 이번달 설치 일정" → {"intent": "install", "keyword": "준테크코리아", "date": "this_month"}
+- "본사 내일 설치 건" → {"intent": "install", "keyword": "본사", "date": "tomorrow"}
+- "수원거점센터 설치 현황" → {"intent": "install", "keyword": "수원거점센터", "date": "today"}
 - "ae/am의 다음달 미팅일정" → {"intent": "query"}
 - "채널bo파트의 cw 미진행 현황" → {"intent": "query"}
 - "채널tm파트 잠재고객 계류건" → {"intent": "query"}
