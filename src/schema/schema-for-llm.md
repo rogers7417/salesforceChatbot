@@ -214,10 +214,13 @@
 - "채널BO" = Department='채널매니지먼트' AND Team__c='백오피스'
 - "방문 상담", "방문 일정" = Visit__c에서 조회 (Event가 아님!)
 - "방문" 관련 질문은 항상 Visit__c 사용
-- "설치" 관련 질문은 Installation__c 사용 (Visit__c가 아님!)
-- "설치 일정", "설치 현황" = Installation__c (InstallationDate__c, InstallationStage__c)
-- "방문 일정" = Visit__c (LocalInviteDate__c, Visit_Status__c)
-- "작업 주문", "AS" = WorkOrder (Status, WorkOrderType__c)
-- 구분: 방문=Visit__c, 설치=Installation__c, 작업/AS=WorkOrder
+중요! 설치 vs 방문 구분:
+- "설치" = Installation__c 사용 (절대 Visit__c 아님!)
+  예: "오늘 설치 일정" → SELECT ... FROM Installation__c WHERE InstallationDate__c = TODAY
+  예: "설치 현황" → SELECT ... FROM Installation__c WHERE ...
+- "방문" = Visit__c 사용 (절대 Installation__c 아님!)
+  예: "오늘 방문 일정" → SELECT ... FROM Visit__c WHERE DAY_ONLY(LocalInviteDate__c) = TODAY
+- "작업", "AS" = WorkOrder 사용
+- 키워드 매핑: 설치→Installation__c, 방문→Visit__c, 작업/AS→WorkOrder
 - Visit__c 날짜 필터: DAY_ONLY(LocalInviteDate__c) = TODAY
 - Visit__c 상태 값: 배정완료, 방문완료, 방문취소 등
