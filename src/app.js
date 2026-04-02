@@ -17,6 +17,7 @@ const { getMeetings } = require('./search-meeting');
 const { getActivitySummary, formatActivitySummary } = require('./search-activity');
 const { generateAndExecute, summarizeResults } = require('./soql-generator');
 const { summarize } = require('./summarize');
+const { expandAbbreviations, parseLearnRequest, learnTerm, getTermsList } = require('./terms-manager');
 const { logQuery } = require('./query-logger');
 const { formatMyTodos, formatSearchResult, formatAccountList, formatBrandSummary, formatMeetings } = require('./format');
 
@@ -77,6 +78,20 @@ app.message(async ({ message, say }) => {
 
     // 세션에 선택 대기 중인 경우 숫자 입력 체크
     // /log 명령어 — 질문 로그 요약
+    // 용어 목록 명령어
+    if (text === '용어' || text === '용어목록' || text === 'terms') {
+      await say(getTermsList());
+      return;
+    }
+
+    // 용어 학습 감지 ("CL은 Closed Lost야")
+    const learnRequest = parseLearnRequest(text);
+    if (learnRequest) {
+      learnTerm(learnRequest.abbr, learnRequest.meaning);
+      await say(`✅ 배웠어요!\n*${learnRequest.abbr}* = ${learnRequest.meaning}\n\n다음부터 "${learnRequest.abbr}" 질문하면 "${learnRequest.meaning}"으로 이해할게요.`);
+      return;
+    }
+
     if (text === 'log' || text === '로그' || text === 'logs') {
       const { getLogSummary } = require('./query-logger');
       const summary = getLogSummary(7);
@@ -187,8 +202,14 @@ async function handleQuery(question, userId, say) {
   try {
     const session = getSession(userId);
 
+    // 약어 치환 (CL → Closed Lost 등)
+    const expandedQuestion = expandAbbreviations(question);
+    if (expandedQuestion !== question) {
+      console.log(`[약어 치환] "${question}" → "${expandedQuestion}"`);
+    }
+
     // 대화 히스토리를 SOQL 생성에 전달
-    const queryResults = await generateAndExecute(question, session.history);
+    const queryResults = await generateAndExecute(expandedQuestion, session.history);
 
     // 히스토리에 질문 추가
     addHistory(userId, 'user', question);

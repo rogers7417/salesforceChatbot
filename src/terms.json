@@ -1,0 +1,17 @@
+{
+  "abbreviations": {
+    "CL": "Closed Lost",
+    "CW": "Closed Won",
+    "DB": "리드",
+    "BO": "백오피스",
+    "AE": "Account Executive",
+    "AM": "Account Manager",
+    "TM": "Telemarketing"
+  },
+  "phrases": {
+    "오인입": "Status='종료' AND LossReason__c='오인입'",
+    "계류건": "Status NOT IN ('종료', 'Closed')",
+    "활성매장": "OperationStatus__c='ACTIVE'"
+  },
+  "learnedAt": "2026-04-02T00:00:00Z"
+}
