@@ -28,16 +28,9 @@ if (missing.length > 0) {
 }
 
 const { App } = require('@slack/bolt');
-const { classifyIntent } = require('./intent');
-const { searchAccounts, searchByKeyword, getMyTodos, findUserBySlackId } = require('./search-salesforce');
-const { searchSlackMessages } = require('./search-slack');
-const { getBrandSummary } = require('./search-brand');
-const { getMeetings } = require('./search-meeting');
-const { getActivitySummary, formatActivitySummary } = require('./search-activity');
-const { generateAndExecute, summarizeResults } = require('./soql-generator');
-const { summarize } = require('./summarize');
+const { runAgent } = require('./agent');
+const { findUserBySlackId } = require('./search-salesforce');
 const { logQuery } = require('./query-logger');
-const { formatMyTodos, formatSearchResult, formatAccountList, formatBrandSummary, formatMeetings } = require('./format');
 const logger = require('./logger');
 
 const app = new App({
@@ -162,56 +155,29 @@ app.message(async ({ message, say }) => {
       session.accounts = null;
     }
 
-    // Haiku 의도 분류
-    const intent = await classifyIntent(text);
-
-    // 모든 질문 로깅
-    const logBase = { userId, userName: sfUser?.Name, text, intent: intent.intent };
+    // LangChain Agent 실행
+    await say('🔄 조회 중...');
+    console.log(`[Agent] 실행: "${text}"`);
 
     try {
-      if (intent.intent === 'todo') {
-        await handleTodo(sfUser, say);
-        logQuery({ ...logBase, success: true });
-      } else if (intent.intent === 'search') {
-        const subIntent = intent.sub_intent || 'general';
-        if (subIntent === 'install') {
-          // 설치 담당/업체 조회
-          await handleQuery(`${intent.keyword || text} 설치 담당 업체 조회 (Installation__c에서 ServiceTerritory__r.Name, Owner.Name 조회)`, userId, say);
-        } else if (subIntent === 'contract') {
-          await handleQuery(`${intent.keyword || text} 계약 현황 조회 (Contract__c에서 조회)`, userId, say);
-        } else if (subIntent === 'history') {
-          await handleQuery(`${intent.keyword || text} 활동 이력 조회 (Task에서 조회)`, userId, say);
-        } else {
-          await handleSearch(intent.keyword || text, sfUserId, userId, say);
+      const result = await runAgent(text, sfUser, userId);
+      logQuery({ userId, userName: sfUser?.Name, text, intent: 'agent', success: true });
+
+      // Block Kit JSON인지 확인 (브랜드 현황 등)
+      if (result.startsWith('{') && result.includes('"blocks"')) {
+        try {
+          const parsed = JSON.parse(result);
+          await say({ blocks: parsed.blocks, text: parsed.text || result });
+        } catch {
+          await say(result);
         }
-        logQuery({ ...logBase, success: true });
-      } else if (intent.intent === 'install') {
-        // 설치 업체별 설치 일정
-        await handleQuery(`${intent.keyword || text} 설치 업체의 설치 일정 (Installation__c에서 ServiceTerritory__r.Name = '${intent.keyword}' 조회, 기간: ${intent.date || 'today'})`, userId, say);
-        logQuery({ ...logBase, success: true });
-      } else if (intent.intent === 'brand') {
-        await handleBrand(intent.keyword || text, say);
-        logQuery({ ...logBase, success: true });
-      } else if (intent.intent === 'meeting') {
-        const names = intent.names || [intent.name || 'me'];
-        await handleMeetings(names, intent.date || 'today', userId, say);
-        logQuery({ ...logBase, success: true });
-      } else if (intent.intent === 'activity') {
-        await handleActivity(intent.name || 'me', intent.date || 'today', userId, say);
-        logQuery({ ...logBase, success: true });
-      } else if (intent.intent === 'query') {
-        await handleQuery(text, userId, say);
-        logQuery({ ...logBase, success: true });
-      } else if (intent.intent === 'select') {
-        await say('선택할 검색 결과가 없습니다. 매장명을 먼저 검색해주세요.');
-        logQuery({ ...logBase, success: true });
       } else {
-        await say('매장명을 입력하면 검색하고, "오늘 뭐해" 같은 말을 하면 할 일을 알려드려요.');
-        logQuery({ ...logBase, success: false, error: 'unknown intent' });
+        await say(result);
       }
-    } catch (handleErr) {
-      logQuery({ ...logBase, success: false, error: handleErr.message });
-      throw handleErr;
+    } catch (agentErr) {
+      console.error('[Agent 에러]', agentErr.message);
+      logQuery({ userId, userName: sfUser?.Name, text, intent: 'agent', success: false, error: agentErr.message });
+      await say(`❌ 오류가 발생했습니다: ${agentErr.message}`);
     }
   } catch (err) {
     logger.error('App', '메시지 처리 실패', err, { userId, text });
@@ -219,6 +185,10 @@ app.message(async ({ message, say }) => {
   }
 });
 
+// 기존 핸들러들은 LangChain Tool로 이동됨
+// 아래는 레거시 코드 (참고용, 추후 삭제)
+
+/*
 async function handleTodo(sfUser, say) {
   if (!sfUser) {
     await say('Salesforce에서 회원님의 계정을 찾을 수 없습니다.\nSalesforce User에 SlackMemberID__c 필드가 설정되어 있는지 확인해주세요.');
@@ -399,6 +369,8 @@ async function handleDetailSearch(accountName, sfUserId, say) {
     }
   }
 }
+
+*/
 
 // 앱 시작
 (async () => {
