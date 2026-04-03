@@ -26,7 +26,8 @@ const contractTool = tool(
       SELECT Name, ContractType__c, ContractStatus__c,
              ContractDateStart__c, ContractDateEnd__c,
              TotalAmount__c, TotalTablet__c, PaymentType__c,
-             Account__r.Name
+             Account__r.Name, Opportunity__r.Name,
+             OperationStatus__c, Service_StartDate__c, Service_EndDate__c
       FROM Contract__c
       WHERE Account__r.Name LIKE '%${escaped}%'
       ORDER BY ContractDateStart__c DESC
@@ -45,7 +46,9 @@ const contractTool = tool(
     records.forEach(r => {
       const amount = r.TotalAmount__c ? `${(r.TotalAmount__c / 10000).toFixed(0)}만원` : '-';
       const tablets = r.TotalTablet__c ? `${r.TotalTablet__c}대` : '-';
-      msg += `• ${r.Account__r?.Name || r.Name}\n`;
+      // 계약명에서 지점명 추출 또는 영업기회명 사용
+      const branchName = r.Opportunity__r?.Name || r.Name || r.Account__r?.Name;
+      msg += `• ${branchName}\n`;
       msg += `  유형: ${r.ContractType__c || '-'} / 상태: ${r.ContractStatus__c || '-'}\n`;
       msg += `  기간: ${r.ContractDateStart__c || '?'} ~ ${r.ContractDateEnd__c || '?'}\n`;
       msg += `  금액: ${amount} / 태블릿: ${tablets} / 납부: ${r.PaymentType__c || '-'}\n\n`;
