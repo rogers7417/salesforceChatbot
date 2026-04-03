@@ -94,7 +94,7 @@ async function runAgent(input, sfUser, slackUserId) {
 
   const result = await agent.invoke(
     { messages },
-    { recursionLimit: 3 * 2 + 1 } // maxIterations 3 = 약 7 스텝 (model + tool 반복)
+    { recursionLimit: 15 } // maxIterations 7 (충분한 여유)
   );
 
   // 마지막 AI 메시지 추출
