@@ -7,6 +7,9 @@ const { z } = require('zod');
 const { tool } = require('@langchain/core/tools');
 const { getSalesforceToken, soqlQuery } = require('../salesforce');
 const { searchSlackThreaded } = require('../search-slack');
+const Anthropic = require('@anthropic-ai/sdk');
+
+const aiClient = new Anthropic({ apiKey: process.env.CLAUDE_API_KEY });
 
 // SOQL 문자열 이스케이프
 function escapeSoqlString(str) {
@@ -211,22 +214,58 @@ const journeyTool = tool(
 
     msg += `\n총 Lead ${leads.length}건, 영업기회 ${opps.length}건, 계약 ${contracts.length}건, 출고 ${orders.length}건, 설치 ${installations.length}건\n`;
 
-    // 5. Slack 대화 추가
+    // 5. Slack 대화 요약
     try {
       const slackData = await searchSlackThreaded(keyword, 15);
       if (slackData.threads.length > 0) {
-        msg += `\n[Slack 대화] ${slackData.threads.length}개 대화\n`;
-        msg += '```\n';
-        slackData.threads.slice(0, 5).forEach((t, i) => {
-          msg += `${t.date} #${t.channel} (${t.messageCount}건)\n`;
-          t.conversation.slice(0, 3).forEach(c => {
-            const text = c.text.replace(/\n/g, ' ').slice(0, 120);
-            msg += `  ${c.user}: ${text}\n`;
+        // Slack 원본 텍스트를 Haiku로 요약
+        const slackRaw = slackData.threads.slice(0, 5).map((t, i) => {
+          const convText = t.conversation.map(c => `${c.date} ${c.user}: ${c.text.replace(/\n/g, ' ').slice(0, 200)}`).join('\n');
+          return `[${t.date} #${t.channel}]\n${convText}`;
+        }).join('\n\n');
+
+        const links = slackData.threads.slice(0, 5)
+          .filter(t => t.permalink)
+          .map((t, i) => `${i + 1}. ${t.permalink}`)
+          .join('\n');
+
+        try {
+          const aiResponse = await aiClient.messages.create({
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 512,
+            messages: [{
+              role: 'user',
+              content: `아래는 "${keyword}" 매장 관련 Slack 대화입니다. 날짜순으로 핵심만 요약해주세요.
+
+규칙:
+- 마크다운 기호 사용하지 마 (**, ##, 백틱 등)
+- 각 항목은 "날짜 채널 - 내용" 형태로
+- 3~5줄로 간결하게
+
+${slackRaw}`
+            }],
           });
-          if (t.permalink) msg += `  -> ${t.permalink}\n`;
-          msg += '\n';
-        });
-        msg += '```\n';
+
+          const summary = aiResponse.content[0].text;
+          msg += `\n[Slack 대화 요약] (${slackData.threads.length}개 대화)\n`;
+          msg += '```\n';
+          msg += summary + '\n';
+          msg += '```\n';
+          if (links) msg += `원본 바로가기:\n${links}\n`;
+        } catch (aiErr) {
+          // AI 요약 실패 시 원본 표시
+          console.log('[Journey] Slack 요약 실패:', aiErr.message);
+          msg += `\n[Slack 대화] ${slackData.threads.length}개 대화\n`;
+          msg += '```\n';
+          slackData.threads.slice(0, 5).forEach(t => {
+            msg += `${t.date} #${t.channel} (${t.messageCount}건)\n`;
+            t.conversation.slice(0, 2).forEach(c => {
+              msg += `  ${c.text.replace(/\n/g, ' ').slice(0, 100)}\n`;
+            });
+            msg += '\n';
+          });
+          msg += '```\n';
+        }
       }
     } catch (err) {
       console.log('[Journey] Slack 검색 실패:', err.message);
