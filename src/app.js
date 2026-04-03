@@ -89,7 +89,7 @@ app.message(async ({ message, say }) => {
     const session = getSession(userId);
 
     // /help 명령어
-    if (text === '/help' || text === '도움말' || text === '?') {
+    if (text === '/help' || text === 'help' || text === '도움말' || text === '?') {
       const helpMsg = `*Sales Chatbot 사용법*
 
 *기본 명령어*
@@ -118,7 +118,7 @@ app.message(async ({ message, say }) => {
 
     // 세션에 선택 대기 중인 경우 숫자 입력 체크
     // /log 명령어 — 질문 로그 요약
-    if (text === '/log' || text === '/logs') {
+    if (text === '/log' || text === '/logs' || text === 'log' || text === '로그') {
       const { getLogSummary } = require('./query-logger');
       const summary = getLogSummary(7);
       let msg = `📊 *최근 7일 질문 로그*\n\n`;
@@ -140,6 +140,40 @@ app.message(async ({ message, say }) => {
         });
         msg += `\`\`\`\n`;
       }
+      await say(msg);
+      return;
+    }
+
+    // 대화 내역 보기
+    if (text === '대화' || text === '대화내역' || text === 'conversations') {
+      const { getLogSummary } = require('./query-logger');
+      const fs = require('fs');
+      const logPath = require('path').join(__dirname, '..', 'logs', 'queries.jsonl');
+
+      if (!fs.existsSync(logPath)) {
+        await say('아직 대화 기록이 없습니다.');
+        return;
+      }
+
+      const lines = fs.readFileSync(logPath, 'utf-8').trim().split('\n').filter(l => l);
+      const today = new Date().toISOString().slice(0, 10);
+      const todayLogs = lines
+        .map(l => { try { return JSON.parse(l); } catch { return null; } })
+        .filter(e => e && e.ts?.startsWith(today));
+
+      if (todayLogs.length === 0) {
+        await say('오늘 대화 기록이 없습니다.');
+        return;
+      }
+
+      let msg = `📊 *오늘 대화 내역* (${todayLogs.length}건)\n\n\`\`\`\n`;
+      todayLogs.forEach(e => {
+        const time = e.ts?.slice(11, 16) || '';
+        const status = e.success ? '✅' : '❌';
+        msg += `${time} ${status} [${e.userName || e.userId}] "${e.text}"\n`;
+      });
+      msg += `\`\`\`\n`;
+
       await say(msg);
       return;
     }
