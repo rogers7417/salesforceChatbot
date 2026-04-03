@@ -26,24 +26,56 @@ const journeyTool = tool(
   async ({ keyword }) => {
     const { accessToken, instanceUrl } = await getSalesforceToken();
     const escaped = escapeSoqlString(keyword);
+    // 괄호 안 지점명 제거한 브랜드명도 추출 (예: "소박한밥상(서산점)" → "소박한밥상")
+    const brandOnly = keyword.replace(/\(.*?\)/g, '').replace(/（.*?）/g, '').trim();
+    const escapedBrand = escapeSoqlString(brandOnly);
 
-    // 1. Account 검색
-    const accountResult = await soqlQuery(instanceUrl, accessToken, `
-      SELECT Id, Name, Owner.Name, Phone, OperationStatus__c,
-             ContractTabletQuantity__c, ActivableTabletNumber__c, CreatedDate
-      FROM Account
-      WHERE Name LIKE '%${escaped}%'
-      LIMIT 5
-    `.replace(/\s+/g, ' ').trim());
+    // 1. Account 검색 — 지점명이 있으면 Opportunity로 정확한 Account 찾기
+    let account, accountId, accountName;
+    const branchMatch = keyword.match(/[（(](.+?)[)）]/);
 
-    const accounts = accountResult.records || [];
-    if (accounts.length === 0) {
-      return `"${keyword}" 매장을 찾을 수 없습니다.`;
+    if (branchMatch) {
+      const branchName = escapeSoqlString(branchMatch[1]);
+      const oppResult = await soqlQuery(instanceUrl, accessToken, `
+        SELECT AccountId, Account.Name, Account.Owner.Name, Account.Phone,
+               Account.OperationStatus__c, Account.ContractTabletQuantity__c,
+               Account.ActivableTabletNumber__c
+        FROM Opportunity
+        WHERE Name LIKE '%${escapedBrand}%${branchName}%'
+        LIMIT 1
+      `.replace(/\s+/g, ' ').trim());
+
+      if (oppResult.records?.length > 0) {
+        const opp = oppResult.records[0];
+        accountId = opp.AccountId;
+        account = {
+          Id: opp.AccountId, Name: opp.Account?.Name,
+          Owner: opp.Account?.Owner, Phone: opp.Account?.Phone,
+          OperationStatus__c: opp.Account?.OperationStatus__c,
+          ContractTabletQuantity__c: opp.Account?.ContractTabletQuantity__c,
+          ActivableTabletNumber__c: opp.Account?.ActivableTabletNumber__c,
+        };
+        accountName = opp.Account?.Name;
+      }
     }
 
-    const account = accounts[0];
-    const accountId = account.Id;
-    const accountName = account.Name;
+    if (!account) {
+      const accountResult = await soqlQuery(instanceUrl, accessToken, `
+        SELECT Id, Name, Owner.Name, Phone, OperationStatus__c,
+               ContractTabletQuantity__c, ActivableTabletNumber__c, CreatedDate
+        FROM Account
+        WHERE (Name LIKE '%${escaped}%' OR Name LIKE '%${escapedBrand}%')
+        LIMIT 5
+      `.replace(/\s+/g, ' ').trim());
+
+      const accounts = accountResult.records || [];
+      if (accounts.length === 0) {
+        return `"${keyword}" 매장을 찾을 수 없습니다.`;
+      }
+      account = accounts[0];
+      accountId = account.Id;
+      accountName = account.Name;
+    }
 
     // 2. 관련 데이터 병렬 조회
     const [leadResult, oppResult, contractResult, installResult, orderResult] = await Promise.all([

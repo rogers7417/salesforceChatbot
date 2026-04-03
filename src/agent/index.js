@@ -123,8 +123,8 @@ async function runAgent(input, sfUser, slackUserId) {
 
   let output;
   if (toolResults.length > 0) {
-    // 마지막 Tool 결과를 반환 (가장 최종 데이터)
-    output = toolResults[toolResults.length - 1];
+    // 가장 긴 Tool 결과를 반환 (가장 의미 있는 데이터)
+    output = toolResults.reduce((a, b) => a.length > b.length ? a : b);
   } else {
     // Tool 호출 없이 Agent가 직접 응답한 경우
     const aiMessages = result.messages.filter(m =>
