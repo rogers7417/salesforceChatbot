@@ -23,7 +23,7 @@ async function searchSlackMessages(keyword, count = 30) {
 
   try {
     const result = await client.search.messages({
-      query: `${cleanKeyword} -in:@Sales_Enablement -in:@bizopssf`,
+      query: `${cleanKeyword} -from:sales_enablement`,
       sort: 'timestamp',
       sort_dir: 'desc',
       count,
