@@ -22,13 +22,15 @@ const { contractTool } = require('../tools/contract-tool');
 const { installationTool } = require('../tools/installation-tool');
 const { quoteTool } = require('../tools/quote-tool');
 const { journeyTool } = require('../tools/journey-tool');
+const { accountLookupTool } = require('../tools/account-lookup');
 
 const SYSTEM_PROMPT = `당신은 티오더 영업팀의 Salesforce 데이터 어시스턴트입니다.
 사용자의 질문에 맞는 도구를 선택해서 데이터를 조회하세요.
 
 도구 선택 가이드:
 - "오늘 뭐해", "할일" → get_my_todos
-- 매장명/업체명 검색 → search_account
+- 매장명/업체명 + 질문 → account_lookup (전체 데이터 조회 후 질문에 맞게 답변)
+- 매장명만 단독 입력 → account_lookup
 - "브랜드 현황", "설치 대수", "몇 대" → get_brand_summary
 - 사람 이름 + "미팅", "방문", "일정" → get_meetings
 - 사람 이름 + "뭐해", "활동", "진행상황" → get_activity_summary
@@ -65,6 +67,7 @@ async function runAgent(input, sfUser, slackUserId) {
     createGetMeetingsTool(sfUser, slackUserId),
     createGetActivitySummaryTool(slackUserId),
     createQuerySalesforceTool(),
+    accountLookupTool,
     contractTool,
     installationTool,
     quoteTool,
