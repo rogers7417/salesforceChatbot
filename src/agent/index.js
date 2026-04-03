@@ -43,8 +43,10 @@ const SYSTEM_PROMPT = `당신은 티오더 영업팀의 Salesforce 데이터 어
 응답 규칙:
 - 도구는 1~2개만 사용하라. 3개 이상 호출하지 마.
 - 도구가 반환한 결과를 그대로 전달하라. 추가 도구 호출 없이 바로 응답.
-- 도구가 반환한 텍스트를 그대로 사용자에게 전달해. 요약하거나 다시 포맷팅하지 마.
-- 추가 설명이 필요하면 도구 결과 아래에 짧게 붙여.
+- 중요: 도구가 반환한 텍스트를 절대로 수정하지 마. 그대로 복사해서 응답해.
+- ##, **, 이모지, 테이블 등으로 재포맷 절대 금지. 도구 결과 그대로 전달.
+- 도구 결과가 코드 블록으로 감싸져 있으면 그 형태 그대로 유지해.
+- 추가 코멘트가 필요하면 도구 결과 뒤에 한 줄만 붙여.
 - 한국어로 응답`;
 
 /**
@@ -110,19 +112,34 @@ async function runAgent(input, sfUser, slackUserId) {
     }
   });
 
-  // 마지막 AI 메시지 추출
-  const aiMessages = result.messages.filter(m =>
-    m._getType?.() === 'ai' || m.constructor?.name === 'AIMessage'
-  );
-  const lastAiMessage = aiMessages[aiMessages.length - 1];
-  const output = typeof lastAiMessage?.content === 'string'
-    ? lastAiMessage.content
-    : Array.isArray(lastAiMessage?.content)
+  // Tool 결과를 우선 사용 (Agent 재포맷 방지)
+  // ToolMessage만 필터 (name이 있고, _getType이 'tool'인 것)
+  const toolResults = result.messages
+    .filter(m => {
+      const isToolMsg = m._getType?.() === 'tool' || (m.name && m.constructor?.name === 'ToolMessage');
+      return isToolMsg && typeof m.content === 'string' && m.content.length > 10;
+    })
+    .map(m => m.content);
+
+  let output;
+  if (toolResults.length > 0) {
+    // 마지막 Tool 결과를 반환 (가장 최종 데이터)
+    output = toolResults[toolResults.length - 1];
+  } else {
+    // Tool 호출 없이 Agent가 직접 응답한 경우
+    const aiMessages = result.messages.filter(m =>
+      m._getType?.() === 'ai' || m.constructor?.name === 'AIMessage'
+    );
+    const lastAiMessage = aiMessages[aiMessages.length - 1];
+    output = typeof lastAiMessage?.content === 'string'
       ? lastAiMessage.content
-          .filter(c => c.type === 'text')
-          .map(c => c.text)
-          .join('')
-      : '응답을 생성할 수 없습니다.';
+      : Array.isArray(lastAiMessage?.content)
+        ? lastAiMessage.content
+            .filter(c => c.type === 'text')
+            .map(c => c.text)
+            .join('')
+        : '응답을 생성할 수 없습니다.';
+  }
 
   // 메모리에 대화 저장
   memory.addMessage('user', input);

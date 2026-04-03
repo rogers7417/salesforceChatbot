@@ -6,6 +6,7 @@
 const { z } = require('zod');
 const { tool } = require('@langchain/core/tools');
 const { getSalesforceToken, soqlQuery } = require('../salesforce');
+const { searchSlackThreaded } = require('../search-slack');
 
 // SOQL 문자열 이스케이프
 function escapeSoqlString(str) {
@@ -208,7 +209,28 @@ const journeyTool = tool(
     });
     msg += '```\n';
 
-    msg += `\n총 Lead ${leads.length}건, 영업기회 ${opps.length}건, 계약 ${contracts.length}건, 출고 ${orders.length}건, 설치 ${installations.length}건`;
+    msg += `\n총 Lead ${leads.length}건, 영업기회 ${opps.length}건, 계약 ${contracts.length}건, 출고 ${orders.length}건, 설치 ${installations.length}건\n`;
+
+    // 5. Slack 대화 추가
+    try {
+      const slackData = await searchSlackThreaded(keyword, 15);
+      if (slackData.threads.length > 0) {
+        msg += `\n[Slack 대화] ${slackData.threads.length}개 대화\n`;
+        msg += '```\n';
+        slackData.threads.slice(0, 5).forEach((t, i) => {
+          msg += `${t.date} #${t.channel} (${t.messageCount}건)\n`;
+          t.conversation.slice(0, 3).forEach(c => {
+            const text = c.text.replace(/\n/g, ' ').slice(0, 120);
+            msg += `  ${c.user}: ${text}\n`;
+          });
+          if (t.permalink) msg += `  -> ${t.permalink}\n`;
+          msg += '\n';
+        });
+        msg += '```\n';
+      }
+    } catch (err) {
+      console.log('[Journey] Slack 검색 실패:', err.message);
+    }
 
     return msg;
   },
