@@ -171,8 +171,12 @@ app.message(async ({ message, say }) => {
         } catch {
           await say(result);
         }
-      } else {
+      } else if (result.includes('```')) {
+        // Tool이 이미 코드 블록을 포함하고 있으면 그대로
         await say(result);
+      } else {
+        // 코드 블록으로 감싸서 마크다운 해석 방지
+        await say(`\`\`\`\n${result}\n\`\`\``);
       }
     } catch (agentErr) {
       console.error('[Agent 에러]', agentErr.message);
