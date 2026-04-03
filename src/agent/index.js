@@ -94,8 +94,19 @@ async function runAgent(input, sfUser, slackUserId) {
 
   const result = await agent.invoke(
     { messages },
-    { recursionLimit: 15 } // maxIterations 7 (충분한 여유)
+    { recursionLimit: 15 }
   );
+
+  // Tool 호출 로그
+  result.messages.forEach(m => {
+    if (m.tool_calls?.length > 0) {
+      m.tool_calls.forEach(tc => console.log(`[Agent] Tool 호출: ${tc.name}(${JSON.stringify(tc.args).slice(0, 100)})`));
+    }
+    if (m.name) {
+      const content = typeof m.content === 'string' ? m.content.slice(0, 100) : '';
+      console.log(`[Agent] Tool 결과: ${m.name} → ${content}...`);
+    }
+  });
 
   // 마지막 AI 메시지 추출
   const aiMessages = result.messages.filter(m =>
