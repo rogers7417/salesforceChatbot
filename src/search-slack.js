@@ -1,6 +1,6 @@
 /**
  * Slack 메시지 검색 (search:read 스코프 필요)
- * 스레드 단위로 묶어서 대화 흐름을 보여줌
+ * 같은 채널/시간대 메시지를 묶어서 대화 흐름을 보여줌
  */
 const { WebClient } = require('@slack/web-api');
 
@@ -12,14 +12,12 @@ function getBotClient() {
   return new WebClient(process.env.SLACK_BOT_TOKEN);
 }
 
-// 제외할 채널 목록
 const EXCLUDE_CHANNELS = [
   'info-점주어드민-상품-이미지-변경',
 ];
 
 async function searchSlackMessages(keyword, count = 30) {
   const client = getSearchClient();
-
   const cleanKeyword = keyword.replace(/[()（）\[\]]/g, ' ').trim();
   console.log(`[Slack 검색] 원본: "${keyword}" → 정제: "${cleanKeyword}"`);
 
@@ -55,8 +53,8 @@ async function searchSlackMessages(keyword, count = 30) {
 }
 
 /**
- * 검색 결과를 스레드 단위로 묶기
- * 같은 thread_ts를 가진 메시지를 그룹핑하고, 스레드 전체 내용도 가져옴
+ * 검색 결과를 채널+날짜 기준으로 묶기
+ * 같은 채널에서 같은 날짜에 올라온 메시지를 하나의 대화로 그룹핑
  */
 async function searchSlackThreaded(keyword, count = 30) {
   const messages = await searchSlackMessages(keyword, count);
@@ -64,91 +62,71 @@ async function searchSlackThreaded(keyword, count = 30) {
 
   const botClient = getBotClient();
 
-  // 스레드별 그룹핑
-  const threadMap = {};
-  const standalone = [];
+  // 채널+날짜 기준으로 그룹핑
+  const groupMap = {};
 
   messages.forEach(m => {
-    const threadKey = m.threadTs || m.ts;
-    if (m.threadTs) {
-      // 스레드에 속한 메시지
-      if (!threadMap[threadKey]) {
-        threadMap[threadKey] = {
-          channelId: m.channelId,
-          channel: m.channel,
-          threadTs: m.threadTs,
-          messages: [],
-          date: m.date,
-          permalink: m.permalink,
-        };
-      }
-      threadMap[threadKey].messages.push(m);
-    } else {
-      standalone.push(m);
+    const key = `${m.channel}|${m.date}`;
+    if (!groupMap[key]) {
+      groupMap[key] = {
+        channel: m.channel,
+        channelId: m.channelId,
+        date: m.date,
+        ts: m.ts,
+        messages: [],
+        permalink: m.permalink,
+      };
     }
+    groupMap[key].messages.push(m);
   });
 
-  // 스레드의 전체 대화 가져오기 (상위 5개 스레드만)
-  const threadKeys = Object.keys(threadMap).slice(0, 5);
-  for (const key of threadKeys) {
-    const thread = threadMap[key];
-    try {
-      const replies = await botClient.conversations.replies({
-        channel: thread.channelId,
-        ts: thread.threadTs,
-        limit: 10,
-      });
+  // 스레드 replies 가져오기 시도 (상위 5개 그룹)
+  const groups = Object.values(groupMap)
+    .sort((a, b) => parseFloat(b.ts) - parseFloat(a.ts))
+    .slice(0, 8);
 
-      if (replies.messages?.length > 0) {
-        thread.fullThread = replies.messages.map(r => ({
-          text: r.text,
-          user: r.user,
-          ts: r.ts,
-          date: new Date(parseFloat(r.ts) * 1000).toLocaleDateString('ko-KR'),
-        }));
+  for (const group of groups) {
+    // 각 그룹의 첫 메시지로 스레드 replies 시도
+    for (const m of group.messages) {
+      if (m.threadTs) {
+        try {
+          const replies = await botClient.conversations.replies({
+            channel: m.channelId,
+            ts: m.threadTs,
+            limit: 10,
+          });
+          if (replies.messages?.length > 1) {
+            group.threadReplies = replies.messages.map(r => ({
+              text: (r.text || '').slice(0, 200),
+              user: r.user,
+              date: new Date(parseFloat(r.ts) * 1000).toLocaleDateString('ko-KR'),
+            }));
+            break;
+          }
+        } catch (err) {
+          // 권한 없는 채널 무시
+        }
       }
-    } catch (err) {
-      // 권한 없으면 검색 결과만 사용
-      console.log(`[Slack 스레드] ${thread.channel} 스레드 조회 실패: ${err.message}`);
     }
   }
 
-  // 결과 정리
-  const threads = Object.values(threadMap).map(t => ({
-    channel: t.channel,
-    date: t.date,
-    permalink: t.permalink,
-    messageCount: t.fullThread?.length || t.messages.length,
-    // 스레드 전체 대화 또는 검색된 메시지
-    conversation: (t.fullThread || t.messages).map(m => ({
+  // 결과 구성
+  const threads = groups.map(g => ({
+    channel: g.channel,
+    date: g.date,
+    permalink: g.permalink,
+    messageCount: g.threadReplies?.length || g.messages.length,
+    conversation: (g.threadReplies || g.messages.map(m => ({
       date: m.date,
       user: m.user,
       text: (m.text || '').slice(0, 300),
-    })),
+    }))),
   }));
 
-  // 스레드에 속하지 않은 단독 메시지도 포함
-  standalone.forEach(m => {
-    threads.push({
-      channel: m.channel,
-      date: m.date,
-      permalink: m.permalink,
-      messageCount: 1,
-      conversation: [{
-        date: m.date,
-        user: m.user,
-        text: (m.text || '').slice(0, 300),
-      }],
-    });
-  });
-
-  // 날짜순 정렬 (최신 먼저)
-  threads.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-
-  console.log(`[Slack 스레드] ${threads.length}개 대화 묶음 (스레드: ${Object.keys(threadMap).length}, 단독: ${standalone.length})`);
+  console.log(`[Slack 검색] ${threads.length}개 대화 묶음 (채널+날짜 기준)`);
 
   return {
-    threads: threads.slice(0, 10),
+    threads,
     totalMessages: messages.length,
   };
 }
